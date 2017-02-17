@@ -44,3 +44,7 @@ iframe{
 .dropdown:hover .dropdown-content {
     display: block;
 }
+
+#mainRow{
+    height: 500px;
+}
