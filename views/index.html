@@ -8,6 +8,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../public/stylesheets/index.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
 <body>
 
@@ -19,10 +20,14 @@
         <div class = "col-lg-9 text-center"></div>
         <div class = "col-lg-1 text-center" id="trips">
             <span><h4><b>Mine turer</b></h4></span>
+            <div class="trips-content">
+                Miami
+                Vietnam
+            </div>
         </div>
         <div class = "col-lg-1 text-center" id="user">
             <span><h4><b>Bruker</b></h4></span>
-            <div class="dropdown-content">
+            <div class="user-content">
                 <div>
                     Min turer
                 </div>
@@ -38,6 +43,12 @@
     <div class = "row" id="content">
         <div class = "col-lg-2 text-center" id="sidebar">
             <h2>Reisenavn</h2>
+            <p id="hotels"><b>Hoteller</b></p>
+            <ul id="hotels_list">
+                <li>Hostell</li>
+                <li>Fancy hotell</li>
+                <li>AirBNB</li>
+            </ul>
         </div>
         <div class = "col-lg-10 text-center" id="map">
             <iframe src="../public/maps/api.html">
@@ -48,6 +59,14 @@
     </div>
 
 </div>
+
+<script>
+    $(document).ready(function(){
+        $("#hotels").click(function(){
+            $("hotels_list").show();
+        });
+    });
+</script>
 
 </body>
 </html>
