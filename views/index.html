@@ -45,22 +45,30 @@
     </div>
     <div class = "row" id="content">
         <div class = "col-lg-2 text-center" id="sidebar">
-            <div class = "row" id="trip_heading">
-                <div class = "col-lg-8 text-center">
-                    <h2>Reisenavn</h2>
+            <div class = "row" id="sidebar_content">
+                <div class = "row" id="trip_heading">
+                    <div class = "col-lg-8 text-center">
+                        <h2>Reisenavn</h2>
+                    </div>
+                    <div class = "col-lg-3 text-center" id="img_col">
+                        <span id="img_helper"><img src="/images/info.png" id="info_img"></span>
+                    </div>
+                    <div class = "col-lg-1 text-center"></div>
                 </div>
-                <div class = "col-lg-3 text-center" id="img_col">
-                    <span id="img_helper"><img src="/images/info.png" id="info_img"></span>
-                </div>
-                <div class = "col-lg-1 text-center"></div>
-            </div>
 
-            <p id="hotels"><b>Hoteller</b></p>
-            <ul id="hotels_list">
-                <li>Hostell</li>
-                <li>Fancy hotell</li>
-                <li>AirBNB</li>
-            </ul>
+                <p id="hotels"><b>Hoteller</b></p>
+                <ul id="hotels_list">
+                    <li>Hostell</li>
+                    <li>Fancy hotell</li>
+                    <li>AirBNB</li>
+                </ul>
+            </div>
+            <div class = "row" class="buttons">
+                <button type="save"><b>Lagre punkt</b></button>
+            </div>
+            <div class = "row" class="buttons">
+                <button type="save"><b>Del tur</b></button>
+            </div>
         </div>
         <div class = "col-lg-10 text-center" id="map">
             <!--<iframe src="/maps/api.html">

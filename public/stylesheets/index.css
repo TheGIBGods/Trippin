@@ -9,7 +9,7 @@ html, body{
 }
 
 #header{
-    background-color: #ff9933;
+    background-color: #ff9966;
     margin: 0px;
     padding:10px;
     width: 100%;
@@ -36,7 +36,7 @@ span {
 }
 
 #sidebar{
-    background-color: #ffbf80;
+    background-color: #ffcc99;
     height: 600px;
 }
 
@@ -82,4 +82,24 @@ p, li{
     display: inline-block;
     height: 100%;
     vertical-align: bottom;
+}
+
+button{
+    background-color: #ff9933;
+    border: solid #ff6600;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 5px;
+    float: left;
+    width: 80%;
+    margin: 5px 10px;
+    padding: 20px 6px;
+}
+
+button:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+#sidebar_content{
+    height: 450px;
 }
