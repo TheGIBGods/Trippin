@@ -6,9 +6,36 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
-var users = require('./routes/users');
+//var users = require('./routes/users');
+var mongoose = require('mongoose');
 
 var app = express();
+
+
+
+mongoose.connect('mongodb://heroku_xdbrx3qp:p4dspfmv2cqsdr3pirskqie5sr@ds157839.mlab.com:57839/heroku_xdbrx3qp');
+
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+    // we're connected!
+});
+
+
+//var routes = require('./routes/api.js');
+var router = express.Router();
+
+router.get('/users', function (req, res) {
+    console.log('in users method');
+    var response = {};
+    /*User.find({}, function (err, data) {
+     response = {"message": data};
+     console.log('response from db is:');
+     console.log(data);
+     res.json(response);
+     });*/
+});
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -31,16 +58,18 @@ app.use(require('node-sass-middleware')({
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/node_modules', express.static(path.join(__dirname + '/node_modules')));
 app.use('/', index);
-app.use('/users', users);
+//app.use('/users', users);
 
+/*
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
+*/
 
-// error handler
+/*// error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
@@ -50,7 +79,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
+*/
 
 
 module.exports = app;
