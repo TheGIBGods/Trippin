@@ -5,6 +5,8 @@
     <title>Title</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+    <script src="../../node_modules/leaflet-google-places-autocomplete/src/js/leaflet-gplaces-autocomplete.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAGGAJlEFnuZU1VFwi8Iv-jfRk5du9a2P4&libraries=places"></script>
     <style>
         #mapid { height: 600px; }
     </style>
@@ -79,6 +81,9 @@
     }
 
     mymap.on('click', onMapClick);
+
+    new L.Control.GPlaceAutocomplete().addTo(mymap);
+
 
 </script>
 
