@@ -115,3 +115,8 @@ button:hover{
 ul{
     display: none;
 }
+
+#sidebar_nav{
+    overflow-y:auto;
+    height: 80%;
+}
