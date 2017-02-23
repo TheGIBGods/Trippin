@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="/stylesheets/index.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
 <body>
 
@@ -63,6 +62,30 @@
                     <li>Fancy hotell</li>
                     <li>AirBNB</li>
                 </ul>
+                <p id="restaurants" class="categories canBeClicked"><b>Restauranter</b></p>
+                <ul id="restaurants_list">
+                    <li>Hostell</li>
+                    <li>Fancy hotell</li>
+                    <li>AirBNB</li>
+                </ul>
+                <p id="attractions" class="categories canBeClicked"><b>Attraksjoner</b></p>
+                <ul id="attractions_list">
+                    <li>Hostell</li>
+                    <li>Fancy hotell</li>
+                    <li>AirBNB</li>
+                </ul>
+                <p id="shopping" class="categories canBeClicked"><b>Shopping</b></p>
+                <ul id="shopping_list">
+                    <li>Hostell</li>
+                    <li>Fancy hotell</li>
+                    <li>AirBNB</li>
+                </ul>
+                <p id="other" class="categories canBeClicked"><b>Annet</b></p>
+                <ul id="other_list">
+                    <li>Hostell</li>
+                    <li>Fancy hotell</li>
+                    <li>AirBNB</li>
+                </ul>
             </div>
             <div class = "row" class="buttons">
                 <button id="save"><b>Lagre punkt</b></button>
@@ -87,6 +110,26 @@
     $(document).ready(function(){
         $("#hotels").click(function(){
             $("#hotels_list").toggle(200);
+        });
+    });
+    $(document).ready(function(){
+        $("#restaurants").click(function(){
+            $("#restaurants_list").toggle(200);
+        });
+    });
+    $(document).ready(function(){
+        $("#attractions").click(function(){
+            $("#attractions_list").toggle(200);
+        });
+    });
+    $(document).ready(function(){
+        $("#shopping").click(function(){
+            $("#shopping_list").toggle(200);
+        });
+    });
+    $(document).ready(function(){
+        $("#other").click(function(){
+            $("#other_list").toggle('normal');
         });
     });
 </script>
