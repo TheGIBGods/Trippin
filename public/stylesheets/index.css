@@ -103,3 +103,7 @@ button:hover{
 #sidebar_content{
     height: 450px;
 }
+
+.canBeClicked:hover{
+    cursor: pointer;
+}
