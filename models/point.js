@@ -10,10 +10,13 @@ var PointSchema = new Schema({
     name: {type: String, required: true},
     category: {
         type: String,
-        enum: ['restaurant', 'hotel', 'attraction', 'shopping', 'other']},
+        enum: ['restaurant', 'hotel', 'attraction', 'shopping', 'other'],
+        required: true
+    },
     comment: String,
     created_by: {type: Schema.Types.ObjectId, ref: 'User'},
-    point_ID: Schema.Types.ObjectId
+    point_ID: Schema.Types.ObjectId,
+    date: Date
 });
 
 
