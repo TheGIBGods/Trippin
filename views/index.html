@@ -5,10 +5,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
+    <script src="myscripts.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="/stylesheets/index.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
 <body>
 
@@ -19,9 +20,9 @@
         </div>
         <div class = "col-lg-8 text-center"></div>
         <div class = "col-lg-1 text-center" id="aboutPage">
-            <span><h4><b>Om</b></h4></span>
+            <span><h4 class="canBeClicked"><b>Om</b></h4></span>
         </div>
-        <div class = "col-lg-1 text-center" id="trips">
+        <div class = "col-lg-1 text-center canBeClicked" id="trips">
             <span><h4><b>Mine turer</b></h4></span>
             <div class="trips-content">
                 Miami
@@ -30,7 +31,7 @@
         </div>
         <div class = "col-lg-1 text-center" id="user">
             <span><h4><b>Bruker</b></h4></span>
-            <div class="user-content">
+            <div class="user-content canBeClicked">
                 <div>
                     Min turer
                 </div>
@@ -56,7 +57,7 @@
                     <div class = "col-lg-1 text-center"></div>
                 </div>
 
-                <p id="hotels"><b>Hoteller</b></p>
+                <p id="hotels" class="categories canBeClicked"><b>Hoteller</b></p>
                 <ul id="hotels_list">
                     <li>Hostell</li>
                     <li>Fancy hotell</li>
@@ -64,10 +65,10 @@
                 </ul>
             </div>
             <div class = "row" class="buttons">
-                <button type="save"><b>Lagre punkt</b></button>
+                <button id="save"><b>Lagre punkt</b></button>
             </div>
             <div class = "row" class="buttons">
-                <button type="save"><b>Del tur</b></button>
+                <button id="trip"><b>Del tur</b></button>
             </div>
         </div>
         <div class = "col-lg-10 text-center" id="map">
@@ -85,7 +86,7 @@
 <script>
     $(document).ready(function(){
         $("#hotels").click(function(){
-            $("hotels_list").show();
+            $("#hotels_list").toggle(200);
         });
     });
 </script>
