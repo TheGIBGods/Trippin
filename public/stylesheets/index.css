@@ -134,3 +134,7 @@ a{
     color: black;
     text-decoration: none;
 }
+
+.popup{
+    padding: 5px;
+}
