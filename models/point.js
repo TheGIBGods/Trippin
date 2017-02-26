@@ -10,13 +10,13 @@ var PointSchema = new Schema({
     name: {type: String, required: true},
     category: {
         type: String,
-        enum: ['restaurant', 'hotel', 'attraction', 'shopping', 'other'],
+        enum: ['restaurant', 'hotel', 'attraction', 'shopping', 'other'], //enum means category can only be one of these
         required: true
     },
     comment: String,
-    created_by: {type: Schema.Types.ObjectId, ref: 'User'},
+    created_by: {type: Schema.Types.ObjectId, ref: 'User'}, //"ForeignKey" to a user-document
     date: Date,
-    trip_ID: {type: Schema.Types.ObjectId, ref: 'Trip'}
+    trip_ID: {type: Schema.Types.ObjectId, ref: 'Trip'} //"ForeignKey" to a trip-document
 });
 
 

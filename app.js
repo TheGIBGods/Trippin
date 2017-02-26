@@ -12,7 +12,7 @@ var mongoose = require('mongoose');
 var app = express();
 
 
-
+//Connecting to the database using mongoose
 mongoose.connect('mongodb://heroku_xdbrx3qp:p4dspfmv2cqsdr3pirskqie5sr@ds157839.mlab.com:57839/heroku_xdbrx3qp');
 
 var db = mongoose.connection;
