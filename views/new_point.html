@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New Point</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<p>Navn: <input type="text" id="name"></p>
+<p>Kommentar: <input type="text" id="comment"></p>
+
+<button id="button">Show Value</button>
+
+<script>
+    $(document).ready(function(){
+        $("#button").click(function(){
+            //alert("Navn: " + $("#name").val() + "\nKommentar: " + $("#comment").val());
+            console.log($("#name").val() + $("#comment").val());
+        });
+    });
+</script>
+</body>
+</html>
