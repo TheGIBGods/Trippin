@@ -19,7 +19,21 @@
         </div>
         <div class = "col-lg-8 text-center"></div>
         <div class = "col-lg-1 text-center" id="aboutPage">
-            <span><h4 class="canBeClicked"><b>Om</b></h4></span>
+            <span><h4 class="canBeClicked"><a data-toggle="modal" data-target="#aboutModal"><b>Om</b></a></h4></span>
+            <div class="modal fade" id="aboutModal" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Trippin</h4>
+                        </div>
+                        <p>Her skal det stå en fantastisk tekst om oss</p>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Lukk</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class = "col-lg-1 text-center canBeClicked" id="trips">
             <span><h4><b>Mine turer</b></h4></span>
@@ -89,21 +103,45 @@
                     </ul>
                 </div>
             </div>
-            <div class = "row" class="buttons">
-                <button id="save"><b>Lagre punkt</b></button>
-            </div>
-            <div class = "row" class="buttons">
+            <div class = "row buttons">
+                <button data-toggle="modal" data-target="#myModal" id="save"><b>Lagre punkt</b></button>
+                <div class="modal fade" id="myModal" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Lagre nytt punkt</h4>
+                            </div>
+                            <form action="/action_page.php" method="post">
+                            <p><span class="form">Navn:</span> <input value="Default" type="text" id="name" autofocus required></p>
+                                <p><span>Kategori:</span>
+                                <select>
+                                    <option value="volvo">Hotel</option>
+                                    <option value="saab">Restaurant</option>
+                                    <option value="mercedes">Attraksjoner</option>
+                                    <option value="audi">Shopping</option>
+                                    <option value="audi">Annet</option>
+                                </select></p>
+                            <p><span class="form">Kommentar:</span> <input type="password" id="comment"></p>
+                            </form>
+                            <div class="modal-footer">
+                                <input type="submit" value="Submit" id="save_button" class="btn btn-default" data-dismiss="modal">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+            <div class = "row buttons">
                 <button id="trip"><b>Del tur</b></button>
             </div>
-        </div>
+    </div>
         <div class = "col-lg-10 text-center" id="map">
             <iframe src="/maps/api.html">
 
             </iframe>
         </div>
-
-    </div>
-
 </div>
 
 <script src = "/javascripts/user.js"></script>
@@ -113,26 +151,28 @@
         $("#hotels").click(function(){
             $("#hotels_list").slideToggle(200);
         });
-    });
-    $(document).ready(function(){
+
         $("#restaurants").click(function(){
             $("#restaurants_list").slideToggle(200);
         });
-    });
-    $(document).ready(function(){
+
         $("#attractions").click(function(){
             $("#attractions_list").slideToggle(200);
         });
-    });
-    $(document).ready(function(){
+
         $("#shopping").click(function(){
             $("#shopping_list").slideToggle(200);
         });
-    });
-    $(document).ready(function(){
+
         $("#other").click(function(){
             $("#other_list").slideToggle(200);
         });
+
+        $("#save_button").click(function(){
+            //alert("Navn: " + $("#name").val() + "\nKommentar: " + $("#comment").val());
+            console.log($("#name").val() + $("#comment").val());
+        });
+
     });
 </script>
 

@@ -23,7 +23,7 @@ html, body{
     height: 100%;
 }
 
-#user, #trips {
+#user, #trips, #aboutPage {
     text-align: center;
     border: 2px dashed #f69c55;
 }
@@ -124,4 +124,13 @@ ul{
 #sidebar_nav{
     overflow-y:auto;
     height: 80%;
+}
+
+.form{
+    width: 35%;
+}
+
+a{
+    color: black;
+    text-decoration: none;
 }
