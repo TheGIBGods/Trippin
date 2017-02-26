@@ -13,12 +13,14 @@ html, body{
     margin: 0px;
     padding:10px;
     width: 100%;
+    height: 8%;
 }
 
 .container{
     margin: 0px;
     padding: 0px;
     width: 100%;
+    height: 100%;
 }
 
 #user, #trips {
@@ -33,20 +35,23 @@ span {
 
 #content{
     margin: 0px;
+    height: 92%;
 }
 
 #sidebar{
     background-color: #ffcc99;
-    height: 600px;
+    height: 100%;
 }
 
 #map{
     padding: 0px;
+    height: 100%;
 }
+
 
 iframe{
     width: 100%;
-    height: 600px;
+    height: 100%;
 }
 
 .user-content, .trips-content {
@@ -101,7 +106,7 @@ button:hover{
 }
 
 #sidebar_content{
-    height: 450px;
+    height: 80%;
 }
 
 .canBeClicked:hover{
