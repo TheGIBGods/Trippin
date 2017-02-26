@@ -27,7 +27,9 @@
                         <div class="modal-header">
                             <h4 class="modal-title">Trippin</h4>
                         </div>
-                        <p>Her skal det stå en fantastisk tekst om oss</p>
+                        <div class="popup">
+                            <p>Her skal det stå en fantastisk tekst om oss</p>
+                        </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Lukk</button>
                         </div>
@@ -114,16 +116,18 @@
                                 <h4 class="modal-title">Lagre nytt punkt</h4>
                             </div>
                             <form action="/action_page.php" method="post">
-                            <p><span class="form">Navn:</span> <input value="Default" type="text" id="name" autofocus required></p>
-                                <p><span>Kategori:</span>
-                                <select>
-                                    <option value="volvo">Hotel</option>
-                                    <option value="saab">Restaurant</option>
-                                    <option value="mercedes">Attraksjoner</option>
-                                    <option value="audi">Shopping</option>
-                                    <option value="audi">Annet</option>
-                                </select></p>
-                            <p><span class="form">Kommentar:</span> <input type="password" id="comment"></p>
+                                <div class="popup">
+                                    <p><span class="form">Navn:</span> <input value="Default" type="text" id="name" autofocus required></p>
+                                        <p><span class="form">Kategori:</span>
+                                        <select>
+                                            <option value="volvo">Hotel</option>
+                                            <option value="saab">Restaurant</option>
+                                            <option value="mercedes">Attraksjoner</option>
+                                            <option value="audi">Shopping</option>
+                                            <option value="audi">Annet</option>
+                                        </select></p>
+                                    <p><span class="form">Kommentar:</span> <input type="password" id="comment"></p>
+                                </div>
                             </form>
                             <div class="modal-footer">
                                 <input type="submit" value="Submit" id="save_button" class="btn btn-default" data-dismiss="modal">
