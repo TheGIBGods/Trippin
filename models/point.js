@@ -15,8 +15,8 @@ var PointSchema = new Schema({
     },
     comment: String,
     created_by: {type: Schema.Types.ObjectId, ref: 'User'},
-    point_ID: Schema.Types.ObjectId,
-    date: Date
+    date: Date,
+    trip_ID: {type: Schema.Types.ObjectId, ref: 'Trip'}
 });
 
 
