@@ -6,7 +6,9 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
-//var users = require('./routes/users');
+//lag en variabel som viser til modelfilen
+var users = require('./models/user');
+var trip = require('./models/trip');
 var mongoose = require('mongoose');
 
 var app = express();
@@ -25,15 +27,27 @@ db.once('open', function() {
 //var routes = require('./routes/api.js');
 var router = express.Router();
 
+//hent dataen fra dataasen
 router.get('/users', function (req, res) {
     console.log('in users method');
     var response = {};
-    /*User.find({}, function (err, data) {
+    users.find({}, function (err, data) {
      response = {"message": data};
      console.log('response from db is:');
      console.log(data);
      res.json(response);
-     });*/
+     });
+});
+
+router.get('/trip', function (req, res) {
+    console.log('in trip method');
+    var response = {};
+    trip.find({}, function (err, data) {
+        response = {"message": data};
+        console.log('response from db is:');
+        console.log(data);
+        res.json(response);
+    });
 });
 
 
@@ -81,5 +95,5 @@ app.use(function(err, req, res, next) {
 });
 */
 
-
+app.use('/', router);
 module.exports = app;

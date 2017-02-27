@@ -9,11 +9,14 @@ var userInfo ={
 
 console.log('running uses.js file where ajax is');
 
-$.ajax({
-    url: 'users',
-    type: "get",
-    data: {},
-    complete: function(data){
-        console.log(data);
-    }
-});
+//kjør denne funksjonen når vinduet loades
+window.onload = function(){
+    $.ajax({
+        url: 'trip',
+        type: "get",
+        data: {},
+        complete: function(data){
+            console.log(data);
+        }
+    })
+};

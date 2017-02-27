@@ -5,7 +5,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="myscripts.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="/stylesheets/index.css">
@@ -77,6 +76,7 @@
                     <div class = "col-lg-8 text-center">
                         <h2>Reisenavn</h2>
                     </div>
+                    <div id="userList"></div>
 
                     <!-- Info "button" -->
                     <div class = "col-lg-3 text-center" id="img_col">
@@ -203,11 +203,29 @@
         });
         //end category navigation
 
-        // do we need this??
-        $("#save_button").click(function(){
-            //alert("Navn: " + $("#name").val() + "\nKommentar: " + $("#comment").val());
-            console.log($("#name").val() + $("#comment").val());
+        //henter inn users fra app
+        $("#trip").click(function(){
+                $.ajax({
+                    url: 'users',
+                    type: "get",
+                    complete: function(data){
+                        //når alle objektene er hentet inn, gjør dette
+                        console.log(data.responseJSON.message);
+                        createUserList(data.responseJSON.message);
+                    }
+                })
         });
+
+        //funksjonen som blir kalt på lenger oppe
+        function createUserList(users){
+            //lag et element og definer hvilken type det skal ha(h3)
+            var user = document.createElement("h3");
+            //sett innholdet i elementet
+            //hvordan hente username for alle brukere?
+            user.innerHTML = users[0].username;
+            //plasser elementet i html etter id
+            $("#userList").after(user);
+        };
 
     });
 </script>

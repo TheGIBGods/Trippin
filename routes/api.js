@@ -15,7 +15,7 @@ router.get("/", function(req, res){
    res.json({"error":false, "message":"Hello world"});
 });
 
-router.get("/users", function (req, res) {
+/*router.get("/users", function (req, res) {
     console.log('in users method');
     var response = {};
     User.find({}, function (err, data) {
@@ -24,7 +24,7 @@ router.get("/users", function (req, res) {
         console.log(data);
         res.json(response);
     });
-});
+});*/
 
 
 
