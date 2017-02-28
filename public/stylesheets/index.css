@@ -139,3 +139,12 @@ a{
 .popup{
     padding: 5px;
 }
+
+.search-input {
+    font-family: Courier
+}
+
+.search-input,
+.leaflet-control-search {
+    max-width: 400px;
+}
