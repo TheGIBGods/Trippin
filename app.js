@@ -54,7 +54,7 @@ router.get('/trip', function (req, res) {
 router.get('/point', function (req, res) {
     console.log('in point method');
     var response = {};
-    point.find({category: "attraction"}, function (err, data) {
+    point.find({}, function (err, data) {
         response = {"message": data};
         console.log('response from db is:');
         console.log(data);
