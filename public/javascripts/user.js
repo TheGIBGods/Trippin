@@ -9,14 +9,25 @@ var userInfo ={
 
 console.log('running uses.js file where ajax is');
 
-//kjør denne funksjonen når vinduet loades
+//run this function when the page loads
 window.onload = function(){
     $.ajax({
-        url: 'trip',
+        url: 'users', //collects the users call from app
         type: "get",
-        data: {},
         complete: function(data){
-            console.log(data);
+            //when all the objects are retrieved, do this
+            //log to cmd
+            console.log(data.responseJSON.message);
+            //call the createUserList function
+            createUserList(data.responseJSON.message);
         }
     })
+};
+
+//function called before
+function createUserList(users){
+    //create an element to place in the userName idfield
+    document.getElementById("userName").innerHTML = users[0].username;
+    //innerHTML sets the content of the element
+    //hvordan hente username for alle brukere?
 };

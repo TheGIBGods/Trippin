@@ -49,7 +49,7 @@
             </div>
         </div>
         <div class = "col-lg-1 text-center" id="user">
-            <span><h4><b>Bruker</b></h4></span>
+            <span><h4><b id="userName"></b></h4></span>
             <div class="user-content canBeClicked">
                 <div>
                     Min turer
@@ -76,11 +76,28 @@
                     <div class = "col-lg-8 text-center">
                         <h2>Reisenavn</h2>
                     </div>
-                    <div id="userList"></div>
 
                     <!-- Info "button" -->
                     <div class = "col-lg-3 text-center" id="img_col">
-                        <span id="img_helper"><img src="/images/info.png" id="info_img"></span>
+                        <span id="img_helper"><img src="/images/info.png" class="canBeClicked" onclick="showInfo()"
+                                                   id="info_img" data-toggle="modal" data-target="#aboutTrip"></span>
+                        <!-- The comment for this trip modal -->
+                        <div class="modal fade" id="aboutTrip" role="dialog">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Trippin</h4>
+                                    </div>
+                                    <div class="popup">
+                                        <p id="tripComment"></p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Lukk</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End modal -->
                     </div>
                     <div class = "col-lg-1 text-center"></div>
                 </div>
@@ -140,12 +157,13 @@
                                     <p><span class="form">Navn:</span>
                                         <input value="Default" type="text" id="name" autofocus required></p>
                                     <p><span class="form">Kategori:</span>
-                                        <select>
-                                            <option value="volvo">Hotel</option>
-                                            <option value="saab">Restaurant</option>
-                                            <option value="mercedes">Attraksjoner</option>
-                                            <option value="audi">Shopping</option>
-                                            <option value="audi">Annet</option>
+                                        <select onchange="show(this.value)">
+                                            <option value="" disabled selected>Select your option</option>
+                                            <option value="hotel">Hotel</option>
+                                            <option value="restaurant">Restaurant</option>
+                                            <option value="attraction">Attraksjoner</option>
+                                            <option value="shopping">Shopping</option>
+                                            <option value="other">Annet</option>
                                         </select></p>
                                     <p><span class="form">Kommentar:</span>
                                         <input type="text" id="comment"></p>
@@ -166,6 +184,8 @@
             <div class = "row buttons">
                 <button id="trip"><b>Del tur</b></button>
             </div>
+
+            <p id="end"></p>
             <!-- End buttons in sidebar -->
     </div>
         <!-- End sidebar -->
@@ -177,57 +197,13 @@
 </div>
 
 <script src = "/javascripts/user.js"></script>
+    <script src = "/javascripts/trip.js"></script>
+    <script src = "/javascripts/sidebar.js"></script>
 
 <script>
-    $(document).ready(function(){
-
-        //Category navigation
-        $("#hotels").click(function(){
-            $("#hotels_list").slideToggle(200);
-        });
-
-        $("#restaurants").click(function(){
-            $("#restaurants_list").slideToggle(200);
-        });
-
-        $("#attractions").click(function(){
-            $("#attractions_list").slideToggle(200);
-        });
-
-        $("#shopping").click(function(){
-            $("#shopping_list").slideToggle(200);
-        });
-
-        $("#other").click(function(){
-            $("#other_list").slideToggle(200);
-        });
-        //end category navigation
-
-        //henter inn users fra app
-        $("#trip").click(function(){
-                $.ajax({
-                    url: 'users',
-                    type: "get",
-                    complete: function(data){
-                        //når alle objektene er hentet inn, gjør dette
-                        console.log(data.responseJSON.message);
-                        createUserList(data.responseJSON.message);
-                    }
-                })
-        });
-
-        //funksjonen som blir kalt på lenger oppe
-        function createUserList(users){
-            //lag et element og definer hvilken type det skal ha(h3)
-            var user = document.createElement("h3");
-            //sett innholdet i elementet
-            //hvordan hente username for alle brukere?
-            user.innerHTML = users[0].username;
-            //plasser elementet i html etter id
-            $("#userList").after(user);
-        };
-
-    });
+    function show(input){
+        console.log(input);
+    };
 </script>
 
 </body>

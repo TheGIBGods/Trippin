@@ -11,7 +11,7 @@ var TripSchema = new Schema({
     name: {type: String, required: true},
     date: Date,
     comment: String,
-    //users: [{type: Schema.Types.ObjectId, ref: 'user'}]
+    users: [{type: Schema.Types.ObjectId, ref: 'user'}]
 });
 
 
