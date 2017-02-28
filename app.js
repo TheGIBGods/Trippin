@@ -9,6 +9,7 @@ var index = require('./routes/index');
 //lag en variabel som viser til modelfilen
 var users = require('./models/user');
 var trip = require('./models/trip');
+var point = require('./models/point');
 var mongoose = require('mongoose');
 
 var app = express();
@@ -43,6 +44,17 @@ router.get('/trip', function (req, res) {
     console.log('in trip method');
     var response = {};
     trip.find({}, function (err, data) {
+        response = {"message": data};
+        console.log('response from db is:');
+        console.log(data);
+        res.json(response);
+    });
+});
+
+router.get('/point', function (req, res) {
+    console.log('in point method');
+    var response = {};
+    point.find({category: "attraction"}, function (err, data) {
         response = {"message": data};
         console.log('response from db is:');
         console.log(data);
