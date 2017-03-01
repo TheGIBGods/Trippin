@@ -136,10 +136,10 @@
 
             <!-- Buttons in sidebar -->
             <div class = "row buttons">
-                <button data-toggle="modal" data-target="#myModal" id="save"><b>Lagre punkt</b></button>
+                <button data-toggle="modal" data-target="#modalPoint" id="save"><b>Lagre punkt</b></button>
 
                 <!-- Modal for save point-->
-                <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal fade" id="modalPoint" role="dialog">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -150,9 +150,9 @@
                             <form action="/action_page.php" method="post" id="pointForm">
                                 <div class="popup">
                                     <p><span class="form">Navn:</span>
-                                        <input value="Default" type="text" id="namePoint" autofocus required></p>
+                                        <input type="text" id="namePoint" autofocus required></p>
                                     <p><span class="form">Kategori:</span>
-                                        <select id="curtain">
+                                        <select id="curtain" required>
                                             <option value="" disabled selected>Select your option</option>
                                             <option value="hotel">Hotel</option>
                                             <option value="restaurant">Restaurant</option>
@@ -161,14 +161,14 @@
                                             <option value="other">Annet</option>
                                         </select></p>
                                     <p><span class="form">Kommentar:</span>
-                                        <input type="text" id="commentPoint"></p>
+                                        <textarea id="commentPoint" rows="3" cols="30"></textarea>
                                 </div>
                             </form>
                             <!-- End form -->
 
                             <div class="modal-footer">
                                 <input type="submit" value="Submit" id="save_button" class="btn btn-default"
-                                       data-dismiss="modal" onclick="savePoint()">
+                                        onclick="savePoint()" form="pointForm">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                             </div>
                         </div>

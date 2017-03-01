@@ -11,7 +11,7 @@ $(document).ready(function(){
             complete: function(data){
                 //when all the objects are retrieved, do this
                 //log to cmd
-                console.log(data.responseJSON.message);
+                //console.log(data.responseJSON.message);
                 //call the createUserList function
                 createPointList(data.responseJSON.message);
             }
@@ -26,8 +26,8 @@ function createPointList(points){
     for (i =0; i< points.length; i++){
         var x = document.createElement("li");
         x.innerHTML = points[i].name;
-        console.log(points[i].name);
-        console.log(points[i].category);
+        //console.log(points[i].name);
+        //console.log(points[i].category);
         switch(points[i].category){
             case "hotel":
                 $("#hotels_list").append(x);
