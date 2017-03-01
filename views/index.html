@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="/stylesheets/index.css">
+    <script src = "/javascripts/user.js"></script>
+    <script src = "/javascripts/trip.js"></script>
+    <script src = "/javascripts/sidebar.js"></script>
+    <script src = "/javascripts/point.js"></script>
+    <script src = "/javascripts/createNewPoint.js"></script>
 </head>
 <body>
 
@@ -79,7 +84,7 @@
 
                     <!-- Info "button" -->
                     <div class = "col-lg-3 text-center" id="img_col">
-                        <span id="img_helper"><img src="/images/info.png" class="canBeClicked" onclick="showInfo()"
+                        <span id="img_helper"><img src="/images/info.png" class="canBeClicked"
                                                    id="info_img" data-toggle="modal" data-target="#aboutTrip"></span>
                         <!-- The comment for this trip modal -->
                         <div class="modal fade" id="aboutTrip" role="dialog">
@@ -142,12 +147,12 @@
                             </div>
 
                             <!-- Form for save point -->
-                            <form action="/action_page.php" method="post">
+                            <form action="/action_page.php" method="post" id="pointForm">
                                 <div class="popup">
                                     <p><span class="form">Navn:</span>
-                                        <input value="Default" type="text" id="name" autofocus required></p>
+                                        <input value="Default" type="text" id="namePoint" autofocus required></p>
                                     <p><span class="form">Kategori:</span>
-                                        <select onchange="show(this.value)">
+                                        <select id="curtain">
                                             <option value="" disabled selected>Select your option</option>
                                             <option value="hotel">Hotel</option>
                                             <option value="restaurant">Restaurant</option>
@@ -156,13 +161,14 @@
                                             <option value="other">Annet</option>
                                         </select></p>
                                     <p><span class="form">Kommentar:</span>
-                                        <input type="text" id="comment"></p>
+                                        <input type="text" id="commentPoint"></p>
                                 </div>
                             </form>
                             <!-- End form -->
 
                             <div class="modal-footer">
-                                <input type="submit" value="Submit" id="save_button" class="btn btn-default" data-dismiss="modal">
+                                <input type="submit" value="Submit" id="save_button" class="btn btn-default"
+                                       data-dismiss="modal" onclick="savePoint()">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                             </div>
                         </div>
@@ -185,17 +191,6 @@
             <iframe src="/maps/api.html"></iframe>
         </div>
     </div>
-
-    <script src = "/javascripts/user.js"></script>
-    <script src = "/javascripts/trip.js"></script>
-    <script src = "/javascripts/sidebar.js"></script>
-    <script src = "/javascripts/point.js"></script>
-
-    <script>
-        function show(input){
-            console.log(input);
-        };
-    </script>
 </div>
 </body>
 </html>

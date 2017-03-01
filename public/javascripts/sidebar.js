@@ -4,7 +4,7 @@
 
 $(document).ready(function(){
 
-    //Category navigation
+    //Category navigation in sidabar
     $("#hotels").click(function(){
         $("#hotels_list").slideToggle(200);
     });

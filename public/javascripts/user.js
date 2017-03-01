@@ -17,7 +17,7 @@ window.onload = function(){
         complete: function(data){
             //when all the objects are retrieved, do this
             //log to cmd
-            console.log(data.responseJSON.message);
+            //console.log(data.responseJSON.message);
             //call the createUserList function
             createUserList(data.responseJSON.message);
         }
