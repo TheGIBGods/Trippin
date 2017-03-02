@@ -10,7 +10,8 @@ var PointSchema = new Schema({
     name: {type: String, required: true},
     category: {
         type: String,
-        enum: ['restaurant', 'hotel', 'attraction', 'shopping', 'other'], //enum means category can only be one of these
+        enum: ['restaurant', 'hotel', 'attraction', 'shopping', 'other', 'transportation', 'activity'], //enum means category can only be one of these
+        //Lagt inn litt ekstra i listen her foreløping, må legges til flere steder
         required: true
     },
     comment: String,
