@@ -121,7 +121,7 @@
                 place.geometry.location.lat().toString(),
                 place.geometry.location.lng().toString()
             ]);
-            marker.bindPopup("Name: " + place.name + "<br>"
+            marker.bindPopup("Navn: " + place.name + "<br>"
                                 + "Adresse: " + place.formatted_address);
 
             group.addLayer(marker);
@@ -132,8 +132,13 @@
         if(mymap.getZoom() > 15){
             mymap.setZoom(15);
         }
-        console.log(mymap.getZoom());
 
+    });
+
+
+
+    mymap.on('popupopen', function (e) {
+        console.log(e.popup._source.getLatLng());
     });
 
 </script>
