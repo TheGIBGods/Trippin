@@ -4,9 +4,11 @@
 var mymap;
 var london = [51.505, -0.09];
 var oslo = [59.911491, 10.757933];
+var miami = [25.761681, -80.191788];
+
 
 function initMap() {
-    mymap = L.map('mapid').setView([oslo[0], oslo[1]], 13);
+    mymap = new L.map('mapid').setView([miami[0], miami[1]], 13);
 
     /*var Esri_WorldStreetMap = L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012'
@@ -118,4 +120,54 @@ function initMap() {
         console.log(mymap.getZoom());
 
     });
+
+    addPointsCategory(); //We now know that the map has been initialied, so we can add points to it, calling the method below
+
 };
+
+//A getMap-function in case we need it
+var getMap = function () {
+    console.log('In getMap() function');
+    return map;
+}
+
+//Going through all points, adding markers to the map.
+var addPointsCategory = function () {
+
+    $.ajax({
+        url: '../point', //collects the users call from app
+        type: "get",
+        complete: function(data){
+
+            setPoints(data.responseJSON.message);
+        }
+    })
+
+    var setPoints = function (points) {
+
+        for(p in points){
+
+            var x= points[p].x_koord;
+            var y = points[p].y_koord;
+
+            //Making markers
+            var Icon = L.icon({
+                iconUrl: '/images/'+points[p].category+'.png',
+                iconSize:     [38, 40], // size of the icon
+                popupAnchor:  [0, -10] // point from which the popup should open relative to the iconAnchor
+            });
+
+
+
+            var marker = L.marker([x, y], {icon: Icon});
+            marker.addTo(mymap); //adding marker to map
+            //adding popup to marker
+            marker.bindPopup(
+                "<b>"+ "Navn: " + "</b>" + points[p].name + "<br>" +
+                "<b>"+ "Kommentar: " + "</b>" + points[p].comment);
+
+
+        }
+    }
+
+}

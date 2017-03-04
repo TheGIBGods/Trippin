@@ -2,6 +2,8 @@
  * Created by Guro on 28.02.2017.
  */
 
+var points;
+
 console.log("In point.js")
 $(document).ready(function(){
     window.onload = function(){
@@ -14,6 +16,8 @@ $(document).ready(function(){
                 //console.log(data.responseJSON.message);
                 //call the createUserList function
                 createPointList(data.responseJSON.message);
+                points = data.responseJSON.message;
+                addPointsCategory(points);
 
             }
         })
@@ -53,3 +57,8 @@ function createPointList(points){
     //innerHTML sets the content of the element
     //hvordan hente username for alle brukere?
 };
+
+var getPoints = function () {
+    console.log('In getPoints() function' + points);
+    return points;
+}

@@ -4,6 +4,7 @@
 
 
 var addPointsCategory = function (points, map) {
+    console.log('In addPointsCategory() function');
     for(p in points){
         var Icon = L.icon({
             iconUrl: '/images/'+p.category+'.png',
