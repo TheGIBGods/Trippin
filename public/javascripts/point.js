@@ -8,7 +8,7 @@ console.log("In point.js")
 $(document).ready(function(){
     window.onload = function(){
         $.ajax({
-            url: 'point', //collects the users call from app
+            url: '../point', //collects the users call from app
             type: "get",
             complete: function(data){
                 //when all the objects are retrieved, do this
@@ -17,7 +17,6 @@ $(document).ready(function(){
                 //call the createUserList function
                 createPointList(data.responseJSON.message);
                 points = data.responseJSON.message;
-                addPointsCategory(points);
 
             }
         })
