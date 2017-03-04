@@ -121,7 +121,7 @@ function initMap() {
 
     });
 
-    addPointsCategory(); //We now know that the map has been initialied, so we can add points to it, calling the method below
+    getPointsFromDB(); //We now know that the map has been initialied, so we can add points to it, calling the method below
 
 };
 
@@ -132,42 +132,42 @@ var getMap = function () {
 }
 
 //Going through all points, adding markers to the map.
-var addPointsCategory = function () {
+var getPointsFromDB = function () {
 
     $.ajax({
         url: '../point', //collects the users call from app
         type: "get",
         complete: function(data){
 
-            setPoints(data.responseJSON.message);
+            setPointsOnMap(data.responseJSON.message);
         }
     })
 
-    var setPoints = function (points) {
+}
 
-        for(p in points){
+var setPointsOnMap = function (points) {
 
-            var x= points[p].x_koord;
-            var y = points[p].y_koord;
+    for(p in points){
 
-            //Making markers
-            var Icon = L.icon({
-                iconUrl: '/images/'+points[p].category+'.png',
-                iconSize:     [38, 40], // size of the icon
-                popupAnchor:  [0, -10] // point from which the popup should open relative to the iconAnchor
-            });
+        var x= points[p].x_koord;
+        var y = points[p].y_koord;
 
-
-
-            var marker = L.marker([x, y], {icon: Icon});
-            marker.addTo(mymap); //adding marker to map
-            //adding popup to marker
-            marker.bindPopup(
-                "<b>"+ "Navn: " + "</b>" + points[p].name + "<br>" +
-                "<b>"+ "Kommentar: " + "</b>" + points[p].comment);
+        //Making markers
+        var Icon = L.icon({
+            iconUrl: '/images/'+points[p].category+'.png',
+            iconSize:     [38, 40], // size of the icon
+            popupAnchor:  [0, -10] // point from which the popup should open relative to the iconAnchor
+        });
 
 
-        }
+
+        var marker = L.marker([x, y], {icon: Icon});
+        marker.addTo(mymap); //adding marker to map
+        //adding popup to marker
+        marker.bindPopup(
+            "<b>"+ "Navn: " + "</b>" + points[p].name + "<br>" +
+            "<b>"+ "Kommentar: " + "</b>" + points[p].comment);
+
+
     }
-
 }
