@@ -16,6 +16,7 @@ var app = express();
 
 
 //Connecting to the database using mongoose
+mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://heroku_xdbrx3qp:p4dspfmv2cqsdr3pirskqie5sr@ds157839.mlab.com:57839/heroku_xdbrx3qp');
 
 var db = mongoose.connection;
@@ -56,12 +57,21 @@ router.get('/point', function (req, res) {
     var response = {};
     point.find({}, function (err, data) {
         response = {"message": data};
-        console.log('response from db is:');
-        console.log(data);
+        //console.log('response from db is:');
+        //console.log(data);
         res.json(response);
     });
 });
 
+router.post('/savePoint', function(req, res){
+    var newPoint = new point(req.body);
+    newPoint.save(function(err, point)  {
+            if (err) return console.error(err);
+            else console.log("signIn success")
+        }
+    )
+    console.log("in savePoint");
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

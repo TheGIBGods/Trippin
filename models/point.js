@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 
 //Define a schema
 var Schema = mongoose.Schema;
+var SchemaTypes = mongoose.Schema.Types;
 
 var PointSchema = new Schema({
     x_koord: {type: Number, required: true},
