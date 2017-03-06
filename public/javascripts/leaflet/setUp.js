@@ -8,7 +8,10 @@ var miami = [25.761681, -80.191788];
 var lat = 0;
 var lng = 0;
 
-function initMap() {
+initLeaflet();
+initGoogleSearch();
+function initLeaflet(){
+    console.log('init leaflet');
     mymap = new L.map('mapid').setView([miami[0], miami[1]], 13);
 
     /*var Esri_WorldStreetMap = L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
@@ -22,63 +25,16 @@ function initMap() {
 
 
     }).addTo(mymap);
+    console.log(mymap);
 
-    /*L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw', {
-     maxZoom: 18,
-     minZoom: 2,
-     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
-     '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-     'Imagery © <a href="http://mapbox.com">Mapbox</a>',
-     id: 'mapbox.streets'
-     }).addTo(mymap);*/
+}
 
-// var marker = L.marker([59.9, 10.7]).addTo(mymap);
-
-    /*var circle = L.circle([51.508, -0.11], {
-     color: 'red',
-     fillColor: '#f03',
-     fillOpacity: 0.5,
-     radius: 500
-     }).addTo(mymap);*/
-
-    /*var polygon = L.polygon([
-     [51.509, -0.08],
-     [51.503, -0.06],
-     [51.51, -0.047]
-     ]).addTo(mymap);*/
-
-// marker.bindPopup("<b>Hello world!</b><br>I am a popup.");
-//circle.bindPopup("I am a circle.").openPopup();
-//polygon.bindPopup("I am a polygon.");
-
-    /* var popup = L.popup()
-     .setLatLng([51.5, -0.09])
-     .setContent("I am a standalone popup.")
-     .openOn(mymap);*/
-
-//var marker2 = L.marker([59.9, 10.7]).addTo(mymap);
-//var popup = L.popup();
-
-    /* function onMapClick(e) {
-     //marker2 = L.marker([e.latlng.lat, e.latlng.lng]).addTo(mymap);
-
-     marker2.setLatLng(e.latlng).update();
-
-     popup
-     .setLatLng(e.latlng)
-     .setContent(e.latlng.lat + ", " + e.latlng.lng)
-     .openOn(mymap);
-     } */
-
-
-// mymap.on('click', onMapClick);
+function initGoogleSearch() {
 
     var GoogleSearch = L.Control.extend({
         onAdd: function () {
             var element = document.createElement("input");
-
             element.id = "searchBox";
-
             return element;
         }
     });
@@ -125,19 +81,6 @@ function initMap() {
         }
     });
 
-    getPointsFromDB(); //We now know that the map has been initialied, so we can add points to it, calling the method below
-
-};
-
-//A getMap-function in case we need it
-var getMap = function () {
-    console.log('In getMap() function');
-    return map;
-};
-
-//Going through all points, adding markers to the map.
-var getPointsFromDB = function () {
-
     $.ajax({
         url: '../point', //collects the users call from app
         type: "get",
@@ -146,6 +89,21 @@ var getPointsFromDB = function () {
             setPointsOnMap(data.responseJSON.message);
         }
     });
+
+    //getPointsFromDB(); //We now know that the map has been initialied, so we can add points to it, calling the method below
+
+};
+
+//A getMap-function in case we need it
+/*var getMap = function () {
+    console.log('In getMap() function');
+    return map;
+};*/
+
+//Going through all points, adding markers to the map.
+var getPointsFromDB = function () {
+
+
 
 }
 
@@ -172,6 +130,7 @@ var setPointsOnMap = function (points) {
     }
 };
 
+
 function getlat(){
     console.log(lat);
     return this.lat;
@@ -190,6 +149,9 @@ function setlng(lng){
     this.lng = lng;
 }
 
-var setMapView = function (x, y) {
-    mymap.setView(x,y, 13);
-}
+
+var setMapView = function (xkor, ykor) {
+    console.log('setting map view');
+    console.log(mymap);
+    mymap.setView([xkor,ykor], 14);
+};

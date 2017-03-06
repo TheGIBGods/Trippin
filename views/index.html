@@ -5,16 +5,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+    <script src="/node_modules/leaflet-google-places-autocomplete/src/js/leaflet-gplaces-autocomplete.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAGGAJlEFnuZU1VFwi8Iv-jfRk5du9a2P4&libraries=places"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="/stylesheets/index.css">
-    <script src = "/javascripts/user.js"></script>
-    <script src = "/javascripts/trip.js"></script>
-    <script src = "/javascripts/sidebar.js"></script>
-    <script src = "/javascripts/point.js"></script>
-    <script src = "/javascripts/createNewPoint.js"></script>
-    <script src = "/javascripts/leaflet/setUp.js"></script>
-    <script src = "/javascripts/addPointsToMap.js"></script>
 
 </head>
 <body>
@@ -189,10 +186,22 @@
 
         <!-- Leaflet map -->
         <div class = "col-lg-10 text-center" id="map">
+<!--
             <iframe src="/maps/api.html"></iframe>
+-->
+            <div id="mapid"></div>
         </div>
     </div>
 </div>
+
+<script src = "/javascripts/leaflet/setUp.js"></script>
+<script src = "/javascripts/user.js"></script>
+<script src = "/javascripts/trip.js"></script>
+<script src = "/javascripts/sidebar.js"></script>
+<script src = "/javascripts/point.js"></script>
+<script src = "/javascripts/createNewPoint.js"></script>
+<script src = "/javascripts/addPointsToMap.js"></script>
+<script src = "/javascripts/sidebar_points.js"></script>
 
 </body>
 </html>

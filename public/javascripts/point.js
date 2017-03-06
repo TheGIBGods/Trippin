@@ -31,10 +31,14 @@ function createPointList(points){
     for (i =0; i< points.length; i++){
         var x = document.createElement("li");
         x.innerHTML = points[i].name;
-        x.setAttribute("class", "pointClick canBeClicked")
+        x.setAttribute("class", "pointClick canBeClicked");
+        x.setAttribute("xkoord", ""+ points[i].x_koord);
+        x.setAttribute("ykoord", ""+ points[i].x_koord);
+        x.addEventListener('click', function(){
+           handleListElementClick(event.target.getAttribute("xkoord"), event.target.getAttribute("ykoord"));
+        });
         //console.log("Klasser: "+x.getAttribute("class"));
-        //x.setAttribute("xkoord", ""+ points[i].x_koord);
-        //x.setAttribute("ykoord", ""+ points[i].x_koord);
+
 
         //console.log(points[i].name);
         //console.log(points[i].category);

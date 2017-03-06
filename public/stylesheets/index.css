@@ -8,6 +8,13 @@ html, body{
     font-family: Raleway, Arial;
 }
 
+#mapid {
+    height: 100%;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+}
+
 #logo_img{
     height: 50px;
 }
