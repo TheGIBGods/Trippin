@@ -4,7 +4,7 @@
 
 var points;
 
-console.log("In point.js")
+//console.log("In point.js")
 $(document).ready(function(){
     window.onload = function(){
         $.ajax({
