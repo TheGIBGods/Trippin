@@ -126,7 +126,8 @@ var setPointsOnMap = function (points) {
         //adding popup to marker
         marker.bindPopup(
             "<b>" + "Navn: " + "</b>" + points[p].name + "<br>" +
-            "<b>" + "Kommentar: " + "</b>" + points[p].comment);
+            "<b>" + "Kommentar: " + "</b>" + points[p].comment + "<br>" +
+            "<b>" + "Koordinater: " + "</b>" + points[p].x_koord + ", " + points[p].y_koord);
     }
 };
 
@@ -150,8 +151,8 @@ function setlng(lng){
 }
 
 
-var setMapView = function (xkor, ykor) {
-    console.log('setting map view');
-    console.log(mymap);
-    mymap.setView([xkor,ykor], 14);
+var setMapView = function (x, y) {
+    //console.log('setting map view with coordinates: ' + x + ", " + y);
+    //console.log(mymap);
+    mymap.setView([x,y], 20);
 };
