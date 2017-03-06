@@ -19,10 +19,10 @@
 <div class="login-page">
     <div class="form">
         <form class="register-form">
-            <input type="text" placeholder="brukernavn"/>
-            <input type="password" placeholder="passord"/>
-            <input type="password" placeholder="gjenta passord"/>
-            <button>registrer</button>
+            <input id="registerUser" type="text" placeholder="brukernavn"/>
+            <input id="password" type="password" placeholder="passord"/>
+            <input id="passwordCheck" type="password" placeholder="gjenta passord"/>
+            <button onclick="validateUser()">registrer</button>
             <p class="message">Allerede registrert? <a href="#">Logg inn</a></p>
         </form>
         <form class="login-form">
@@ -35,6 +35,8 @@
 </div>
 
 <script src="../public/javascripts/loginPage/logIn.js"></script>
+<script src="../public/javascripts/loginPage/registerUser.js"></script>
+
 
 </body>
 </html>

@@ -14,10 +14,6 @@ function initLeaflet(){
     console.log('init leaflet');
     mymap = new L.map('mapid').setView([miami[0], miami[1]], 13);
 
-    /*var Esri_WorldStreetMap = L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
-     attribution: 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012'
-     });*/
-
     L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
         maxZoom: 18,
         minZoom: 2,
@@ -54,7 +50,6 @@ function initGoogleSearch() {
         if (places.length == 0) {
             return;
         }
-
 
         places.forEach(function (place) {
 
@@ -149,7 +144,6 @@ function getlng(){
 function setlng(lng){
     this.lng = lng;
 }
-
 
 var setMapView = function (x, y) {
     //console.log('setting map view with coordinates: ' + x + ", " + y);

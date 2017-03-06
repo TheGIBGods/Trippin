@@ -16,7 +16,7 @@ $(document).ready(function() {
                 //call the createUserList function
                 createUserList(data.responseJSON.message);
             }
-        })
+        });
     //};
 });
 

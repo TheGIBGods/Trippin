@@ -72,6 +72,16 @@ router.post('/savePoint', function(req, res){
     console.log("in savePoint");
 });
 
+router.post('/saveUser', function(req, res){
+    var newUser = new users(req.body);
+    newUser.save(function(err, point)  {
+            if (err) return console.error(err);
+            else console.log("user registration success")
+        }
+    )
+    console.log("in savePoint");
+});
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 //app.set('view engine', 'ejs');
