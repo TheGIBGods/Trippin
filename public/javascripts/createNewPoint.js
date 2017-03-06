@@ -29,7 +29,7 @@ function saveToDatabase(name, category, comment){
     var y = getlng();
     console.log(x + "\n" + y);
 
-    /*$.post("savePoint",
+    $.post("savePoint",
         {
             x_koord: x,
             y_koord: y,
@@ -39,6 +39,6 @@ function saveToDatabase(name, category, comment){
         })
         .done( function(data,status){
             console.log("Data loaded: " + data + "\nStatus: " + status);
-        });*/
+        });
     console.log("In saveToDatabase");
 };
