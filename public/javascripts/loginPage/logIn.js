@@ -3,5 +3,6 @@
  */
 
 $('.message').click(function(){
+    console.log("Heihei")
     $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
 });
