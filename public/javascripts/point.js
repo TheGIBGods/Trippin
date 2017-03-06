@@ -27,9 +27,15 @@ $(document).ready(function(){
 
 //function called before
 function createPointList(points){
+    //console.log("punkter i create point list: " + points);
     for (i =0; i< points.length; i++){
-        var x = document.createElement("li");
+        var x = document.createElement("p");
         x.innerHTML = points[i].name;
+        x.setAttribute("class", "pointClick canBeClicked")
+        //console.log("Klasser: "+x.getAttribute("class"));
+        //x.setAttribute("xkoord", ""+ points[i].x_koord);
+        //x.setAttribute("ykoord", ""+ points[i].x_koord);
+
         //console.log(points[i].name);
         //console.log(points[i].category);
         switch(points[i].category){

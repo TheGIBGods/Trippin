@@ -19,5 +19,26 @@ function savePoint(){
         });
 
         console.log("Name: " + name + "\nKategori: " + category + "\nKommentar: " + comment);
+        saveToDatabase(name, category, comment);
     }
+};
+
+function saveToDatabase(name, category, comment){
+
+    var x = getlat();
+    var y = getlng();
+    console.log(x + "\n" + y);
+
+    /*$.post("savePoint",
+        {
+            x_koord: x,
+            y_koord: y,
+            name: name,
+            category: category,
+            comment: comment
+        })
+        .done( function(data,status){
+            console.log("Data loaded: " + data + "\nStatus: " + status);
+        });*/
+    console.log("In saveToDatabase");
 };

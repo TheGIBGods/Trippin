@@ -25,4 +25,6 @@ $(document).ready(function(){
         $("#other_list").slideToggle(200);
     });
     //end category navigation
+
+
 });
