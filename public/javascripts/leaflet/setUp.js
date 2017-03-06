@@ -189,3 +189,7 @@ function getlng(){
 function setlng(lng){
     this.lng = lng;
 }
+
+var setMapView = function (x, y) {
+    mymap.setView(x,y, 13);
+}

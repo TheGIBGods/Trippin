@@ -5,8 +5,9 @@
 $(document).ready(function(){
 
     $(".pointClick").click(function () {
-        console.log('in cllick')
-        //var x = $(event.target).getAttribute("xkoord")
-        //console.log(x);
+        console.log('Clicked on point in sidebar')
+        var x = parseInt($(event.target).getAttribute("xkoord"));
+        var y = parseInt($(event.target).getAttribute("ykoord"));
+        setMapView(x,y);
     })
 });

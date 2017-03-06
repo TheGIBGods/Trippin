@@ -29,7 +29,7 @@ $(document).ready(function(){
 function createPointList(points){
     //console.log("punkter i create point list: " + points);
     for (i =0; i< points.length; i++){
-        var x = document.createElement("p");
+        var x = document.createElement("li");
         x.innerHTML = points[i].name;
         x.setAttribute("class", "pointClick canBeClicked")
         //console.log("Klasser: "+x.getAttribute("class"));

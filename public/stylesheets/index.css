@@ -4,6 +4,10 @@ html, body{
     padding: 0px;
 }
 
+*{
+    font-family: Raleway, Arial;
+}
+
 #logo_img{
     height: 50px;
 }
@@ -152,4 +156,5 @@ a{
 .pointClick{
     color: dimgrey;
 }
+
 

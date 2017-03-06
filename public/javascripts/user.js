@@ -2,17 +2,11 @@
  * Created by Guro on 20.02.2017.
  */
 
-var userInfo ={
-    username: 'guro',
-    password: 'testeste'
-};
-
 console.log('running uses.js file where ajax is');
 
 //run this function when the page loads
 $(document).ready(function() {
-    window.onload = function () {
-        console.log("bnm,")
+    //window.onload = function () {
         $.ajax({
             url: 'users', //collects the users call from app
             type: 'get',
@@ -23,7 +17,7 @@ $(document).ready(function() {
                 createUserList(data.responseJSON.message);
             }
         })
-    };
+    //};
 });
 
 //function called before

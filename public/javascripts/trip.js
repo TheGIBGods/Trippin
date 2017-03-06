@@ -10,9 +10,10 @@ $(document).ready(
             complete: function(data){
                 //when all the objects are retrieved, do this
                 //log to cmd
-                console.log(data.responseJSON.message);
+                //console.log(data.responseJSON.message);
                 //call the createUserList function
                 displayInfo(data.responseJSON.message);
+                makeTripList(data.responseJSON.message);
             }
         })
     });
@@ -24,3 +25,13 @@ function displayInfo(trips){
     //innerHTML sets the content of the element
     //hvordan hente username for alle brukere?
 };
+
+function makeTripList(trips) {
+    for (i =0; i< trips.length; i++){
+        var x = document.createElement("p");
+        x.innerHTML = trips[i].name;
+        //x.setAttribute("class", "tripClick canBeClicked")
+        $(".trips-content").append(x);
+    }
+
+}
