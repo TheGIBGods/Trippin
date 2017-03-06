@@ -123,8 +123,6 @@ function initMap() {
         if (mymap.getZoom() > 15) {
             mymap.setZoom(15);
         }
-        console.log(mymap.getZoom());
-
     });
 
     getPointsFromDB(); //We now know that the map has been initialied, so we can add points to it, calling the method below
