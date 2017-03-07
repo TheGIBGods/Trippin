@@ -148,5 +148,5 @@ function setlng(lng){
 var setMapView = function (x, y) {
     //console.log('setting map view with coordinates: ' + x + ", " + y);
     //console.log(mymap);
-    mymap.setView([x,y], 20);
+    mymap.setView([x,y], 15);
 };
