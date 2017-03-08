@@ -3,6 +3,7 @@
  */
 
 //console.log('running uses.js file where ajax is');
+var userName;
 
 //run this function when the page loads
 $(document).ready(function() {
@@ -25,3 +26,16 @@ function createUserList(users){
     document.getElementById("userName").innerHTML = users[0].username;
     //console.log("Brukernavn: " + users[0].username);
 };
+
+/*
+function getUserByID() {
+    $.ajax({
+        url: 'usersByID', //collects the users call from app
+        type: 'get',
+        complete: function (data) {
+            addUserToTrip(data.responseJSON.message);
+        }
+    });
+}
+*/
+

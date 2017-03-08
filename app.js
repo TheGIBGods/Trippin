@@ -7,6 +7,8 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 //lag en variabel som viser til modelfilen
 var users = require('./models/user');
+var userByUsername = require('./models/user');
+var userByID= require('./models/user');
 var trip = require('./models/trip');
 var point = require('./models/point');
 var mongoose = require('mongoose');
@@ -34,16 +36,19 @@ router.get('/users', function (req, res) {
     var response = {};
     users.find({}, function (err, data) {
      response = {"message": data};
-     console.log('response from db is:');
-     console.log(data);
+     //console.log('response from db is:');
+     //console.log(data);
      res.json(response);
      });
 });
 
-router.get('/trip', function (req, res) {
-    console.log('in trip method');
+
+
+/*
+router.get('/usersByUsername', function (req, res) {
+    console.log('in users method');
     var response = {};
-    trip.find({}, function (err, data) {
+    users.find({username: userName}, function (err, data) {
         response = {"message": data};
         console.log('response from db is:');
         console.log(data);
@@ -51,8 +56,34 @@ router.get('/trip', function (req, res) {
     });
 });
 
+router.get('/usersByID', function (req, res) {
+    console.log('in users method');
+    var response = {};
+    users.find({_id: userID}, function (err, data) {
+        response = {"message": data};
+        console.log('response from db is:');
+        console.log(data);
+        res.json(response);
+    });
+});
+*/
+
+
+router.get('/trip', function (req, res) {
+    console.log('in trip method');
+    var response = {};
+    trip.find({}, function (err, data) {
+        response = {"message": data};
+        //console.log('response from db is:');
+        //console.log(data);
+        res.json(response);
+    });
+});
+
 router.get('/point', function (req, res) {
-    console.log('in point method');
+    console.log('in point method');{
+
+    }
     var response = {};
     point.find({}, function (err, data) {
         response = {"message": data};
@@ -80,6 +111,31 @@ router.post('/saveUser', function(req, res){
         }
     )
     console.log("in savePoint");
+});
+
+router.post('/addTripToUser', function (req, res){
+    var tripID = req.body.tripID;
+    var userID = req.body.userID;
+    console.log('tripID and User ID: ' + tripID + ', '+ userID);
+
+    users.findByIdAndUpdate(
+        userID,
+        {$push: {trips: tripID} },
+        {safe: true, upsert: true},
+        function(err, model) {
+            if(err) return handleError(err);
+        }
+    );
+});
+
+router.post('/createTrip', function(req, res){
+    var newTrip = new trip(req.body);
+    newTrip.save(function(err, point)  {
+            if (err) return console.error(err);
+            else console.log("user registration success")
+        }
+    )
+    console.log("in createTrip");
 });
 
 // view engine setup
