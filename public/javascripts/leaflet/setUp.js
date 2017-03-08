@@ -58,14 +58,9 @@ function initGoogleSearch() {
                 place.geometry.location.lat().toString(),
                 place.geometry.location.lng().toString()
                 ]);
-                setlat(marker.getLatLng().lat);
-                console.log(getlat());
-                setlng(marker.getLatLng().lng);
-                console.log(getlng());
-
             marker.bindPopup("<b>Navn: </b>" + place.name + "<br>"
-                + "<b>Adresse: </b>" + place.formatted_adress + "<br>"
-             + '<button onclick ="openSaveWindow()"  type = "button" class = "btn popup-btn"> Lagre punkt!</button>'
+                + "<b>Adresse: </b>" + place.formatted_address + "<br>"
+             + '<button onclick ="openSaveWindow();"  type = "button" class = "btn popup-btn"> Lagre punkt!</button>'
                 );
 
 
@@ -75,6 +70,10 @@ function initGoogleSearch() {
         });
 
         group.addTo(mymap);
+        group.on("click", function(event){
+            var clickedMarker = event.layer;
+            setLatLng(clickedMarker);
+        });
         mymap.fitBounds(group.getBounds());
         if (mymap.getZoom() > 15) {
             mymap.setZoom(15);
@@ -137,9 +136,13 @@ var setPointsOnMap = function (points) {
     }
 };
 
+function setLatLng(marker) {
+    setlat(marker.getLatLng().lat);
+    setlng(marker.getLatLng().lng);
+}
+
 
 function getlat(){
-    console.log(lat);
     return this.lat;
 }
 
@@ -153,7 +156,6 @@ function setlat(lat){
 }
 
 function getlng(){
-    console.log(lng);
     return this.lng;
 }
 
