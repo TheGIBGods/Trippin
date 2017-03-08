@@ -177,7 +177,34 @@
                 </div>
             </div>
             <div class = "row buttons">
-                <button id="trip"><b>Del tur</b></button>
+                <button data-toggle="modal" data-target="#modalShare" id="trip"><b>Del tur</b></button>
+
+                <!-- Modal for save point-->
+                <div class="modal fade" id="modalShare" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Del turen med noen du bryr deg om</h4>
+                            </div>
+
+                            <!-- Form for save point -->
+                            <form action="/action_page.php" method="post" id="shareForm">
+                                <div class="popup">
+                                    <p><span class="form">Brukernavn:</span>
+                                        <input type="text" id="shareName" autofocus required></p>
+                                </div>
+                            </form>
+                            <!-- End form -->
+
+                            <div class="modal-footer">
+                                <input type="submit" value="Submit" id="share_button" class="btn btn-default"
+                                       onclick="savePoint()" form="pointForm">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End modal -->
+                </div>
             </div>
             
             <!-- End buttons in sidebar -->
