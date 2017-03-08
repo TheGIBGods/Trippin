@@ -64,7 +64,12 @@ function initGoogleSearch() {
                 console.log(getlng());
 
             marker.bindPopup("Name: " + place.name + "<br>"
-                + "Adresse: " + place.formatted_address);
+                + "Adresse: " + place.formatted_address + "<br>"
+             + '<button onclick ="openSaveWindow(); setlat(place.geometry.location.lat());setlng(place.geometry.location.lat());"  type = "button" class = "btn"> Lagre punkt!</button>'
+                );
+
+
+
 
             group.addLayer(marker);
         });
@@ -130,6 +135,10 @@ var setPointsOnMap = function (points) {
 function getlat(){
     console.log(lat);
     return this.lat;
+}
+
+function openSaveWindow() {
+    $('#modalPoint').modal('show');
 }
 
 function setlat(lat){
