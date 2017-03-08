@@ -95,17 +95,18 @@ router.get('/point', function (req, res) {
 
 router.post('/savePoint', function(req, res){
     var newPoint = new point(req.body);
-    newPoint.save(function(err, point)  {
+    var Point = newPoint.save(function(err, point)  {
             if (err) return console.error(err);
             else console.log("signIn success")
         }
     )
     console.log("in savePoint");
+    return Point;
 });
 
 router.post('/saveUser', function(req, res){
     var newUser = new users(req.body);
-    newUser.save(function(err, point)  {
+    newUser.save(function(err, user)  {
             if (err) return console.error(err);
             else console.log("user registration success")
         }

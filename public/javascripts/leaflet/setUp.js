@@ -38,7 +38,7 @@ function initGoogleSearch() {
     (new GoogleSearch).addTo(mymap);
 
     var input = document.getElementById("searchBox");
-
+    input.placeholder = 'Hvor skal du?';
     var searchBox = new google.maps.places.SearchBox(input);
 
     var group = L.featureGroup();
@@ -63,8 +63,13 @@ function initGoogleSearch() {
                 setlng(marker.getLatLng().lng);
                 console.log(getlng());
 
-            marker.bindPopup("Name: " + place.name + "<br>"
-                + "Adresse: " + place.formatted_address);
+            marker.bindPopup("<b>Navn: </b>" + place.name + "<br>"
+                + "<b>Adresse: </b>" + place.formatted_adress + "<br>"
+             + '<button onclick ="openSaveWindow()"  type = "button" class = "btn popup-btn"> Lagre punkt!</button>'
+                );
+
+
+
 
             group.addLayer(marker);
         });
@@ -104,10 +109,15 @@ var getPointsFromDB = function () {
 
 var setPointsOnMap = function (points) {
 
+    console.log("setting marker on map");
+    console.log(points);
+
     for(p in points) {
 
         var x = points[p].x_koord;
+        console.log(x);
         var y = points[p].y_koord;
+        console.log(y);
 
         //Making markers
         var Icon = L.icon({
@@ -115,6 +125,7 @@ var setPointsOnMap = function (points) {
             iconSize: [38, 40], // size of the icon
             popupAnchor: [0, -10] // point from which the popup should open relative to the iconAnchor
         });
+        console.log(points[p].category);
 
         var marker = L.marker([x, y], {icon: Icon});
         marker.addTo(mymap); //adding marker to map
@@ -132,7 +143,12 @@ function getlat(){
     return this.lat;
 }
 
+function openSaveWindow() {
+    $('#modalPoint').modal('show');
+}
+
 function setlat(lat){
+
     this.lat = lat;
 }
 
