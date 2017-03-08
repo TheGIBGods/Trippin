@@ -109,10 +109,15 @@ var getPointsFromDB = function () {
 
 var setPointsOnMap = function (points) {
 
+    console.log("setting marker on map");
+    console.log(points);
+
     for(p in points) {
 
         var x = points[p].x_koord;
+        console.log(x);
         var y = points[p].y_koord;
+        console.log(y);
 
         //Making markers
         var Icon = L.icon({
@@ -120,6 +125,7 @@ var setPointsOnMap = function (points) {
             iconSize: [38, 40], // size of the icon
             popupAnchor: [0, -10] // point from which the popup should open relative to the iconAnchor
         });
+        console.log(points[p].category);
 
         var marker = L.marker([x, y], {icon: Icon});
         marker.addTo(mymap); //adding marker to map

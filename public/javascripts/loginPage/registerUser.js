@@ -10,7 +10,8 @@ function validateUser(){
     var passwordCheck = $('#passwordCheck').val();
     console.log(password);
     console.log(passwordCheck);
-    if(password == passwordCheck && checkUserName(user)){
+    if(password == passwordCheck){
+        console.log("password ok");
         saveUser(user, password);
     }
 };
@@ -18,7 +19,7 @@ function validateUser(){
 function saveUser(user, password){
     console.log(user + "\n" + password);
 
-    $.post("saveUser",
+    $.post('/saveUser',
         {
             username: user,
             password: password
@@ -27,25 +28,4 @@ function saveUser(user, password){
             console.log("Data loaded: " + data + "\nStatus: " + status);
         });
     console.log("In saveToDatabase");
-};
-
-function checkUserName(user){
-    var exists = false;
-    $.ajax({
-        url: 'users', //collects the users call from app
-        type: 'get',
-        complete: function (data) {
-            users = createUserList(data.responseJSON.message);
-        }
-    });
-
-    for(i = 0; i > users.length; i++){
-       if (users[i] == user){
-           exists = true;
-           return exists;
-       };
-    };
-
-    return exists;
-
 };

@@ -20,6 +20,7 @@ function savePoint(){
 
         console.log("Name: " + name + "\nKategori: " + category + "\nKommentar: " + comment);
         saveToDatabase(name, category, comment);
+        //setPointsOnMap(newPoint);
     }
 };
 
@@ -36,9 +37,13 @@ function saveToDatabase(name, category, comment){
             name: name,
             category: category,
             comment: comment
-        })
-        .done( function(data,status){
-            console.log("Data loaded: " + data + "\nStatus: " + status);
-        });
+        },
+        function(data,status){
+                console.log("Data loaded: " + data + "\nStatus: " + status);
+                console.log(data);
+                //callback function
+                setPointsOnMap(data);}
+        );
     console.log("In saveToDatabase");
+
 };

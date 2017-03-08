@@ -16,8 +16,7 @@ $(document).ready(function(){
                 //console.log(data.responseJSON.message);
                 //call the createUserList function
                 createPointList(data.responseJSON.message);
-                points = data.responseJSON.message;
-
+                //points = data.responseJSON.message;
             }
         })
     };
