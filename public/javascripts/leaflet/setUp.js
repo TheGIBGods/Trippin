@@ -11,7 +11,6 @@ var lng = 0;
 initLeaflet();
 initGoogleSearch();
 function initLeaflet(){
-    console.log('init leaflet');
     mymap = new L.map('mapid').setView([miami[0], miami[1]], 13);
 
     L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
@@ -21,12 +20,11 @@ function initLeaflet(){
 
 
     }).addTo(mymap);
-    console.log(mymap);
+
 
 }
 
 function initGoogleSearch() {
-
     var GoogleSearch = L.Control.extend({
         onAdd: function () {
             var element = document.createElement("input");
@@ -108,15 +106,10 @@ var getPointsFromDB = function () {
 
 var setPointsOnMap = function (points) {
 
-    console.log("setting marker on map");
-    console.log(points);
-
     for(p in points) {
 
         var x = points[p].x_koord;
-        console.log(x);
         var y = points[p].y_koord;
-        console.log(y);
 
         //Making markers
         var Icon = L.icon({
@@ -124,7 +117,6 @@ var setPointsOnMap = function (points) {
             iconSize: [38, 40], // size of the icon
             popupAnchor: [0, -10] // point from which the popup should open relative to the iconAnchor
         });
-        console.log(points[p].category);
 
         var marker = L.marker([x, y], {icon: Icon});
         marker.addTo(mymap); //adding marker to map

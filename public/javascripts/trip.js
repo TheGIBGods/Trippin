@@ -36,10 +36,7 @@ function makeTripList(trips) {
 
 }
 
-createTrip("58aafadcd1a1f22baaa7c51b", "Lofoten", null, "Tur til lofoten vel, blubbblubb");
-
 function createTrip(userID, name, date, comment){
-    console.log('In createTrip')
     $.post("createTrip",
         {
             name: name,
