@@ -65,7 +65,7 @@ function initGoogleSearch() {
 
             marker.bindPopup("<b>Navn: </b>" + place.name + "<br>"
                 + "<b>Adresse: </b>" + place.formatted_adress + "<br>"
-             + '<button onclick ="openSaveWindow(); setlat(place.geometry.location.lat());setlng(place.geometry.location.lat());"  type = "button" class = "btn popup-btn"> Lagre punkt!</button>'
+             + '<button onclick ="openSaveWindow()"  type = "button" class = "btn popup-btn"> Lagre punkt!</button>'
                 );
 
 
@@ -144,7 +144,6 @@ function openSaveWindow() {
 function setlat(lat){
 
     this.lat = lat;
-    console.log("Eg, datamaskina, har endra lat");
 }
 
 function getlng(){
