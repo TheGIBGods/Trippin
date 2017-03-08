@@ -36,12 +36,14 @@ function makeTripList(trips) {
 
 }
 
+//createTrip("58aafadcd1a1f22baaa7c51b", "Lofoten", null, "Tur til lofoten vel, blubbblubb");
+
 function createTrip(userID, name, date, comment){
     $.post("createTrip",
         {
             name: name,
             date: date,
-            comment: comment,
+            comment: comment
         })
         .done( function(data,status){
             console.log("Data loaded: " + data + "\nStatus: " + status)
