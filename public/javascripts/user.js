@@ -15,7 +15,7 @@ $(document).ready(function() {
                 //when all the objects are retrieved, do this
                 //console.log(data.responseJSON.message);
                 //call the createUserList function
-                createUserList(data.responseJSON.message);
+                //createUserList(data.responseJSON.message);
             }
         });
     //};
