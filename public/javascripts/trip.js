@@ -19,9 +19,14 @@ $(document).ready(
     });
 
 //function called before
-function displayInfo(trips){
+function displayInfo(trip){
+    trip = { //hardkoding frem til vi får satt global variabel trip
+        name: 'Mallorca',
+        comment: 'for jeg er kongen av mallorca ole ole ole'
+    }
     //create an element to place in the userName idfield
-    document.getElementById("tripComment").innerHTML = trips[0].Comment;
+    document.getElementById("tripComment").innerHTML = trip.comment;
+    document.getElementById("tripName").innerHTML = trip.name;
     //innerHTML sets the content of the element
     //hvordan hente username for alle brukere?
 };
@@ -68,3 +73,6 @@ function addTripToUser(userID, tripID) {
         });
     console.log("In saveToDatabase");
 }
+
+
+
