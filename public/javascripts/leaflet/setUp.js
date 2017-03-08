@@ -38,7 +38,7 @@ function initGoogleSearch() {
     (new GoogleSearch).addTo(mymap);
 
     var input = document.getElementById("searchBox");
-
+    input.placeholder = 'Hvor skal du?';
     var searchBox = new google.maps.places.SearchBox(input);
 
     var group = L.featureGroup();
@@ -63,9 +63,9 @@ function initGoogleSearch() {
                 setlng(marker.getLatLng().lng);
                 console.log(getlng());
 
-            marker.bindPopup("Name: " + place.name + "<br>"
-                + "Adresse: " + place.formatted_address + "<br>"
-             + '<button onclick ="openSaveWindow(); setlat(place.geometry.location.lat());setlng(place.geometry.location.lat());"  type = "button" class = "btn"> Lagre punkt!</button>'
+            marker.bindPopup("<b>Navn: </b>" + place.name + "<br>"
+                + "<b>Adresse: </b>" + place.formatted_adress + "<br>"
+             + '<button onclick ="openSaveWindow()"  type = "button" class = "btn popup-btn"> Lagre punkt!</button>'
                 );
 
 
@@ -148,6 +148,7 @@ function openSaveWindow() {
 }
 
 function setlat(lat){
+
     this.lat = lat;
 }
 
