@@ -1,21 +1,189 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>New Point</title>
+    <title>Title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAGGAJlEFnuZU1VFwi8Iv-jfRk5du9a2P4&libraries=places"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="jquery.js"></script>
-    <script>
-        $(function(){
-            $("#nav").load("navBar.html");
-        });
-    </script>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/myPage.css">
+
 </head>
 <body>
 
-<div class = "row" id="nav"></div>
+<div class="container">
 
+    <!-- Navbar -->
+    <div class = "row" id="header">
+        <div class = "col-lg-1 text-center" id="logo">
+            <img src="/images/trippin-logo.png" id="logo_img">
+        </div>
+        <div class = "col-lg-8 text-center"></div>
+        <div class = "col-lg-1 text-center" id="aboutPage">
+            <span><h4 class="canBeClicked"><a data-toggle="modal" data-target="#aboutModal"><b>Om</b></a></h4></span>
+
+            <!-- About us modal -->
+            <div class="modal fade" id="aboutModal" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Trippin</h4>
+                        </div>
+                        <div class="popup">
+                            <p>Her skal det stå en fantastisk tekst om oss</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Lukk</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End modal -->
+
+        </div>
+        <div class = "col-lg-1 text-center canBeClicked" id="trips">
+            <span><h4><b>Mine turer</b></h4></span>
+            <div class="trips-content">
+
+            </div>
+        </div>
+        <div class = "col-lg-1 text-center" id="user">
+            <span><h4><b id="userName"></b></h4></span>
+            <div class="user-content canBeClicked">
+                <div>
+                    Min turer
+                </div>
+                <div>
+                    Innstillinger
+                </div>
+                <div>
+                    Logg ut
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Navbar -->
+
+    <!-- Start TripDiv -->
+    <div class = "row" id="content">
+        <div class = "col-lg-2 text-center"></div>
+        <div class = "col-lg-10 text-center">
+                <table id="myTable">
+                    <tbody id="tableBody">
+                    <thead><th colespan="5">Mine Turer</th></thead>
+                    <tr id = "tableRow0">
+                        <td id="tableElement0">  </td>
+                        <td id="tableElement1">  </td>
+                        <td id="tableElement2">  </td>
+                        <td id="tableElement3">  </td>
+                        <td id="tableElement4">  </td>
+                    </tr>
+                    </tbody>
+                </table>
+        </div>
+    </div>
+
+
+</div>
+<!--
+<script src = "/javascripts/user.js"></script>
+<script src = "/javascripts/trip.js"></script>
+-->
+
+<script>
+    var trips = [
+        trip1 = {
+            name: "Miami", imglink: "/images/info.png"
+        },
+        trip2 = {
+            name: "Orlando", imglink: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Globe_centered_in_the_Atlantic_Ocean_(green_and_grey_globe_scheme).svg/2000px-Globe_centered_in_the_Atlantic_Ocean_(green_and_grey_globe_scheme).svg.png"
+        },
+        trip3 = {
+            name: "Oslo", imglink: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Globe_centered_in_the_Atlantic_Ocean_(green_and_grey_globe_scheme).svg/2000px-Globe_centered_in_the_Atlantic_Ocean_(green_and_grey_globe_scheme).svg.png"
+        },
+        trip4 = {
+            name: "Miami", imglink: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Globe_centered_in_the_Atlantic_Ocean_(green_and_grey_globe_scheme).svg/2000px-Globe_centered_in_the_Atlantic_Ocean_(green_and_grey_globe_scheme).svg.png"
+        },
+        trip5 = {
+            name: "Orlando", imglink: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Globe_centered_in_the_Atlantic_Ocean_(green_and_grey_globe_scheme).svg/2000px-Globe_centered_in_the_Atlantic_Ocean_(green_and_grey_globe_scheme).svg.png"
+        },
+        trip6 = {
+            name: "Oslo", imglink: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Globe_centered_in_the_Atlantic_Ocean_(green_and_grey_globe_scheme).svg/2000px-Globe_centered_in_the_Atlantic_Ocean_(green_and_grey_globe_scheme).svg.png"
+        },
+        trip7 = {
+            name: "Oslo", imglink: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Globe_centered_in_the_Atlantic_Ocean_(green_and_grey_globe_scheme).svg/2000px-Globe_centered_in_the_Atlantic_Ocean_(green_and_grey_globe_scheme).svg.png"
+        }
+        ,
+        trip8 = {
+            name: "Oslo", imglink: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Globe_centered_in_the_Atlantic_Ocean_(green_and_grey_globe_scheme).svg/2000px-Globe_centered_in_the_Atlantic_Ocean_(green_and_grey_globe_scheme).svg.png"
+        }
+
+    ];
+
+    function makeTripTable(trips) {
+        var count = 0;
+        var row = 0;
+
+        for (i =0; i< trips.length +1; i++){
+
+            if(count == 4){
+                count = 0;
+                row++;
+                console.log("row er: "+ row)
+                //var el1 = document.createElement("tr")
+                //el1.setAttribute("id", "tableRow"+row)
+
+                $('#myTable tr:last').after("<tr id = tableRow"+ row+ "> </tr> ");
+                for (j=0; j< 5; j++){
+                    var el = document.createElement("td")
+                    var num = i+j+1;
+                    el.setAttribute("id", "tableElement" + num)
+                    $("#tableRow"+row).append(el)
+                }
+
+            }else{
+                count ++;
+                console.log(count)
+            }
+
+            console.log("i er: " + i)
+            if(i == trips.length){
+                var img = document.createElement("img");
+                img.setAttribute("src", "/images/nytur.png");
+                img.setAttribute("id", "createNewTrip");
+
+                var str = "#tableElement" + i;
+
+                $(str).append(img);
+            }else{
+                var x = document.getElementById("tableElement" + i);
+                x.innerHTML = trips[i].name ;
+                //x.setAttribute("id", "tableElement"+ count+1)
+
+                var img = document.createElement("img");
+                img.setAttribute("src", trips[i].imglink);
+                img.setAttribute("class", "tripImg");
+
+                var str = "#tableElement" + i;
+
+                $(str).append(img);
+
+                var p = document.createElement("p");
+                p.innerHTML = "hei"//trips[i].comment;
+                $(str).append(p);
+            }
+
+
+
+
+        }
+    };
+
+    makeTripTable(trips);
+</script>
 </body>
 </html>

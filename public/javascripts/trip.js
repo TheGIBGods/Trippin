@@ -14,6 +14,7 @@ $(document).ready(
                 //call the createUserList function
                 displayInfo(data.responseJSON.message);
                 makeTripList(data.responseJSON.message);
+                //makeTripTable(data.responseJSON.message);
             }
         })
     });
@@ -38,17 +39,89 @@ function makeTripList(trips) {
         //x.setAttribute("class", "tripClick canBeClicked")
         $(".trips-content").append(x);
     }
+};
 
-}
+var trips = [
+    trip1 = {
+        name: "Miami", imglink: "/images/info.png"
+    },
+    trip2 = {
+        name: "Orlando", imglink: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Globe_centered_in_the_Atlantic_Ocean_(green_and_grey_globe_scheme).svg/2000px-Globe_centered_in_the_Atlantic_Ocean_(green_and_grey_globe_scheme).svg.png"
+    },
+    trip3 = {
+        name: "Oslo", imglink: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Globe_centered_in_the_Atlantic_Ocean_(green_and_grey_globe_scheme).svg/2000px-Globe_centered_in_the_Atlantic_Ocean_(green_and_grey_globe_scheme).svg.png"
+    },
+    trip4 = {
+        name: "Miami", imglink: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Globe_centered_in_the_Atlantic_Ocean_(green_and_grey_globe_scheme).svg/2000px-Globe_centered_in_the_Atlantic_Ocean_(green_and_grey_globe_scheme).svg.png"
+    },
+    trip5 = {
+        name: "Orlando", imglink: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Globe_centered_in_the_Atlantic_Ocean_(green_and_grey_globe_scheme).svg/2000px-Globe_centered_in_the_Atlantic_Ocean_(green_and_grey_globe_scheme).svg.png"
+    },
+    trip6 = {
+        name: "Oslo", imglink: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Globe_centered_in_the_Atlantic_Ocean_(green_and_grey_globe_scheme).svg/2000px-Globe_centered_in_the_Atlantic_Ocean_(green_and_grey_globe_scheme).svg.png"
+    },
+    trip7 = {
+        name: "Oslo", imglink: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Globe_centered_in_the_Atlantic_Ocean_(green_and_grey_globe_scheme).svg/2000px-Globe_centered_in_the_Atlantic_Ocean_(green_and_grey_globe_scheme).svg.png"
+    }
+    ,
+    trip8 = {
+        name: "Oslo", imglink: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Globe_centered_in_the_Atlantic_Ocean_(green_and_grey_globe_scheme).svg/2000px-Globe_centered_in_the_Atlantic_Ocean_(green_and_grey_globe_scheme).svg.png"
+    }
 
+];
+
+function makeTripTable(trips) {
+    var count = 0;
+    var row = 0;
+
+    for (i =0; i< trips.length; i++){
+        console.log("i er: " + i)
+        var x = document.getElementById("tableElement" + i);
+        x.innerHTML = trips[i].name ;
+        //x.setAttribute("id", "tableElement"+ count+1)
+
+        var img = document.createElement("img");
+        img.setAttribute("src", trips[i].imglink);
+        img.setAttribute("class", "tripImg");
+
+        var str = "#tableElement" + i;
+
+        $(str).append(img);
+
+        var p = document.createElement("p");
+        p.innerHTML = "hei"//trips[i].comment;
+        $(str).append(p);
+
+        if(count == 4){
+            count = 0;
+            row++;
+            console.log("row er: "+ row)
+            //var el1 = document.createElement("tr")
+            //el1.setAttribute("id", "tableRow"+row)
+
+            $('#myTable tr:last').after("<tr id = tableRow"+ row+ "> </tr> ");
+            for (j=0; j< 5; j++){
+                var el = document.createElement("td")
+                var num = i+j+1;
+                el.setAttribute("id", "tableElement" + num)
+                $("#tableRow"+row).append(el)
+            }
+
+        }else{
+            count ++;
+            console.log(count)
+        }
+    }
+};
 //createTrip("58aafadcd1a1f22baaa7c51b", "Lofoten", null, "Tur til lofoten vel, blubbblubb");
 
-function createTrip(userID, name, date, comment){
+function createTrip(userID, name, date, comment, imglink){
     $.post("createTrip",
         {
             name: name,
             date: date,
-            comment: comment
+            comment: comment,
+            imglink: imglink
         })
         .done( function(data,status){
             console.log("Data loaded: " + data + "\nStatus: " + status)
