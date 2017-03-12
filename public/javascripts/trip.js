@@ -19,15 +19,28 @@ $(document).ready(
         })
     });
 
+function handleTripElementClick(trip){
+    console.log('Handling click on Trip');
+    tripGlobal = trip.tripID;
+    displayInfo(trip);
+    //TODO:change view to mapPage
+}
+
+function handleNewTripElementClick(){
+    console.log('Handling click on NewTrip');
+    //TODO:popup that lets you make a new trip
+}
+
 //function called before
 function displayInfo(trip){
-    trip = { //hardkoding frem til vi får satt global variabel trip
+    /*trip = { //hardkoding frem til vi får satt global variabel trip
         name: 'Mallorca',
         comment: 'for jeg er kongen av mallorca ole ole ole'
-    }
+    }*/
     //create an element to place in the userName idfield
     document.getElementById("tripComment").innerHTML = trip.comment;
     document.getElementById("tripName").innerHTML = trip.name;
+    document.getElementById("tripDate").innerHTML = trip.name;
     //innerHTML sets the content of the element
     //hvordan hente username for alle brukere?
 };
@@ -40,6 +53,8 @@ function makeTripList(trips) {
         $(".trips-content").append(x);
     }
 };
+
+$
 
 var trips = [
     trip1 = {
@@ -126,7 +141,7 @@ function createTrip(userID, name, date, comment, imglink){
         .done( function(data,status){
             console.log("Data loaded: " + data + "\nStatus: " + status)
             var tripID = data.responseJSON.message.tripID;
-            addTripToUser(userID, tripID); //dette blir ikke kalt
+            addTripToUser(userID, tripID); //TODO: dette blir ikke kalt, fikse til annen måte å poste på
         });
 
 

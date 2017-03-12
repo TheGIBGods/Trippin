@@ -11,11 +11,13 @@ html, body{
 #createNewTrip{
     height: 100px;
     width: 100px;
+    cursor: pointer;
 }
 
 #logo_img{
     height: 50px;
 }
+
 
 #header{
     background-color: #ff9966;
@@ -71,6 +73,7 @@ th{
 .tripImg{
     height: 100px;
     weight: 100px;
+    cursor: pointer;
 }
 
 .user-content, .trips-content {
@@ -120,6 +123,8 @@ a{
     color: black;
     text-decoration: none;
 }
+
+
 
 
 
