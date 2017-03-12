@@ -8,6 +8,10 @@ html, body{
     font-family: Raleway, Arial;
 }
 
+#createNewTrip{
+    height: 100px;
+    width: 100px;
+}
 
 #logo_img{
     height: 50px;
