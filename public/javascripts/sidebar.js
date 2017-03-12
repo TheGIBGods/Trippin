@@ -5,6 +5,14 @@
 $(document).ready(function(){
 
     //Category navigation in sidabar
+    $("#activity").click(function(){
+        $("#activity_list").slideToggle(200);
+    });
+
+    $("#attractions").click(function(){
+        $("#attractions_list").slideToggle(200);
+    });
+
     $("#hotels").click(function(){
         $("#hotels_list").slideToggle(200);
     });
@@ -13,12 +21,12 @@ $(document).ready(function(){
         $("#restaurants_list").slideToggle(200);
     });
 
-    $("#attractions").click(function(){
-        $("#attractions_list").slideToggle(200);
-    });
-
     $("#shopping").click(function(){
         $("#shopping_list").slideToggle(200);
+    });
+
+    $("#transportation").click(function(){
+        $("#transportation_list").slideToggle(200);
     });
 
     $("#other").click(function(){
