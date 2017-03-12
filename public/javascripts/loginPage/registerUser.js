@@ -43,6 +43,9 @@ function newUserName(userName, password){
             console.log(newUser);
             if(newUser){
                 saveUser(userName, password);
+                setUser(userName);
+                console.log(getUser());
+                changeView();
             }
         }
     });
