@@ -97,13 +97,8 @@ function initGoogleSearch() {
     return map;
 };*/
 
-//Going through all points, adding markers to the map.
-var getPointsFromDB = function () {
 
-
-
-}
-
+var markersOnMap = new Array();
 var setPointsOnMap = function (points) {
 
     for(p in points) {
@@ -125,6 +120,7 @@ var setPointsOnMap = function (points) {
             "<b>" + "Navn: " + "</b>" + points[p].name + "<br>" +
             "<b>" + "Kommentar: " + "</b>" + points[p].comment + "<br>" +
             "<b>" + "Koordinater: " + "</b>" + points[p].x_koord + ", " + points[p].y_koord);
+        markersOnMap.push(marker);
     }
 };
 

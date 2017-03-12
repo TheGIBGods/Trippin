@@ -3,8 +3,14 @@
  */
 
 
-function handleListElementClick(x, y){
-    console.log('Clicked on point in sidebar');
-    setMapView(x,y);
-}
+function handleListElementClick(x, y) {
 
+    markersOnMap.forEach( function(marker)
+    {
+        if((marker.getLatLng().lat == x) && (marker.getLatLng().lng = y) ){
+            marker.openPopup();
+            setMapView(x,y);
+            
+        }
+    });
+}
