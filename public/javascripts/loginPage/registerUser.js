@@ -12,7 +12,7 @@ function validateUser(){
     console.log(passwordCheck);
     if(password == passwordCheck){
         console.log("password ok");
-        saveUser(user, password);
+        newUserName(user, password);
     }
 };
 
@@ -28,4 +28,33 @@ function saveUser(user, password){
             console.log("Data loaded: " + data + "\nStatus: " + status);
         });
     console.log("In saveToDatabase");
+};
+
+function newUserName(userName, password){
+    var newUser;
+
+    $.ajax({
+        url: 'users', //collects the users call from app
+        type: 'get',
+        complete: function (data) {
+            //when all the objects are retrieved, do this
+
+            newUser = checkName(data.responseJSON.message, userName);
+            console.log(newUser);
+            if(newUser){
+                saveUser(userName, password);
+            }
+        }
+    });
+}
+
+function checkName(users, userName){
+    console.log(users);
+    for(var i = 0; i < users.length; i++){
+        if (userName == users[i].username){
+            alert("Det finnes allerede en bruker med dette brukernavnet");
+            return false;
+        }
+    }
+    return true;
 };
