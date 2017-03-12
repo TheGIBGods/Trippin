@@ -151,8 +151,15 @@ ul{
 }
 
 #sidebar_nav{
-    overflow-y:auto;
     height: 80%;
+}
+
+#myTrips{
+    height: 80%;
+}
+
+.scrollbar{
+    overflow-y:auto;
 }
 
 .form{
