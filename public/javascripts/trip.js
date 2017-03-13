@@ -12,27 +12,25 @@ $(document).ready(
                 //log to cmd
                 //console.log(data.responseJSON.message);
                 //call the createUserList function
-                //displayInfo(data.responseJSON.message);
+                var url = window.location.href;
+                if(url.includes("myPage")) {
+                    console.log("loaded myPage");
+                    makeTripTable(data.responseJSON.message);
+                    console.log("global user:" + userGlobal)
+                }else if(url.includes("mapPage")){
+                    console.log("loaded mapPage");
+                    console.log("after: "+tripGlobal);
+                    getTripByID('58aadb3ef36d28790bcde9c5');
+
+
+                }
                 makeTripList(data.responseJSON.message);
-                makeTripTable(data.responseJSON.message);
-                //makeTripTable(data.responseJSON.message);
+
             }
         })
     });
 
-function handleTripElementClick(tripid){
-    console.log('Handling click on Trip');
-    console.log("before: "+tripGlobal);
-    tripGlobal = tripid;
-    console.log("after: "+tripGlobal);
-    //TODO:change view to mapPage
-    //displayInfo(trip);
-}
 
-function handleNewTripElementClick(){
-    console.log('Handling click on NewTrip');
-    //TODO:popup that lets you make a new trip
-}
 
 //function called before
 function displayInfo(trip){
@@ -49,6 +47,85 @@ function displayInfo(trip){
 };
 
 
+
+function makeTripList(trips) {
+    for (i =0; i< trips.length; i++){
+        var x = document.createElement("p");
+        x.innerHTML = trips[i].name;
+        //x.setAttribute("class", "tripClick canBeClicked")
+        $(".trips-content").append(x);
+    }
+};
+
+
+//createTrip("58aafadcd1a1f22baaa7c51b", "Lofoten", null, "Tur til lofoten vel, blubbblubb");
+
+function createTrip(userID, name, date, comment, imglink){
+    $.post("createTrip",
+        {
+            name: name,
+            date: date,
+            comment: comment,
+            imglink: imglink
+        })
+        .done( function(data,status){
+            console.log("Data loaded: " + data + "\nStatus: " + status)
+            var tripID = data.responseJSON.message.tripID;
+            addTripToUser(userID, tripID); //TODO: dette blir ikke kalt, fikse til annen måte å poste på
+        });
+
+
+}
+
+function addTripToUser(userID, tripID) {
+    //console.log('in addTripToUser in trip.js');
+    //userID = "58aafadcd1a1f22baaa7c51b";
+    //tripID ="58aadb3ef36d28790bcde9c5";
+    $.post("addTripToUser",
+        {
+            userID: userID,
+            tripID: tripID
+        })
+        .done( function(data,status){
+            console.log("Data loaded: " + data + "\nStatus: " + status);
+        });
+    console.log("In saveToDatabase");
+}
+
+function handleTripElementClick(tripid){
+    console.log('Handling click on Trip');
+    console.log("before: "+tripGlobal);
+    tripGlobal = tripid;
+    var t = tripGlobal;
+    console.log("før bytte:" + t);
+    window.location = "/views/mapPage.html";
+
+}
+
+function getTripByID(tripId) {
+    //TODO: fix request to database to find trip by tripID
+    /*console.log('in getTripByID')
+    $.get('/tripOnId',{id: tripId}, function(data){
+        console.log('Displaying info')
+        displayInfo(data.responseJSON.message);
+    })
+
+    $.ajax({
+        url: '/tripOnId', //collects the users call from app
+        type: "get",
+        complete: function(data){
+            console.log('Displaying info')
+            displayInfo(data.responseJSON.message);
+        }
+    })*/
+
+}
+
+function handleNewTripElementClick(){
+    console.log('Handling click on NewTrip');
+    //TODO:popup that lets you make a new trip
+}
+
 function makeTripTable(trips) {
     var count = 0;
     var row = 0;
@@ -58,7 +135,7 @@ function makeTripTable(trips) {
         if(count == 4){
             count = 0;
             row++;
-            console.log("row er: "+ row)
+            //console.log("row er: "+ row)
             //var el1 = document.createElement("tr")
             //el1.setAttribute("id", "tableRow"+row)
 
@@ -114,52 +191,6 @@ function makeTripTable(trips) {
 
     }
 };
-
-makeTripTable(trips);
-
-function makeTripList(trips) {
-    for (i =0; i< trips.length; i++){
-        var x = document.createElement("p");
-        x.innerHTML = trips[i].name;
-        //x.setAttribute("class", "tripClick canBeClicked")
-        $(".trips-content").append(x);
-    }
-};
-
-
-//createTrip("58aafadcd1a1f22baaa7c51b", "Lofoten", null, "Tur til lofoten vel, blubbblubb");
-
-function createTrip(userID, name, date, comment, imglink){
-    $.post("createTrip",
-        {
-            name: name,
-            date: date,
-            comment: comment,
-            imglink: imglink
-        })
-        .done( function(data,status){
-            console.log("Data loaded: " + data + "\nStatus: " + status)
-            var tripID = data.responseJSON.message.tripID;
-            addTripToUser(userID, tripID); //TODO: dette blir ikke kalt, fikse til annen måte å poste på
-        });
-
-
-}
-
-function addTripToUser(userID, tripID) {
-    //console.log('in addTripToUser in trip.js');
-    //userID = "58aafadcd1a1f22baaa7c51b";
-    //tripID ="58aadb3ef36d28790bcde9c5";
-    $.post("addTripToUser",
-        {
-            userID: userID,
-            tripID: tripID
-        })
-        .done( function(data,status){
-            console.log("Data loaded: " + data + "\nStatus: " + status);
-        });
-    console.log("In saveToDatabase");
-}
 
 
 

@@ -10,6 +10,7 @@ var users = require('./models/user');
 var userByUsername = require('./models/user');
 var userByID= require('./models/user');
 var trip = require('./models/trip');
+var tripOnId = require('./models/trip');
 var point = require('./models/point');
 var mongoose = require('mongoose');
 
@@ -76,6 +77,17 @@ router.get('/trip', function (req, res) {
         response = {"message": data};
         //console.log('response from db is:');
         //console.log(data);
+        res.json(response);
+    });
+});
+
+router.get('/tripOnId', function (req, res) {
+    console.log('in tripOnId method');
+    var response = {};
+    trip.find({}, function (err, data) {
+        response = {"message": data};
+        console.log('response from db is:');
+        console.log(data);
         res.json(response);
     });
 });
