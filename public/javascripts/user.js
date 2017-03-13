@@ -8,8 +8,9 @@ var userName;
 //run this function when the page loads
 $(document).ready(function() {
     //window.onload = function () {
+        console.log("calling ajax users");
         $.ajax({
-            url: 'users', //collects the users call from app
+            url: '/users', //collects the users call from app
             type: 'get',
             complete: function (data) {
                 //when all the objects are retrieved, do this

@@ -5,7 +5,7 @@
 $(document).ready(
     function() {
         $.ajax({
-            url: 'trip', //collects the users call from app
+            url: '/trip', //collects the users call from app
             type: "get",
             complete: function(data){
                 //when all the objects are retrieved, do this
