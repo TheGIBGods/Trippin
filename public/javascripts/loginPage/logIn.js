@@ -24,7 +24,7 @@ function checkPassword(){
             for(var i = 0; i < users.length; i++){
                 if (user == users[i].username && password == users[i].password){
                     setUser(user);
-                    window.location = "/views/myPage.html";
+                    window.location = "/views/myPage.html?" + user;
                     break;
                 }
             console.log("No user matches")
