@@ -36,8 +36,8 @@ function savePoint(){
 
 function saveToDatabase(name, category, comment){
 
-    var x = lat;//getlat();
-    var y = lng;//getlng();
+    var x = lat;
+    var y = lng;
     console.log(x + "\n" + y);
 
     $.post("/savePoint",
