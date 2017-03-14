@@ -94,8 +94,6 @@ p, li{
     text-align: left;
 }
 
-
-
 .leaflet-popup-content{
     display:inline-block;
     min-width: 300px;
@@ -117,14 +115,22 @@ button:hover{
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
-
-
 a{
     color: black;
     text-decoration: none;
 }
 
+#sidebar_nav{
+    height: 80%;
+}
 
+#myTrips{
+    height: 500px;
+}
+
+.scrollbar{
+    overflow-y:auto;
+}
 
 
 
