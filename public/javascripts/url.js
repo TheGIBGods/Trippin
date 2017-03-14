@@ -23,7 +23,7 @@ function getMyPageURL(user){
 
 function logOut(){
     console.log("in logout");
-    window.location = "/"
+    window.location = ""
 }
 
 function backToTrip(){
