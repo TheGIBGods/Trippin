@@ -4,5 +4,16 @@
 
 function getUrl(){
     console.log("in get url");
-    console.log(window.location.host);
+    return window.location.href;
+}
+
+function getTripFromURL(url){
+    var tripId = url.split("?")[2];
+    return tripId;
+}
+
+function getUserFromURL(url) {
+    var user = url.split("?")[2];
+    return user;
+
 }

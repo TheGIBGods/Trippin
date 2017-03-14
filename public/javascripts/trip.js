@@ -19,8 +19,9 @@ $(document).ready(
                     console.log("global user:" + userGlobal)
                 }else if(url.includes("mapPage")){
                     console.log("loaded mapPage");
-                    console.log("after: "+tripGlobal);
-                    getTripByID('58aadb3ef36d28790bcde9c5');
+                    var tripID = getTripFromURL(url);
+                    console.log("TripID from splitted from url: "+tripID)
+                    getTripByID(tripID);
 
 
                 }
@@ -98,7 +99,8 @@ function handleTripElementClick(tripid){
     tripGlobal = tripid;
     var t = tripGlobal;
     console.log("før bytte:" + t);
-    window.location = "/views/mapPage.html";
+    var userName = getUserFromURL(getUrl());
+    window.location = "/views/mapPage.html?" + userName +"?" + tripid;
 
 }
 
