@@ -12,6 +12,12 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="/stylesheets/index.css">
+    <script src = /../node_modules/moment/moment.js></script>
+    <script src="/javascripts/pikaday.js"></script>
+    <script src ="/javascripts/plugins/pikaday.jquery.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="/stylesheets/pikaday.css">
+
 
 </head>
 <body>
@@ -148,7 +154,7 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title">Bonusknapp</h4>
+                                <h4 class="modal-title">Lagre punkt</h4>
                             </div>
 
                             <!-- Form for save point -->
@@ -156,6 +162,9 @@
                                 <div class="popup">
                                     <p><span class="form">Navn:</span>
                                         <input type="text" id="namePoint" autofocus required></p>
+                                    <p><span class="form">Dato:</span>
+                                        <input type ="text" id="datepicker"></p>
+
                                     <p><span class="form">Kategori:</span>
                                         <select id="curtain" required>
                                             <option value="" disabled selected>Select your option</option>

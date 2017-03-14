@@ -70,3 +70,11 @@ var getPoints = function () {
     console.log('In getPoints() function' + points);
     return points;
 }
+
+
+
+$("#datepicker").pikaday({
+        defaultDate: new Date(),
+        firstDay: 1,
+        format: "DD/MM/YYYY"
+});
