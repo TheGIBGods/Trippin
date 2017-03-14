@@ -7,8 +7,7 @@ $(document).ready(function userNameNav() {
 
 function logOut(){
     console.log("in logout");
-    setUser(null);
-    console.log(getUser());
+    window.location = "/"
 }
 
 function changeTrip() {
