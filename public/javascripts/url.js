@@ -13,7 +13,7 @@ function getTripFromURL(url){
 }
 
 function getUserFromURL(url) {
-    var user = url.split("?")[2];
+    var user = url.split("?")[1];
     return user;
 
 }

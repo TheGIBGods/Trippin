@@ -83,8 +83,10 @@ router.get('/trip', function (req, res) {
 
 router.get('/tripOnId', function (req, res) {
     console.log('in tripOnId method');
+    var tripID = req.query.id;
+    console.log("TripID in app: " + tripID);
     var response = {};
-    trip.find({}, function (err, data) {
+    trip.find({_id: tripID}, function (err, data) {
         response = {"message": data};
         console.log('response from db is:');
         console.log(data);

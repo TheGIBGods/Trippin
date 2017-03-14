@@ -21,7 +21,8 @@ $(document).ready(
                     console.log("loaded mapPage");
                     var tripID = getTripFromURL(url);
                     console.log("TripID from splitted from url: "+tripID)
-                    getTripByID(tripID);
+                    getTripByID(tripID, data.responseJSON.message);
+
 
 
                 }
@@ -40,9 +41,10 @@ function displayInfo(trip){
         comment: 'for jeg er kongen av mallorca ole ole ole'
     }*/
     //create an element to place in the userName idfield
+    console.log("Displaying info: ");
     document.getElementById("tripComment").innerHTML = trip.comment;
     document.getElementById("tripName").innerHTML = trip.name;
-    document.getElementById("tripDate").innerHTML = trip.name;
+    document.getElementById("tripDate").innerHTML = trip.date;
     //innerHTML sets the content of the element
     //hvordan hente username for alle brukere?
 };
@@ -54,9 +56,15 @@ function makeTripList(trips) {
         var x = document.createElement("p");
         x.innerHTML = trips[i].name;
         //x.setAttribute("class", "tripClick canBeClicked")
+        x.setAttribute("tripID", trips[i]._id)
+        x.addEventListener('click', function(){
+            handleTripElementClick((event.target.getAttribute("tripID")));
+        })
         $(".trips-content").append(x);
     }
 };
+
+
 
 
 //createTrip("58aafadcd1a1f22baaa7c51b", "Lofoten", null, "Tur til lofoten vel, blubbblubb");
@@ -95,23 +103,28 @@ function addTripToUser(userID, tripID) {
 
 function handleTripElementClick(tripid){
     console.log('Handling click on Trip');
-    console.log("before: "+tripGlobal);
-    tripGlobal = tripid;
-    var t = tripGlobal;
-    console.log("før bytte:" + t);
     var userName = getUserFromURL(getUrl());
     window.location = "/views/mapPage.html?" + userName +"?" + tripid;
 
 }
 
-function getTripByID(tripId) {
+function getTripByID(tripId, trips) {
     //TODO: fix request to database to find trip by tripID
-    /*console.log('in getTripByID')
-    $.get('/tripOnId',{id: tripId}, function(data){
+    console.log('in getTripByID, tripID is:' + tripId)
+
+    for(i = 0; i <trips.length; i++){
+        if(trips[i]._id == tripId){
+            displayInfo(trips[i]);
+
+            return;
+        }
+    }
+
+    /*$.get('/tripOnId',{id: tripId}, function(data){
         console.log('Displaying info')
         displayInfo(data.responseJSON.message);
-    })
-
+    })/*
+    /*
     $.ajax({
         url: '/tripOnId', //collects the users call from app
         type: "get",
@@ -120,6 +133,21 @@ function getTripByID(tripId) {
             displayInfo(data.responseJSON.message);
         }
     })*/
+/*
+    /$.ajax({
+        url: "/tripOnId",
+        type: "get", //send it through get method
+        data: {
+            id: tripId
+        },
+        complete: function(data) {
+            console.log('Displaying info: ' + data.responseJSON.message.name)
+            displayInfo(data.responseJSON.message);
+        },
+        error: function(xhr) {
+            //Do Something to handle error
+        }
+    });*/
 
 }
 
