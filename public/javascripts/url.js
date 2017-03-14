@@ -15,5 +15,13 @@ function getTripFromURL(url){
 function getUserFromURL(url) {
     var user = url.split("?")[2];
     return user;
+}
 
+function getMyPageURL(user){
+    window.location = "/views/myPage.html?" + user;
+}
+
+function logOut(){
+    console.log("in logout");
+    window.location = "/"
 }

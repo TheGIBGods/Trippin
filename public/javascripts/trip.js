@@ -16,7 +16,6 @@ $(document).ready(
                 if(url.includes("myPage")) {
                     console.log("loaded myPage");
                     makeTripTable(data.responseJSON.message);
-                    console.log("global user:" + userGlobal)
                 }else if(url.includes("mapPage")){
                     console.log("loaded mapPage");
                     var tripID = getTripFromURL(url);
@@ -95,10 +94,6 @@ function addTripToUser(userID, tripID) {
 
 function handleTripElementClick(tripid){
     console.log('Handling click on Trip');
-    console.log("before: "+tripGlobal);
-    tripGlobal = tripid;
-    var t = tripGlobal;
-    console.log("før bytte:" + t);
     var userName = getUserFromURL(getUrl());
     window.location = "/views/mapPage.html?" + userName +"?" + tripid;
 
