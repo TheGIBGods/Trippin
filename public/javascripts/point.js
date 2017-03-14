@@ -48,6 +48,12 @@ function createPointList(points){
             case "restaurant":
                 $("#restaurants_list").append(x);
                 break
+            case "activity":
+                $("#activity_list").append(x);
+                break
+            case "transportation":
+                $("#transportation_list").append(x);
+                break
             case "attraction":
                 $("#attractions_list").append(x);
                 break
