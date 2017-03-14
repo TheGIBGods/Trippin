@@ -43,9 +43,7 @@ function newUserName(userName, password){
             console.log(newUser);
             if(newUser){
                 saveUser(userName, password);
-                setUser(userName);
-                console.log(getUser());
-                window.location = "/views/myPage.html?" + userName;
+                getMyPageURL(userName);
             }
         }
     });

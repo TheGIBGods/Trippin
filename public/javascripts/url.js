@@ -7,13 +7,26 @@ function getUrl(){
     return window.location.href;
 }
 
-function getTripFromURL(url){
-    var tripId = url.split("?")[2];
+function getTripFromURL(){
+    var tripId = getUrl().split("?")[2];
     return tripId;
 }
 
-function getUserFromURL(url) {
-    var user = url.split("?")[1];
-    return user;
 
+function getUserFromURL() {
+    var user = getUrl().split("?")[1];
+    return user;
+}
+
+function getMyPageURL(user){
+    window.location = "/views/myPage.html?" + user;
+}
+
+function logOut(){
+    console.log("in logout");
+    window.location = ""
+}
+
+function backToTrip(){
+    getMyPageURL(getUserFromURL(getUrl()));
 }

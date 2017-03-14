@@ -13,6 +13,7 @@ var trip = require('./models/trip');
 var tripOnId = require('./models/trip');
 var point = require('./models/point');
 var mongoose = require('mongoose');
+var moment = require('moment');
 
 var app = express();
 

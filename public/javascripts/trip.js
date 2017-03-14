@@ -16,7 +16,6 @@ $(document).ready(
                 if(url.includes("myPage")) {
                     console.log("loaded myPage");
                     makeTripTable(data.responseJSON.message);
-                    console.log("global user:" + userGlobal)
                 }else if(url.includes("mapPage")){
                     console.log("loaded mapPage");
                     var tripID = getTripFromURL(url);
@@ -69,19 +68,34 @@ function makeTripList(trips) {
 
 //createTrip("58aafadcd1a1f22baaa7c51b", "Lofoten", null, "Tur til lofoten vel, blubbblubb");
 
-function createTrip(userID, name, date, comment, imglink){
-    $.post("createTrip",
-        {
-            name: name,
-            date: date,
-            comment: comment,
-            imglink: imglink
-        })
-        .done( function(data,status){
-            console.log("Data loaded: " + data + "\nStatus: " + status)
-            var tripID = data.responseJSON.message.tripID;
-            addTripToUser(userID, tripID); //TODO: dette blir ikke kalt, fikse til annen måte å poste på
+function createTrip(){
+    var name = $('#nameTrip').val();
+    var comment = $('#imgUrl').val();
+    var imglink = $('#commentTrip').val();
+
+    if(name != "") {
+        $(function () {
+            $('#modalTrip').modal('toggle');
         });
+
+        $('#pointForm').each(function () {
+            this.reset();
+        });
+
+        console.log("trying to save trip");
+        $.post("/createTrip",
+            {
+                name: name,
+                //date: date,
+                comment: comment,
+                imglink: imglink
+            })
+            .done(function (data, status) {
+                console.log("Data loaded: " + data + "\nStatus: " + status)
+                var tripID = data.responseJSON.message.tripID;
+                addTripToUser(userID, tripID); //TODO: dette blir ikke kalt, fikse til annen måte å poste på
+            });
+    }
 
 
 }
@@ -153,7 +167,7 @@ function getTripByID(tripId, trips) {
 
 function handleNewTripElementClick(){
     console.log('Handling click on NewTrip');
-    //TODO:popup that lets you make a new trip
+    $('#modalTrip').modal('toggle');
 }
 
 function makeTripTable(trips) {
@@ -215,9 +229,6 @@ function makeTripTable(trips) {
             p.innerHTML = "hei"//trips[i].comment;
             $(str).append(p);
         }
-
-
-
 
     }
 };
