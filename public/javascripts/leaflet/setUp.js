@@ -118,8 +118,10 @@ var setPointsOnMap = function (points) {
         //adding popup to marker
         marker.bindPopup(
             "<b>" + "Navn: " + "</b>" + points[p].name + "<br>" +
-            "<b>" + "Kommentar: " + "</b>" + points[p].comment + "<br>" +
-            "<b>" + "Koordinater: " + "</b>" + points[p].x_koord + ", " + points[p].y_koord);
+            "<b>" + "Dato: " + "</b>" + points[p].date + "<br>" +
+            "<b>" + "Addresse: " + "</b>" + points[p].address + "<br>" +
+            "<b>" + "Kommentar: " + "</b>" + points[p].comment);
+
         markersOnMap.push(marker);
     }
 };

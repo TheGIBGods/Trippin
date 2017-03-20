@@ -7,6 +7,8 @@ function savePoint(){
     var name = $('#namePoint').val();
     var comment = $('#commentPoint').val();
     var category = $('#curtain').val();
+    var date = $('#datepicker').val();
+    var address = $('#pointAddress').html();
 /*
     var pointX = document.createElement('points');
 
@@ -28,13 +30,13 @@ function savePoint(){
             this.reset();
         });
 
-        console.log("Name: " + name + "\nKategori: " + category + "\nKommentar: " + comment);
-        saveToDatabase(name, category, comment);
+        console.log("Name: " + name + "\nKategori: " + category + "\nKommentar: " + comment + "\nDato: " + date + "\naddress: " + address);
+        saveToDatabase(name, category, comment, date, address);
         //setPointsOnMap(newPoint);
     }
 };
 
-function saveToDatabase(name, category, comment){
+function saveToDatabase(name, category, comment, date, address){
 
     var x = lat;
     var y = lng;
@@ -46,7 +48,10 @@ function saveToDatabase(name, category, comment){
             y_koord: y,
             name: name,
             category: category,
-            comment: comment
+            comment: comment,
+            date: date,
+            address: address
+
         },
         function(data,status){
                 console.log("Data loaded: " + data + "\nStatus: " + status);
