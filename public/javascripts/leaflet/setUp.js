@@ -56,8 +56,8 @@ function initGoogleSearch() {
                 place.geometry.location.lat().toString(),
                 place.geometry.location.lng().toString()
                 ]);
-            marker.bindPopup("<b>Navn: </b>" + place.name + "<br>"
-                + "<b>Adresse: </b>" + place.formatted_address + "<br>"
+            marker.bindPopup("<b>Navn: </b>" + "<span  id='pointName'>" + place.name + "</span>" + "<br>"
+                + "<b > Adresse: </b>" + "<span  id='pointAddress'>" + place.formatted_address + "</span>" + "<br>"
              + '<button onclick ="openSaveWindow();"  type = "button" class = "btn popup-btn"> Lagre punkt!</button>'
                 );
 
@@ -134,8 +134,9 @@ function getlat(){
     return this.lat;
 }
 
-function openSaveWindow() {
+function openSaveWindow(markerContent) {
     $('#modalPoint').modal('show');
+    $('#namePoint').val(document.getElementById("pointName").innerHTML);
 }
 
 function setlat(lat){
