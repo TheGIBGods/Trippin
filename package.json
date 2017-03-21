@@ -4,7 +4,7 @@
   "private": true,
   "main": "web.js",
   "scripts": {
-    "start": "node ./bin/www"q
+    "start": "node ./bin/www"
   },
   "dependencies": {
     "body-parser": "~1.16.0",
