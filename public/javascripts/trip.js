@@ -134,19 +134,7 @@ function getTripByID(tripId, trips) {
         }
     }
 
-    /*$.get('/tripOnId',{id: tripId}, function(data){
-        console.log('Displaying info')
-        displayInfo(data.responseJSON.message);
-    })/*
-    /*
-    $.ajax({
-        url: '/tripOnId', //collects the users call from app
-        type: "get",
-        complete: function(data){
-            console.log('Displaying info')
-            displayInfo(data.responseJSON.message);
-        }
-    })*/
+
 /*
     /$.ajax({
         url: "/tripOnId",
