@@ -25,8 +25,6 @@ function checkPassword(){
                 console.log(userDB)
                 console.log(userDB[0].username + " " + userDB[0].password)
 
-                userTrips = userDB[0].trips
-
                 if (user == userDB[0].username && password == userDB[0].password) {
                     console.log("correct")
                     getMyPageURL(user);

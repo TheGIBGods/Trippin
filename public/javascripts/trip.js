@@ -3,34 +3,54 @@
  */
 
 $(document).ready(
-    function() {
-        console.log("getting trip")
-        console.log(userTrips)
-        $.ajax({
-            url: '/trip', //collects the users call from app,
-            type: "get",
-            complete: function(data){
-                //when all the objects are retrieved, do this
-                //log to cmd
-                //console.log(data.responseJSON.message);
-                //call the createUserList function
-                var url = window.location.href;
-                if(url.includes("myPage")) {
-                    console.log("loaded myPage");
-                    makeTripTable(data.responseJSON.message);
-                }else if(url.includes("mapPage")){
-                    console.log("loaded mapPage");
-                    var tripID = getTripFromURL(url);
-                    console.log("TripID from splitted from url: "+tripID)
-                    getTripByID(tripID, data.responseJSON.message);
-                }
-                makeTripList(data.responseJSON.message);
 
+    $.ajax({
+        url: '/users/' + getUserFromURL(), //collects the users call from app
+        type: 'get',
+        complete: function (data) {
+            //when all the objects are retrieved, do this
+            var userDB = data.responseJSON.message;
+            console.log("checking password");
+            try {
+                console.log(userDB)
+
+                userTrips = userDB[0].trips
+                console.log(userTrips)
+                getTrips()
+
+            } catch(ex){
+                // TODO: display something
+                console.log("something went wrong")
             }
-        })
-    });
+        }
+    })
+)
 
+function getTrips() {
+    console.log("getting trip")
+    $.ajax({
+        url: '/trip', //collects the users call from app,
+        type: "get",
+        complete: function(data){
+            //when all the objects are retrieved, do this
+            //log to cmd
+            //console.log(data.responseJSON.message);
+            //call the createUserList function
+            var url = window.location.href;
+            if(url.includes("myPage")) {
+                console.log("loaded myPage");
+                makeTripTable(data.responseJSON.message);
+            }else if(url.includes("mapPage")){
+                console.log("loaded mapPage");
+                var tripID = getTripFromURL(url);
+                console.log("TripID from splitted from url: "+tripID)
+                getTripByID(tripID, data.responseJSON.message);
+            }
+            makeTripList(data.responseJSON.message);
 
+        }
+    })
+};
 
 //function called before
 function displayInfo(trip){
@@ -50,15 +70,18 @@ function displayInfo(trip){
 
 
 function makeTripList(trips) {
-    for (i =0; i< trips.length; i++){
-        var x = document.createElement("p");
-        x.innerHTML = trips[i].name;
-        //x.setAttribute("class", "tripClick canBeClicked")
-        x.setAttribute("tripID", trips[i]._id)
-        x.addEventListener('click', function(){
-            handleTripElementClick((event.target.getAttribute("tripID")));
-        })
-        $(".trips-content").append(x);
+    for (var i =0; i< trips.length; i++){
+        if(userTrips.includes(trips[i]._id)) {
+            console.log(trips[i]._id)
+            var x = document.createElement("p");
+            x.innerHTML = trips[i].name;
+            //x.setAttribute("class", "tripClick canBeClicked")
+            x.setAttribute("tripID", trips[i]._id)
+            x.addEventListener('click', function () {
+                handleTripElementClick((event.target.getAttribute("tripID")));
+            })
+            $(".trips-content").append(x);
+        }
     }
 };
 
@@ -103,6 +126,7 @@ function addTripToUser(userID, tripID) {
     //console.log('in addTripToUser in trip.js');
     //userID = "58aafadcd1a1f22baaa7c51b";
     //tripID ="58aadb3ef36d28790bcde9c5";
+    //TODO: use put to update object in db
     $.post("addTripToUser",
         {
             userID: userID,
@@ -135,7 +159,7 @@ function getTripByID(tripId, trips) {
 
 
     $.ajax({
-        url: "/tripOnId",
+        url: "/trip/" + tripId,
         type: "get", //send it through get method
         data: {
             id: tripId
@@ -161,7 +185,6 @@ function makeTripTable(trips) {
     var row = 0;
 
     for (i =0; i< trips.length +1; i++){
-
         if(count == 4){
             count = 0;
             row++;
@@ -195,25 +218,27 @@ function makeTripTable(trips) {
 
             $(str).append(img);
         }else{
-            var x = document.getElementById("tableElement" + i);
-            x.innerHTML = trips[i].name ;
-            //x.setAttribute("id", "tableElement"+ count+1)
+            if(userTrips.includes(trips[i]._id)) {
+                var x = document.getElementById("tableElement" + i);
+                x.innerHTML = trips[i].name;
+                //x.setAttribute("id", "tableElement"+ count+1)
 
-            var img = document.createElement("img");
-            img.setAttribute("src", trips[i].imglink);
-            img.setAttribute("class", "tripImg");
-            img.setAttribute("tripID", trips[i]._id)
-            img.addEventListener('click', function(){
-                handleTripElementClick(event.target.getAttribute("tripID"));
-            });
+                var img = document.createElement("img");
+                img.setAttribute("src", trips[i].imglink);
+                img.setAttribute("class", "tripImg");
+                img.setAttribute("tripID", trips[i]._id)
+                img.addEventListener('click', function () {
+                    handleTripElementClick(event.target.getAttribute("tripID"));
+                });
 
-            var str = "#tableElement" + i;
+                var str = "#tableElement" + i;
 
-            $(str).append(img);
+                $(str).append(img);
 
-            var p = document.createElement("p");
-            p.innerHTML = "hei"//trips[i].comment;
-            $(str).append(p);
+                var p = document.createElement("p");
+                p.innerHTML = "hei"//trips[i].comment;
+                $(str).append(p);
+            }
         }
 
     }
