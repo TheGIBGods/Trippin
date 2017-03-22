@@ -14,6 +14,9 @@ function validateUser(){
         console.log("password ok");
         newUserName(user, password);
     }
+    else{
+        //TODO: display passwords doesn't match
+    }
 };
 
 function saveUser(user, password){
