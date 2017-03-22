@@ -34,14 +34,14 @@ function newUserName(userName, password){
     var newUser;
 
     $.ajax({
-        url: 'users', //collects the users call from app
+        url: '/users/' + userName, //collects the users call from app
         type: 'get',
         complete: function (data) {
             //when all the objects are retrieved, do this
-
-            newUser = checkName(data.responseJSON.message, userName);
-            console.log(newUser);
-            if(newUser){
+            try{
+                //TODO: display, there is already a user with this username
+                var existingUser = data.responseJSON.message[0].userName
+            } catch(ex){
                 saveUser(userName, password);
                 getMyPageURL(userName);
             }
@@ -49,7 +49,7 @@ function newUserName(userName, password){
     });
 }
 
-function checkName(users, userName){
+/*function checkName(users, userName){
     console.log(users);
     for(var i = 0; i < users.length; i++){
         if (userName == users[i].username){
@@ -58,4 +58,4 @@ function checkName(users, userName){
         }
     }
     return true;
-};
+};*/

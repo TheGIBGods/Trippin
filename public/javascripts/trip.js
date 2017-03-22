@@ -4,8 +4,10 @@
 
 $(document).ready(
     function() {
+        console.log("getting trip")
+        console.log(userTrips)
         $.ajax({
-            url: '/trip', //collects the users call from app
+            url: '/trip', //collects the users call from app,
             type: "get",
             complete: function(data){
                 //when all the objects are retrieved, do this
@@ -21,9 +23,6 @@ $(document).ready(
                     var tripID = getTripFromURL(url);
                     console.log("TripID from splitted from url: "+tripID)
                     getTripByID(tripID, data.responseJSON.message);
-
-
-
                 }
                 makeTripList(data.responseJSON.message);
 
@@ -135,8 +134,7 @@ function getTripByID(tripId, trips) {
     }
 
 
-/*
-    /$.ajax({
+    $.ajax({
         url: "/tripOnId",
         type: "get", //send it through get method
         data: {
@@ -149,7 +147,7 @@ function getTripByID(tripId, trips) {
         error: function(xhr) {
             //Do Something to handle error
         }
-    });*/
+    });
 
 }
 

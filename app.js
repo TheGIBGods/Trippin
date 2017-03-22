@@ -44,8 +44,6 @@ router.get('/users', function (req, res) {
      });
 });
 
-
-
 /*
 router.get('/usersByUsername', function (req, res) {
     console.log('in users method');
@@ -56,19 +54,25 @@ router.get('/usersByUsername', function (req, res) {
         console.log(data);
         res.json(response);
     });
-});
+});*/
 
-router.get('/usersByID', function (req, res) {
-    console.log('in users method');
+router.get('/users/:name', function (req, res) {
+    console.log('in userID method');
+    var userName = req.params.name;
+    console.log("TripID in app: " + userName);
     var response = {};
-    users.find({_id: userID}, function (err, data) {
+    users.find({username: userName}, function (err, data) {
+        if(err) {
+            console.log("This user does not exist")
+            res.send(err);
+        }
         response = {"message": data};
         console.log('response from db is:');
         console.log(data);
         res.json(response);
     });
 });
-*/
+
 
 
 router.get('/trip', function (req, res) {
@@ -82,9 +86,9 @@ router.get('/trip', function (req, res) {
     });
 });
 
-router.get('/tripOnId', function (req, res) {
-    console.log('in tripOnId method');
-    var tripID = req.query.id;
+router.get('/trip/:id', function (req, res) {
+    console.log('in one trip method');
+    var tripID = req.params.id;
     console.log("TripID in app: " + tripID);
     var response = {};
     trip.find({_id: tripID}, function (err, data) {

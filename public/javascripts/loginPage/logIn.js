@@ -1,7 +1,7 @@
 /**
  * Created by Guro on 06.03.2017.
  */
-
+var userTrips;
 
 $('.message a').click(function(){
     $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
@@ -15,18 +15,26 @@ function checkPassword(){
     console.log(password);
 
     $.ajax({
-        url: '/users', //collects the users call from app
+        url: '/users/' + user, //collects the users call from app
         type: 'get',
         complete: function (data) {
             //when all the objects are retrieved, do this
-            var users = data.responseJSON.message;
+            var userDB = data.responseJSON.message;
+            console.log("checking password");
+            try {
+                console.log(userDB)
+                console.log(userDB[0].username + " " + userDB[0].password)
 
-            for(var i = 0; i < users.length; i++){
-                if (user == users[i].username && password == users[i].password){
+                userTrips = userDB[0].trips
+
+                if (user == userDB[0].username && password == userDB[0].password) {
+                    console.log("correct")
                     getMyPageURL(user);
-                    break;
                 }
-            console.log("No user matches")
+            } catch(ex){
+                // TODO: display that this user does not exist
+                console.log("this user does not exist, login")
+            }
         }
-    }});
+    });
 }
