@@ -101,28 +101,31 @@ function initGoogleSearch() {
 var markersOnMap = new Array();
 var setPointsOnMap = function (points) {
 
+    var tripID = getTripFromURL()
+
     for(p in points) {
+        if(points[p].trip_ID == tripID) {
+            var x = points[p].x_koord;
+            var y = points[p].y_koord;
 
-        var x = points[p].x_koord;
-        var y = points[p].y_koord;
+            //Making markers
+            var Icon = L.icon({
+                iconUrl: '/images/' + points[p].category + '.png',
+                iconSize: [38, 40], // size of the icon
+                popupAnchor: [0, -10] // point from which the popup should open relative to the iconAnchor
+            });
 
-        //Making markers
-        var Icon = L.icon({
-            iconUrl: '/images/' + points[p].category + '.png',
-            iconSize: [38, 40], // size of the icon
-            popupAnchor: [0, -10] // point from which the popup should open relative to the iconAnchor
-        });
+            var marker = L.marker([x, y], {icon: Icon});
+            marker.addTo(mymap); //adding marker to map
+            //adding popup to marker
+            marker.bindPopup(
+                "<b>" + "Navn: " + "</b>" + points[p].name + "<br>" +
+                "<b>" + "Dato: " + "</b>" + points[p].date + "<br>" +
+                "<b>" + "Addresse: " + "</b>" + points[p].address + "<br>" +
+                "<b>" + "Kommentar: " + "</b>" + points[p].comment);
 
-        var marker = L.marker([x, y], {icon: Icon});
-        marker.addTo(mymap); //adding marker to map
-        //adding popup to marker
-        marker.bindPopup(
-            "<b>" + "Navn: " + "</b>" + points[p].name + "<br>" +
-            "<b>" + "Dato: " + "</b>" + points[p].date + "<br>" +
-            "<b>" + "Addresse: " + "</b>" + points[p].address + "<br>" +
-            "<b>" + "Kommentar: " + "</b>" + points[p].comment);
-
-        markersOnMap.push(marker);
+            markersOnMap.push(marker);
+        }
     }
 };
 
