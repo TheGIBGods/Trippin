@@ -73,12 +73,13 @@ router.get('/users/:name', function (req, res) {
     });
 });
 
-router.put('/user: name', function(req, res){
+router.put('/user/:name/:tripID', function(req, res){
+    console.log("in put")
     User.find({username: req.params.name}, function(err, data){
         if (err)
             res.send(err);
 
-        user.trips.append(req.body.name);
+        user.trips.append(req.params.tripID);
     })
 });
 
