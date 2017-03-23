@@ -50,7 +50,9 @@ function saveToDatabase(name, category, comment, date, address){
             category: category,
             comment: comment,
             date: date,
-            address: address
+            address: address,
+            created_by: getUserFromURL(),
+            trip_ID: getTripFromURL()
 
         },
         function(data,status){

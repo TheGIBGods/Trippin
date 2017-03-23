@@ -27,42 +27,45 @@ $(document).ready(function(){
 //function called before
 function createPointList(points){
     //console.log("punkter i create point list: " + points);
+    var tripID = getTripFromURL();
     for (i =0; i< points.length; i++){
-        var x = document.createElement("li");
-        x.innerHTML = points[i].name;
-        x.setAttribute("class", "pointClick canBeClicked");
-        x.setAttribute("xkoord", ""+ points[i].x_koord);
-        x.setAttribute("ykoord", ""+ points[i].y_koord);
-        x.addEventListener('click', function(){
-           handleListElementClick(event.target.getAttribute("xkoord"), event.target.getAttribute("ykoord"));
-        });
-        //console.log("Klasser: "+x.getAttribute("class"));
+        if(points[i].trip_ID == tripID) {
+            var x = document.createElement("li");
+            x.innerHTML = points[i].name;
+            x.setAttribute("class", "pointClick canBeClicked");
+            x.setAttribute("xkoord", "" + points[i].x_koord);
+            x.setAttribute("ykoord", "" + points[i].y_koord);
+            x.addEventListener('click', function () {
+                handleListElementClick(event.target.getAttribute("xkoord"), event.target.getAttribute("ykoord"));
+            });
+            //console.log("Klasser: "+x.getAttribute("class"));
 
 
-        //console.log(points[i].name);
-        //console.log(points[i].category);
-        switch(points[i].category){
-            case "hotel":
-                $("#hotels_list").append(x);
-                break
-            case "restaurant":
-                $("#restaurants_list").append(x);
-                break
-            case "activity":
-                $("#activity_list").append(x);
-                break
-            case "transportation":
-                $("#transportation_list").append(x);
-                break
-            case "attraction":
-                $("#attractions_list").append(x);
-                break
-            case "shopping":
-                $("#shopping_list").append(x);
-                break
-            case "other":
-                $("#other_list").append(x);
-                break
+            //console.log(points[i].name);
+            //console.log(points[i].category);
+            switch (points[i].category) {
+                case "hotel":
+                    $("#hotels_list").append(x);
+                    break
+                case "restaurant":
+                    $("#restaurants_list").append(x);
+                    break
+                case "activity":
+                    $("#activity_list").append(x);
+                    break
+                case "transportation":
+                    $("#transportation_list").append(x);
+                    break
+                case "attraction":
+                    $("#attractions_list").append(x);
+                    break
+                case "shopping":
+                    $("#shopping_list").append(x);
+                    break
+                case "other":
+                    $("#other_list").append(x);
+                    break
+            }
         }
 
     }

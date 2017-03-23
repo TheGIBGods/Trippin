@@ -18,8 +18,8 @@ var PointSchema = new Schema({
     comment: String,
     date: String,
     address: String,
-    created_by: {type: Schema.Types.ObjectId, ref: 'User'}, //"ForeignKey" to a user-document
-    trip_ID: {type: Schema.Types.ObjectId, ref: 'Trip'} //"ForeignKey" to a trip-document
+    created_by: String,//{type: Schema.Types.ObjectId, ref: 'User'}, //"ForeignKey" to a user-document
+    trip_ID: String//{type: Schema.Types.ObjectId, ref: 'Trip'} //"ForeignKey" to a trip-document
 });
 
 
