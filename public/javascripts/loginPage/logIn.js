@@ -31,6 +31,7 @@ function checkPassword(){
                 }
             } catch(ex){
                 // TODO: display that this user does not exist
+                alert("Wrong username or password")
                 console.log("this user does not exist, login")
             }
         }

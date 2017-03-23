@@ -16,6 +16,7 @@ function validateUser(){
     }
     else{
         //TODO: display passwords doesn't match
+        alert("The passwords does not match")
     }
 };
 
@@ -43,6 +44,7 @@ function newUserName(userName, password){
             //when all the objects are retrieved, do this
             try{
                 //TODO: display, there is already a user with this username
+                alert("There is already a user with this username")
                 var existingUser = data.responseJSON.message[0].userName
             } catch(ex){
                 saveUser(userName, password);
