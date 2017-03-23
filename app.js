@@ -73,6 +73,15 @@ router.get('/users/:name', function (req, res) {
     });
 });
 
+router.put('/user: name', function(req, res){
+    User.find({username: req.params.name}, function(err, data){
+        if (err)
+            res.send(err);
+
+        user.trips.append(req.body.name);
+    })
+});
+
 
 
 router.get('/trip', function (req, res) {

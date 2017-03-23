@@ -29,6 +29,10 @@ function checkPassword(){
                     console.log("correct")
                     getMyPageURL(user);
                 }
+                else{
+                    //TODO: do this in a better way
+                    alert("Wrong password")
+                }
             } catch(ex){
                 // TODO: display that this user does not exist
                 alert("Wrong username or password")
