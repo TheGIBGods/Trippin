@@ -15,18 +15,7 @@ function shareTrip(){
             try {
                 console.log(userDB)
                 console.log(userDB[0].username + " " + userDB[0].trips)
-                /*$.ajax({
-                    url: '/users/' + user[0].username + getTripFromURL(), //collects the users call from app
-                    type: 'put',
-                    complete: function(data){
-                        var userDB = data.responseJSON.message;
-                        try{
-                            console.log(userDB);
-                        } catch(ex){
-                            console.log("something went wrong while sharing")
-                        }
-                    }
-                })*/
+                shareWithUser(userDB[0])
             } catch(ex){
                 // TODO: display that this user does not exist
                 alert("This user does not exist")
@@ -34,4 +23,20 @@ function shareTrip(){
             }
         }
     });
+}
+
+function shareWithUser(shareUser){
+    console.log("trying to share trip")
+    $.ajax({
+     url: '/user/' + shareUser.username + '/'+ getTripFromURL(), //collects the users call from app
+     type: 'put',
+     complete: function(data){
+     var userDB = data;
+     try{
+        console.log(userDB);
+     } catch(ex){
+        console.log("something went wrong while sharing")
+        }
+     }
+    })
 }
