@@ -60,9 +60,14 @@ function displayInfo(trip){
     }*/
     //create an element to place in the userName idfield
     console.log("Displaying info: ");
-    document.getElementById("tripComment").innerHTML = trip.comment;
+    document.getElementById("tripComment").innerHTML = "<b>"+ "Kommentar: " +"</b>"+ trip.comment;
     document.getElementById("tripName").innerHTML = trip.name;
-    document.getElementById("tripDate").innerHTML = trip.date;
+    document.getElementById("tripNamePop").innerHTML = trip.name;
+    if (trip.date != null){
+        document.getElementById("tripDate").innerHTML = "<b>"+ "Dato: "+ "</b>" + trip.date;
+    }
+    document.getElementById("tripUsers").innerHTML = "<b>" + "Brukere som har tilgang: "+ "</b>" + trip.users.toString().replace("[", "").replace("]", "");
+
     //innerHTML sets the content of the element
     //hvordan hente username for alle brukere?
 };
