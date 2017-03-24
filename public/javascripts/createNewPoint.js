@@ -73,9 +73,15 @@ function deleteOpenPoint() {
     $.ajax({
         url: '../points/' + pointid, //collects the users call from app
         type: "delete",
-        complete: console.log("Success!")
+        success: function(){
+
+            document.getElementById(pointid).remove();
+            mymap.removeLayer(currentMarker);
+        }
 
     })
+
+
 }
 
 

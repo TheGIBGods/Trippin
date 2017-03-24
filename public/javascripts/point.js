@@ -33,6 +33,7 @@ function createPointList(points){
             var x = document.createElement("li");
             x.innerHTML = points[i].name;
             x.setAttribute("class", "pointClick canBeClicked");
+            x.setAttribute("id", points[i]._id);
             x.setAttribute("xkoord", "" + points[i].x_koord);
             x.setAttribute("ykoord", "" + points[i].y_koord);
             x.addEventListener('click', function () {
@@ -79,7 +80,6 @@ var getPoints = function () {
     console.log('In getPoints() function' + points);
     return points;
 };
-
 
 
 

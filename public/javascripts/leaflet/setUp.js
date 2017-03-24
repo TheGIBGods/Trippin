@@ -124,7 +124,7 @@ var setPointsOnMap = function (points) {
             marker.bindPopup(
                 "<b>" + "Navn: " + "</b>" + points[p].name + "<br>" +
                 "<b>" + "Dato: " + "</b>" + points[p].date + "<br>" +
-                "<b>" + "Addresse: " + "</b>" + points[p].address + "<br>" +
+                "<b>" + "Adresse: " + "</b>" + points[p].address + "<br>" +
                 "<b>" + "Kommentar: " + "</b>" + points[p].comment +
                  "<input  type='hidden' id='pointID' value =" + points[p]._id+" >"  +
                  "<button onclick ='deleteOpenPoint()'  type = 'button' class = 'btn popup-btn'> Slett punkt!</button>");
@@ -173,6 +173,13 @@ function getlng(){
 function setlng(lng){
     this.lng = lng;
 }
+
+var currentMarker;
+mymap.on('popupopen', function (e) {
+    console.log(e.popup._source);
+    currentMarker = e.popup._source;
+})
+
 
 var setMapView = function (x, y) {
     //console.log('setting map view with coordinates: ' + x + ", " + y);
