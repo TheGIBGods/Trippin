@@ -15,6 +15,8 @@ var point = require('./models/point');
 var mongoose = require('mongoose');
 var moment = require('moment');
 
+
+
 var app = express();
 
 
@@ -109,18 +111,50 @@ router.get('/trip/:id', function (req, res) {
     });
 });
 
-router.get('/point', function (req, res) {
-    console.log('in point method');{
+router.route('/point')
+    .get( function (req, res) {
+        console.log('in point method');
+        var response = {};
+        point.find({}, function (err, data) {
 
-    }
-    var response = {};
-    point.find({}, function (err, data) {
-        response = {"message": data};
-        //console.log('response from db is:');
-        //console.log(data);
-        res.json(response);
+            if(err)
+                res.send(err);
+            response = {"message": data};
+            res.json(response);
+
+
+        });
     });
-});
+
+
+router.route('/points/:points_id')
+
+    .get( function (req, res) {
+        console.log('in point method');
+        var response = {};
+        point.find(res, function (err, data) {
+
+            if(err)
+                res.send(err);
+
+            res.json(data);
+
+
+        });
+    })
+    .delete(function (req,res) {
+        console.log(" in point delete");
+        point.remove({
+            _id: req.params.points_id
+        }, function (err, point) {
+            if(err)
+                res.send(err);
+
+
+            res.json({message:'Successfully deleted'});
+        });
+
+    });
 
 router.post('/savePoint', function(req, res){
     var newPoint = new point(req.body);

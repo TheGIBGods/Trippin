@@ -42,7 +42,7 @@ function saveToDatabase(name, category, comment, date, address){
     var y = lng;
     console.log(x + "\n" + y);
 
-    $.post("/savePoint",
+ $.post("/savePoint",
         {
             x_koord: x,
             y_koord: y,
@@ -50,6 +50,7 @@ function saveToDatabase(name, category, comment, date, address){
             category: category,
             comment: comment,
             date: date,
+
             address: address,
             created_by: getUserFromURL(),
             trip_ID: getTripFromURL()
@@ -61,7 +62,20 @@ function saveToDatabase(name, category, comment, date, address){
                 //callback function
                 setPointsOnMap(data);}
         );
+
     console.log("In saveToDatabase");
 
-};
+}
+
+function deleteOpenPoint() {
+    var pointid = document.getElementById('pointID').value;
+    console.log(pointid);
+    $.ajax({
+        url: '../points/' + pointid, //collects the users call from app
+        type: "delete",
+        complete: console.log("Success!")
+
+    })
+}
+
 
