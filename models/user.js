@@ -9,7 +9,7 @@ var Schema = mongoose.Schema;
 var UserSchema = new Schema({
     username: {type: String, unique: true, required: true},
     password: {type: String, required: true},
-    trips: [{type: Schema.Types.ObjectId, ref: 'trip'}],
+    trips: [String], //{type: Schema.Types.ObjectId, ref: 'trip'}
 });
 
 //User.plugin(pa)

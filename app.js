@@ -46,18 +46,6 @@ router.get('/users', function (req, res) {
      });
 });
 
-/*
-router.get('/usersByUsername', function (req, res) {
-    console.log('in users method');
-    var response = {};
-    users.find({username: userName}, function (err, data) {
-        response = {"message": data};
-        console.log('response from db is:');
-        console.log(data);
-        res.json(response);
-    });
-});*/
-
 router.get('/users/:name', function (req, res) {
     console.log('in userID method');
     var userName = req.params.name;
@@ -77,15 +65,13 @@ router.get('/users/:name', function (req, res) {
 
 router.put('/user/:name/:tripID', function(req, res){
     console.log("in put")
-    User.find({username: req.params.name}, function(err, data){
+    users.update({username: req.params.name}, {$set: {'trips': req.params.tripID}}, function(err, data){
+        console.log("in put find")
         if (err)
+            console.log("couldn't find user")
             res.send(err);
-
-        user.trips.append(req.params.tripID);
     })
 });
-
-
 
 router.get('/trip', function (req, res) {
     console.log('in trip method');
