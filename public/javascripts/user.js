@@ -24,7 +24,8 @@ $(document).ready(function() {
 
 //function called before
 function createUserList(users){
-    document.getElementById("userName").innerHTML = users[0].username;
+
+    document.getElementById("userName").innerHTML = getUserFromURL();
     //console.log("Brukernavn: " + users[0].username);
 };
 
