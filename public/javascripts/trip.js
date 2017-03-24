@@ -24,7 +24,13 @@ $(document).ready(
             }
         }
     })
-)
+);
+
+$("#myTripsBut").click(function(){
+    var userName = getUserFromURL();
+    console.log("User :" + userName)
+    getMyPageURL(userName);
+});
 
 function getTrips() {
     console.log("getting trip")
@@ -75,12 +81,13 @@ function displayInfo(trip){
 
 
 function makeTripList(trips) {
+    console.log("Making tripsList")
     for (var i =0; i< trips.length; i++){
         if(userTrips.includes(trips[i]._id)) {
-            console.log(trips[i]._id)
+            console.log("maketriplist, tripid: " +trips[i]._id)
             var x = document.createElement("p");
             x.innerHTML = trips[i].name;
-            //x.setAttribute("class", "tripClick canBeClicked")
+            x.setAttribute("class", "tripClick canBeClicked")
             x.setAttribute("tripID", trips[i]._id)
             x.addEventListener('click', function () {
                 handleTripElementClick((event.target.getAttribute("tripID")));
@@ -145,7 +152,7 @@ function addTripToUser(userID, tripID) {
 
 function handleTripElementClick(tripid){
     console.log('Handling click on Trip');
-    var userName = getUserFromURL(getUrl());
+    var userName = getUserFromURL();
     window.location = "/views/mapPage.html?" + userName +"?" + tripid;
 
 }

@@ -28,5 +28,5 @@ function logOut(){
 }
 
 function backToTrip(){
-    getMyPageURL(getUserFromURL(getUrl()));
+    getMyPageURL(getUserFromURL());
 }

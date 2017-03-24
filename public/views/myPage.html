@@ -46,7 +46,7 @@
 
         </div>
         <div class = "col-lg-1 text-center canBeClicked" id="trips">
-            <span><h4><b>Mine turer</b></h4></span>
+            <span><h4><b id="myTripsBut" class="canBeClicked">Mine turer</b></h4></span>
             <div class="trips-content scrollbar" id="myTrips">
 
             </div>
@@ -54,16 +54,16 @@
         <div class = "col-lg-1 text-center" id="user">
             <span><h4 id="userName"></h4></span>
             <div class="user-content canBeClicked">
-                <div class="trips-content scrollbar">
-                    Min turer
+                <div>
+                    <a onclick="backToTrip()">Min turer</a>
                 </div>
                 <div>
-                    <a onclick="logOut()">Logg ut</a>
+                    <a onclick="logOut()" href="/views/index.html">Logg ut</a>
                 </div>
             </div>
         </div>
     </div>
-    <!-- End Navbar -->
+    <!-- End navbar -->
 
     <!-- Start TripDiv -->
     <div class = "row" id="content">
