@@ -27,6 +27,7 @@ $(document).ready(function(){
 function createPointList(points){
     //console.log("punkter i create point list: " + points);
     var tripID = getTripFromURL();
+    setMapView(points[0].x_koord, points[0].y_koord);
     for (i =0; i< points.length; i++){
         if(points[i].trip_ID == tripID) {
             var x = document.createElement("li");

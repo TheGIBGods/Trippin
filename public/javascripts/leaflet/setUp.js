@@ -11,7 +11,7 @@ var lng = 0;
 initLeaflet();
 initGoogleSearch();
 function initLeaflet(){
-    mymap = new L.map('mapid').setView([miami[0], miami[1]], 13);
+    mymap = new L.map('mapid').setView([miami[0], miami[1]], 3);
 
     L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
         maxZoom: 18,
