@@ -15,7 +15,7 @@ $(document).ready(
                 console.log(userDB)
 
                 userTrips = userDB[0].trips
-                console.log(userTrips)
+              //  console.log(userTrips)
                 getTrips()
 
             } catch(ex){

@@ -109,7 +109,7 @@ router.route('/point')
             res.json(response);
 
 
-        });
+        }).sort({'name': 1});
     });
 
 

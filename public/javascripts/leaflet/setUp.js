@@ -176,7 +176,6 @@ function setlng(lng){
 
 var currentMarker;
 mymap.on('popupopen', function (e) {
-    console.log(e.popup._source);
     currentMarker = e.popup._source;
 })
 

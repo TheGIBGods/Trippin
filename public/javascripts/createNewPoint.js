@@ -30,7 +30,7 @@ function savePoint(){
             this.reset();
         });
 
-        console.log("Name: " + name + "\nKategori: " + category + "\nKommentar: " + comment + "\nDato: " + date + "\naddress: " + address);
+//        console.log("Name: " + name + "\nKategori: " + category + "\nKommentar: " + comment + "\nDato: " + date + "\naddress: " + address);
         saveToDatabase(name, category, comment, date, address);
         //setPointsOnMap(newPoint);
     }
@@ -40,8 +40,6 @@ function saveToDatabase(name, category, comment, date, address){
 
     var x = lat;
     var y = lng;
-    console.log(x + "\n" + y);
-
  $.post("/savePoint",
         {
             x_koord: x,
@@ -60,16 +58,18 @@ function saveToDatabase(name, category, comment, date, address){
                 console.log("Data loaded: " + data + "\nStatus: " + status);
                 console.log(data);
                 //callback function
-                setPointsOnMap(data);}
+                setPointsOnMap(data);
+        }
         );
 
-    console.log("In saveToDatabase");
+    addSinglePointToMap(name, category, comment, date, address, x, y);
+
+
 
 }
 
 function deleteOpenPoint() {
     var pointid = document.getElementById('pointID').value;
-    console.log(pointid);
     $.ajax({
         url: '../points/' + pointid, //collects the users call from app
         type: "delete",
