@@ -21,6 +21,9 @@ function initLeaflet(){
 
     }).addTo(mymap);
 
+    L.control.scale().addTo(mymap);
+
+
 
 }
 
@@ -101,7 +104,7 @@ function initGoogleSearch() {
 var markersOnMap = new Array();
 var setPointsOnMap = function (points) {
 
-    var tripID = getTripFromURL()
+    var tripID = getTripFromURL();
 
     for(p in points) {
         if(points[p].trip_ID == tripID) {
@@ -122,17 +125,31 @@ var setPointsOnMap = function (points) {
                 "<b>" + "Navn: " + "</b>" + points[p].name + "<br>" +
                 "<b>" + "Dato: " + "</b>" + points[p].date + "<br>" +
                 "<b>" + "Addresse: " + "</b>" + points[p].address + "<br>" +
-                "<b>" + "Kommentar: " + "</b>" + points[p].comment);
+                "<b>" + "Kommentar: " + "</b>" + points[p].comment +
+                 "<input  type='hidden' id='pointID' value =" + points[p]._id+" >"  +
+                 "<button onclick ='deleteOpenPoint()'  type = 'button' class = 'btn popup-btn'> Slett punkt!</button>");
+
 
             markersOnMap.push(marker);
         }
+
     }
 };
+
+/*var openMarker;
+mymap.on('popupopen', function(e) {
+    console.log()
+    var openMarker = e.popup._source;
+    console.log()
+});
+
+*/
 
 function setLatLng(marker) {
     setlat(marker.getLatLng().lat);
     setlng(marker.getLatLng().lng);
 }
+
 
 
 function getlat(){
@@ -161,4 +178,7 @@ var setMapView = function (x, y) {
     //console.log('setting map view with coordinates: ' + x + ", " + y);
     //console.log(mymap);
     mymap.setView([x,y], 15);
+
+
 };
+

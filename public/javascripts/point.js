@@ -23,7 +23,6 @@ $(document).ready(function(){
 });
 
 
-
 //function called before
 function createPointList(points){
     //console.log("punkter i create point list: " + points);
@@ -78,7 +77,8 @@ function createPointList(points){
 var getPoints = function () {
     console.log('In getPoints() function' + points);
     return points;
-}
+};
+
 
 
 

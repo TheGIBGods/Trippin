@@ -22,5 +22,4 @@ var PointSchema = new Schema({
     trip_ID: String//{type: Schema.Types.ObjectId, ref: 'Trip'} //"ForeignKey" to a trip-document
 });
 
-
 module.exports = mongoose.model('Point', PointSchema);
