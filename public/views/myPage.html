@@ -89,7 +89,7 @@
                                 </div>
 
                                 <!-- Form for save point -->
-                                <form action="/action_page.php" method="post" id="pointForm">
+                                <form action="/action_page.php" method="post" id="tripForm">
                                     <div class="popup">
                                         <p><span class="form">Navn på tur:</span>
                                             <input type="text" id="nameTrip" autofocus required></p>
@@ -103,7 +103,7 @@
 
                                 <div class="modal-footer">
                                     <input type="submit" value="Submit" id="save_button" class="btn btn-default"
-                                           onclick="createTrip()">
+                                           onclick="createTrip()" form="tripForm">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                                 </div>
                             </div>
