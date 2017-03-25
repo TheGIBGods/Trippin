@@ -18,6 +18,9 @@ function shareTrip(){
                 shareWithUser(userDB[0]);
                 console.log("username");
                 addUsernameToTrip(userDB[0].username);
+                $(function () {
+                    $('#modalShare').modal('toggle');
+                });
             } catch(ex){
                 // TODO: display that this user does not exist
                 alert("This user does not exist")
