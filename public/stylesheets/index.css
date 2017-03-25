@@ -12,6 +12,53 @@ h4{
     font-weight: bold;
 }
 
+.popupHeader{
+    width: 100%;
+
+}
+
+.popupName{
+    text-align: center  ;
+    margin: 10px;
+    font-weight: bold;
+}
+
+.myline{
+    margin-bottom: 10px;
+    margin-top: 10px;
+    width: 100%
+}
+
+.dateBox{
+    width: 50%;
+    float: left;
+    margin-bottom: 10px;
+
+}
+
+.addedByBox{
+    width: 50%;
+    float: right;
+    margin-bottom: 10px;
+}
+
+.deleteButton{
+    float:right;
+    background-color: #f2f2f2;
+    width: 40%;
+}
+
+.editButton{
+    float: left;
+    background-color: #f2f2f2;
+    width: 40%;
+}
+
+.deleteButton:hover, .editButton:hover{
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 3px 10px 0 rgba(0,0,0,0.10);
+}
+
+
 #mapid {
     height: 100%;
     width: 100%;
@@ -133,10 +180,16 @@ button:hover{
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
-.popup-btn{
+.saveButton{
     width: 40%;
     margin-left: 30%;
     margin-right: 30%;
+
+}
+.refreshUpdateText{
+    font-style: italic;
+    text-align: center;
+    color:#b3b3b3;
 }
 
 

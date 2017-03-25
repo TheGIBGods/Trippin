@@ -183,6 +183,51 @@ router.route('/points/:id')
 
             res.json({message:'Successfully deleted'});
         });
+    })
+
+    .put(function (req,res) {
+        points.findById(req.params.id, function(err, points){
+            if(err)
+                res.send(err);
+
+            points.name = req.body.name;
+            points.category = req.body.category;
+            points.date = req.body.date;
+            points.address = req.body.address;
+            points.comment = req.body.comment;
+
+            points.save(function(err){
+                if(err)
+                    res.send(err);
+
+                res.json({message: 'Point updated!'});
+            });
+        });
+    });
+
+
+//controllers for arrays
+//save tripID to user
+router.route('/users/:name/:tripID')
+    .put( function(req, res){
+    users.update({username: req.params.name}, {$set: {'trips': req.params.tripID}}, function(err, data){
+        if (err) {
+            console.log("couldn't find user or save tripID");
+            res.send(err);
+        }
+        });
+    });
+
+//save username to trip
+router.route('trip/:tripID/:userName')
+    .post( function (req, res){
+        var tripID = req.body.tripID;
+        var userID = req.body.userID;
+        console.log('tripID and User ID: ' + tripID + ', '+ userName);
+
+        trips.findByIdAndUpdate(function(err, model) {
+                if(err) return handleError(err);
+            });
     });
 
 // view engine setup

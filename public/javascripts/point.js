@@ -90,12 +90,14 @@ function addSinglePointToMap(name, category, comment, date, address, x_koord, y_
     marker.addTo(mymap); //adding marker to map
     //adding popup to marker
     marker.bindPopup(
-        "<b>" + "Navn: " + "</b>" + name + "<br>" +
-        "<b>" + "Dato: " + "</b>" + date + "<br>" +
-        "<b>" + "Adresse: " + "</b>" + address + "<br>" +
-        "<b>" + "Kommentar: " + "</b>" + comment +  "<br>" +
-        "<b>" + "Lagt til av: " + "</b>" + getUserFromURL() +
-        "<input  type='hidden' id='pointID' value = null >"
+        "<span class = 'popupHeader'><h5 class = 'popupName'>" + name  + "</h5>"  +
+        " <hr class = 'myline'> </span>" +
+        "<span class='dateBox'><b>" + "Dato: " + "</b>" + date + "</span> " +
+        "<span class = addedByBox><b>" + "Lagt til av: "+ "</b>" + getUserFromURL() + "</span>" +
+        "<hr class = 'myline'><b>" + "Adresse: " + "</b>" + address + "<br><br>   " +
+        "<b>" + "Kommentar: " + "</b>" + comment + "<br><br>" +
+        "<input  type='hidden' id='pointID' >"  +
+            "<p class = refreshUpdateText> For å kunne endre/slette punkt må du oppdatere siden:(</p>"
        );
 
     currentMarker.closePopup();
@@ -143,4 +145,10 @@ $("#datepicker").pikaday({
         defaultDate: new Date(),
         firstDay: 1,
         format: "DD/MM/YYYY"
+});
+
+$("#datepickerEdit").pikaday({
+    defaultDate: new Date(),
+    firstDay: 1,
+    format: "DD/MM/YYYY"
 });

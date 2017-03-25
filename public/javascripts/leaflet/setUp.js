@@ -61,7 +61,7 @@ function initGoogleSearch() {
                 ]);
             marker.bindPopup("<b>Navn: </b>" + "<span  id='pointName'>" + place.name + "</span>" + "<br>"
                 + "<b > Adresse: </b>" + "<span  id='pointAddress'>" + place.formatted_address + "</span>" + "<br>"
-             + '<button onclick ="openSaveWindow();"  type = "button" class = "btn popup-btn"> Lagre punkt!</button>'
+             + '<button onclick ="openSaveWindow();"  type = "button" class = "btn saveButton"> Lagre punkt!</button>'
                 );
 
 
@@ -123,13 +123,18 @@ var setPointsOnMap = function (points) {
             //adding popup to marker
             marker.bindPopup(
 
-                "<b>" + "Navn: " + "</b>" + points[p].name + "<br>" +
-                "<b>" + "Dato: " + "</b>" + points[p].date + "<br>" +
-                "<b>" + "Adresse: " + "</b>" + points[p].address + "<br>" +
-                "<b>" + "Kommentar: " + "</b>" + points[p].comment + "<br>" +
-                "<b>" + "Lagt til av:" + "</b>" + points[p].created_by +
-                "<input  type='hidden' id='pointID' value =" + points[p]._id+" >"  +
-                "<button onclick ='deleteOpenPoint()'  type = 'button' class = 'btn popup-btn'> Slett punkt!</button>");
+                "<span class = 'popupHeader'><h5 class = 'popupName' id = popName>" + points[p].name  + "</h5>"  +
+                " <hr class = 'myline'> </span>" +
+                "<span class='dateBox'><b>" + "Dato: " + "</b><span id='popDate'>" + points[p].date + "</span></span> " +
+                "<span class = addedByBox><b>" + "Lagt til av: "+ "</b><span id = 'popCreatedBy'>" + points[p].created_by + "</span></span>" +
+                "<hr class = 'myline'><b>" + "Adresse: " + "</b><span id='popAddress'>" + points[p].address + "</span></span><br><br>   " +
+                "<b>" + "Kommentar: " + "</b></span><span id='popComment'>" + points[p].comment + "</span><br><br>" +
+                "<input  type='hidden' id='pointID' value =" + points[p]._id + ">"  +
+                "<input type='hidden' id='pointCategory' value =" + points[p].category + ">" +
+                "<button onclick='openEditWindow()' type = 'button' class = 'btn  editButton'>Endre</button>" +
+                "<button onclick ='deleteOpenPoint()'  type = 'button' class = 'btn deleteButton'>Slett</button>"
+
+            );
 
             markersOnMap.push(marker);
         }
@@ -164,9 +169,18 @@ function getlat(){
     return this.lat;
 }
 
-function openSaveWindow(markerContent) {
+function openSaveWindow() {
     $('#modalPoint').modal('show');
-    $('#namePoint').val(document.getElementById("pointName").innerHTML);
+    $('#namePoint').val(document.getElementById('pointName').innerHTML);
+}
+
+function openEditWindow() {
+    $('#modalPointEdit').modal('show');
+    $('#namePointEdit').val(document.getElementById('popName').innerHTML);
+    $('#curtainEdit').val(document.getElementById('pointCategory').value);
+    $('#datepickerEdit').val(document.getElementById('popDate').innerHTML);
+    $('#commentPointEdit').val(document.getElementById('popComment').innerHTML);
+    $('#addressPointEdit').val(document.getElementById('popAddress').innerHTML);
 }
 
 function setlat(lat){
