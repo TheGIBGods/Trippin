@@ -14,7 +14,7 @@ var TripSchema = new Schema({
     imglink: {type: String, default: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Globe_centered_in_the_Atlantic_Ocean_(green_and_grey_globe_scheme).svg/2000px-Globe_centered_in_the_Atlantic_Ocean_(green_and_grey_globe_scheme).svg.png"},
     //TODO: initialize firstPoint:
     //users: [{type: Schema.Types.ObjectId, ref: 'user'}],
-    users: [{type: String}]
+    users: [{userName: {type: String}}]
 });
 
 

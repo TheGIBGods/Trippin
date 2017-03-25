@@ -65,19 +65,20 @@ function getTrips() {
 
 //function called before
 function displayInfo(trip){
-    /*trip = { //hardkoding frem til vi får satt global variabel trip
-        name: 'Mallorca',
-        comment: 'for jeg er kongen av mallorca ole ole ole'
-    }*/
     //create an element to place in the userName idfield
     console.log("Displaying info: ");
+    var addedUsers = Array();
+    console.log(trip);
+    for(var i = 0 ; i < trip.users.length; i++){
+        addedUsers.push(" " + trip.users[i].userName);
+    }
     document.getElementById("tripComment").innerHTML = "<b>"+ "Kommentar: " +"</b>"+ trip.comment;
     document.getElementById("tripName").innerHTML = trip.name;
     document.getElementById("tripNamePop").innerHTML = trip.name;
     if (trip.date != null){
         document.getElementById("tripDate").innerHTML = "<b>"+ "Dato: "+ "</b>" + trip.date;
     }
-    document.getElementById("tripUsers").innerHTML = "<b>" + "Brukere som har tilgang: "+ "</b>" + trip.users.toString().replace("[", "").replace("]", "");
+    document.getElementById("tripUsers").innerHTML = "<b>" + "Brukere som har tilgang: "+ "</b>" + addedUsers;
 
     //innerHTML sets the content of the element
     //hvordan hente username for alle brukere?
