@@ -14,7 +14,7 @@ $(document).ready(
                 console.log("in try");
 
                 userTrips = userDB.trips
-                console.log(userTrips)
+                //console.log(userTrips)
                 getTrips()
 
             } catch(ex){
@@ -39,11 +39,11 @@ function getTrips() {
         complete: function(data){
             console.log("retrived trips");
             //call the createUserList function
-            console.log(data);
+            //console.log(data);
             var url = window.location.href;
             if(url.includes("myPage")) {
                 console.log("loaded myPage");
-                console.log(data);
+                //console.log(data);
                 makeTripTable(data.responseJSON.message);
             }else if(url.includes("mapPage")){
                 console.log("loaded mapPage");
@@ -83,7 +83,7 @@ function makeTripList(trips) {
     console.log("Making tripsList")
     for (var i =0; i< trips.length; i++){
         if(userTrips.includes(trips[i]._id)) {
-            console.log("maketriplist, tripid: " +trips[i]._id)
+            //console.log("maketriplist, tripid: " +trips[i]._id)
             var x = document.createElement("p");
             x.innerHTML = trips[i].name;
             x.setAttribute("class", "tripClick canBeClicked")
