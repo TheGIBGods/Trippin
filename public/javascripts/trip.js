@@ -84,8 +84,6 @@ function displayInfo(trip){
     //hvordan hente username for alle brukere?
 };
 
-
-
 function makeTripList(trips) {
     console.log("Making tripsList")
     for (var i =0; i< trips.length; i++){
@@ -118,27 +116,22 @@ function createTrip(){
             $('#modalTrip').modal('toggle');
         });
 
-        $('#pointForm').each(function () {
-            this.reset();
-        });
-
         console.log("trying to save trip");
-        $.post("/trips",
+        $.post("/trips/",
             {
                 name: name,
-                //date: date,
                 comment: comment,
-                imglink: imglink
-                //complete: function ...
-            })
-            .done(function (data, status) {
-                console.log("Data loaded: " + data + "\nStatus: " + status)
-                var tripID = data.responseJSON.message.tripID;
-                addTripToUser(userID, tripID); //TODO: dette blir ikke kalt, fikse til annen måte å poste på
-            });
-    }
+                imglink: imglink,
+            }).done(function(res){
+                console.log("in on done");
+                var tripID = res.message._id;
+                shareWithUser(getUserFromURL(), tripID);
+                addUsernameToTrip(getUserFromURL(), tripID);
+                console.log(tripID);
+                tripUrl(tripID);
 
-
+        });
+    };
 }
 
 /*function addTripToUser(userID, tripID) {
@@ -160,7 +153,8 @@ function createTrip(){
 function handleTripElementClick(tripid){
     console.log('Handling click on Trip');
     var userName = getUserFromURL();
-    window.location = "/views/mapPage.html?" + userName +"?" + tripid;
+    tripUrl(tripid);
+    //window.location = "/views/mapPage.html?" + userName +"?" + tripid;
 
 }
 

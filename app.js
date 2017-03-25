@@ -97,10 +97,18 @@ router.route('/trips')
     })
 
     .post( function(req, res){
+        console.log("trying to create new trip")
         var newTrip = new trips(req.body);
-        newTrip.save(function(err, point)  {
+        var response = {};
+        newTrip.save( function(err, trip)  {
             if (err) return console.error(err);
-            else console.log("user registration success")
+            else {
+                console.log("trip registration success");
+            }
+
+            response = {"message": trip};
+            console.log(response);
+            res.json(response);
         });
     });
 

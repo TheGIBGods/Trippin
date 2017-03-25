@@ -15,9 +15,9 @@ function shareTrip(){
             try {
                 console.log(userDB)
                 console.log(userDB[0].username + " " + userDB[0].trips)
-                shareWithUser(userDB[0]);
+                shareWithUser(userDB[0].userName, getTripFromURL());
                 console.log("username");
-                addUsernameToTrip(userDB[0].username);
+                addUsernameToTrip(userDB[0].username, getTripFromURL());
                 $(function () {
                     $('#modalShare').modal('toggle');
                 });
@@ -30,10 +30,10 @@ function shareTrip(){
     });
 }
 
-function shareWithUser(shareUser){
+function shareWithUser(username, tripName){
     console.log("trying to share trip, shareWithUser");
     $.ajax({
-         url: '/users/' + shareUser.username + '/'+ getTripFromURL(), //collects the users call from app
+         url: '/users/' + username + '/'+ tripName, //collects the users call from app
          type: 'put',
          /*complete: function(data){
              var userDB = data;
@@ -48,10 +48,10 @@ function shareWithUser(shareUser){
     });
 };
 
-function addUsernameToTrip(username){
+function addUsernameToTrip(username, tripName){
     console.log("adding username to trip");
     $.ajax({
-        url: '/trips/' + getTripFromURL() + '/' + username, //collects the users call from app
+        url: '/trips/' + tripName + '/' + username, //collects the users call from app
         type: 'put',
         complete: function(data){
             var tripDB = data;

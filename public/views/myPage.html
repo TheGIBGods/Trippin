@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="/stylesheets/myPage.css">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/myPage.css">
 
 </head>
 <body>
@@ -89,7 +89,7 @@
                                 </div>
 
                                 <!-- Form for save point -->
-                                <form action="/action_page.php" method="post" id="tripForm">
+                                <form action="/action_page.php" id="tripForm">
                                     <div class="popup">
                                         <p><span class="form">Navn på tur:</span>
                                             <input type="text" id="nameTrip" autofocus required></p>
@@ -103,7 +103,7 @@
 
                                 <div class="modal-footer">
                                     <input type="submit" value="Submit" id="save_button" class="btn btn-default"
-                                           onclick="createTrip()" form="tripForm">
+                                           onclick="createTrip()">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                                 </div>
                             </div>
@@ -116,6 +116,7 @@
 
 </div>
 <script src = "/javascripts/url.js"></script>
+<script src = "/javascripts/shareTrip.js"></script>
 <script src = "/javascripts/loginPage/logIn.js"></script>
 <script src = "/javascripts/user.js"></script>
 <script src = "/javascripts/trip.js"></script>

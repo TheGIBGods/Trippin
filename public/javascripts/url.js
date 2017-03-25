@@ -30,3 +30,7 @@ function logOut(){
 function backToTrip(){
     getMyPageURL(getUserFromURL());
 }
+
+function tripUrl(tripId){
+    window.location = "/views/mapPage.html?" + getUserFromURL() + "?" + tripId;
+}
