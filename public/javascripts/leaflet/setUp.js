@@ -122,18 +122,26 @@ var setPointsOnMap = function (points) {
             marker.addTo(mymap); //adding marker to map
             //adding popup to marker
             marker.bindPopup(
+
                 "<b>" + "Navn: " + "</b>" + points[p].name + "<br>" +
                 "<b>" + "Dato: " + "</b>" + points[p].date + "<br>" +
                 "<b>" + "Adresse: " + "</b>" + points[p].address + "<br>" +
-                "<b>" + "Kommentar: " + "</b>" + points[p].comment +
-                 "<input  type='hidden' id='pointID' value =" + points[p]._id+" >"  +
-                 "<button onclick ='deleteOpenPoint()'  type = 'button' class = 'btn popup-btn'> Slett punkt!</button>");
-
+                "<b>" + "Kommentar: " + "</b>" + points[p].comment + "<br>" +
+                "<b>" + "Lagt til av:" + "</b>" + points[p].created_by +
+                "<input  type='hidden' id='pointID' value =" + points[p]._id+" >"  +
+                "<button onclick ='deleteOpenPoint()'  type = 'button' class = 'btn popup-btn'> Slett punkt!</button>");
 
             markersOnMap.push(marker);
         }
+    }
+    if (markersOnMap.length == 0){
+        mymap.setView([38.82259, -2.8125], 0);
+    }
+    else{
+        setMapView(markersOnMap[0].getLatLng().lat, markersOnMap[0].getLatLng().lng);
 
     }
+
 };
 
 /*var openMarker;
