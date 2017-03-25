@@ -161,13 +161,14 @@ router.route('/points')
 router.route('/points/:id')
     .get( function (req, res) {
         console.log('in point method');
-        //var response = {};
+        var response = {};
         points.find({trip_ID: req.params.id}, function (err, data) {
             if(err) {
                 console.log("couldn't find point for this trip id");
                 res.send(err);
             }
 
+            response = {"message": data};
             res.json(data);
         });
     })
