@@ -165,7 +165,7 @@ router.route('/points/:id')
 //save tripID to user
 router.route('/users/:name/:tripID')
     .put( function(req, res){
-    users.update({username: req.params.name}, {$set: {'trips': req.params.tripID}}, function(err, data){
+    users.update({username: req.params.name}, {$push: {'trips': {'tripName': req.params.tripID}}}, function(err, data){
         if (err) {
             console.log("couldn't find user or save tripID");
             res.send(err);

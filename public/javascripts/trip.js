@@ -12,9 +12,15 @@ $(document).ready(
             console.log(userDB);
             try {
                 console.log("in try");
+                console.log(userDB.trips);
+                for (var i = 0; i < userDB.trips.length; i++){
+                    userTrips.push(userDB.trips[i].tripName);
+                }
 
-                userTrips = userDB.trips
-                //console.log(userTrips)
+                console.log(userTrips);
+                /*userTrips = userDB.trips[0].tripName;
+                console.log(userDB.trips.length);
+                console.log(userTrips);*/
                 getTrips()
 
             } catch(ex){
@@ -122,6 +128,7 @@ function createTrip(){
                 //date: date,
                 comment: comment,
                 imglink: imglink
+                //complete: function ...
             })
             .done(function (data, status) {
                 console.log("Data loaded: " + data + "\nStatus: " + status)
