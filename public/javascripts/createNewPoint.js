@@ -40,7 +40,7 @@ function saveToDatabase(name, category, comment, date, address){
 
     var x = lat;
     var y = lng;
- $.post("/savePoint",
+ $.post("/points",
         {
             x_koord: x,
             y_koord: y,

@@ -8,12 +8,10 @@ var points;
 $(document).ready(function(){
     window.onload = function(){
         $.ajax({
-            url: '../point', //collects the users call from app
+            url: '../points', //collects the users call from app
             type: "get",
             complete: function(data){
-                //when all the objects are retrieved, do this
-                //log to cmd
-                //console.log(data.responseJSON.message);
+                console.log("retrived all points");
                 //call the createUserList function
                 createPointList(data.responseJSON.message);
                 //points = data.responseJSON.message;

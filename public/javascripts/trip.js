@@ -3,19 +3,18 @@
  */
 
 $(document).ready(
-
     $.ajax({
         url: '/users/' + getUserFromURL(), //collects the users call from app
         type: 'get',
         complete: function (data) {
             //when all the objects are retrieved, do this
-            var userDB = data.responseJSON.message;
-            console.log("checking password");
+            var userDB = data.responseJSON.message[0];
+            console.log(userDB);
             try {
-                console.log(userDB)
+                console.log("in try");
 
-                userTrips = userDB[0].trips
-              //  console.log(userTrips)
+                userTrips = userDB.trips
+                console.log(userTrips)
                 getTrips()
 
             } catch(ex){
@@ -33,18 +32,18 @@ $("#myTripsBut").click(function(){
 });
 
 function getTrips() {
-    console.log("getting trip")
+    console.log("getting trips")
     $.ajax({
-        url: '/trip', //collects the users call from app,
+        url: '/trips', //collects the users call from app,
         type: "get",
         complete: function(data){
-            //when all the objects are retrieved, do this
-            //log to cmd
-            //console.log(data.responseJSON.message);
+            console.log("retrived trips");
             //call the createUserList function
+            console.log(data);
             var url = window.location.href;
             if(url.includes("myPage")) {
                 console.log("loaded myPage");
+                console.log(data);
                 makeTripTable(data.responseJSON.message);
             }else if(url.includes("mapPage")){
                 console.log("loaded mapPage");
@@ -117,7 +116,7 @@ function createTrip(){
         });
 
         console.log("trying to save trip");
-        $.post("/createTrip",
+        $.post("/trips",
             {
                 name: name,
                 //date: date,
@@ -134,7 +133,7 @@ function createTrip(){
 
 }
 
-function addTripToUser(userID, tripID) {
+/*function addTripToUser(userID, tripID) {
     //console.log('in addTripToUser in trip.js');
     //userID = "58aafadcd1a1f22baaa7c51b";
     //tripID ="58aadb3ef36d28790bcde9c5";
@@ -148,7 +147,7 @@ function addTripToUser(userID, tripID) {
             console.log("Data loaded: " + data + "\nStatus: " + status);
         });
     console.log("In saveToDatabase");
-}
+}*/
 
 function handleTripElementClick(tripid){
     console.log('Handling click on Trip');
@@ -171,7 +170,7 @@ function getTripByID(tripId, trips) {
 
 
     $.ajax({
-        url: "/trip/" + tripId,
+        url: "/trips/" + tripId,
         type: "get", //send it through get method
         data: {
             id: tripId

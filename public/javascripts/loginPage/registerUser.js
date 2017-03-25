@@ -20,20 +20,6 @@ function validateUser(){
     }
 };
 
-function saveUser(user, password){
-    console.log(user + "\n" + password);
-
-    $.post('/saveUser',
-        {
-            username: user,
-            password: password
-        })
-        .done( function(data,status){
-            console.log("Data loaded: " + data + "\nStatus: " + status);
-        });
-    console.log("In saveToDatabase");
-};
-
 function newUserName(userName, password){
     var newUser;
 
@@ -44,8 +30,8 @@ function newUserName(userName, password){
             //when all the objects are retrieved, do this
             try{
                 //TODO: display, there is already a user with this username
-                alert("There is already a user with this username")
                 var existingUser = data.responseJSON.message[0].userName
+                alert("There is already a user with this username")
             } catch(ex){
                 saveUser(userName, password);
                 getMyPageURL(userName);
@@ -54,13 +40,16 @@ function newUserName(userName, password){
     });
 }
 
-/*function checkName(users, userName){
-    console.log(users);
-    for(var i = 0; i < users.length; i++){
-        if (userName == users[i].username){
-            alert("Det finnes allerede en bruker med dette brukernavnet");
-            return false;
-        }
-    }
-    return true;
-};*/
+function saveUser(user, password){
+    console.log(user + "\n" + password);
+
+    $.post('/users',
+        {
+            username: user,
+            password: password
+        })
+        .done( function(data,status){
+            console.log("Data loaded: " + data + "\nStatus: " + status);
+        });
+    console.log("In saveToDatabase");
+};

@@ -82,10 +82,10 @@ function initGoogleSearch() {
     });
 
     $.ajax({
-        url: '../point', //collects the users call from app
+        url: '../points', //collects the users call from app
         type: "get",
         complete: function(data){
-
+            console.log("in setup leaflet");
             setPointsOnMap(data.responseJSON.message);
         }
     });

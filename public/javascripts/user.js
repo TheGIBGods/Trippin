@@ -10,34 +10,19 @@ $(document).ready(function() {
     //window.onload = function () {
         console.log("calling ajax users");
         $.ajax({
-            url: '/users', //collects the users call from app
+            url: '/users/' + getUserFromURL(), //collects the users call from app
             type: 'get',
             complete: function (data) {
-                //when all the objects are retrieved, do this
-                //console.log(data.responseJSON.message);
                 //call the createUserList function
-                createUserList(data.responseJSON.message);
+                createUserList(data.responseJSON.message[0]);
             }
         });
     //};
 });
 
 //function called before
-function createUserList(users){
-
+function createUserList(user){
+    //setting username in navbar
     document.getElementById("userName").innerHTML = getUserFromURL();
-    //console.log("Brukernavn: " + users[0].username);
+    //console.log("Brukernavn: " + user.username);
 };
-
-/*
-function getUserByID() {
-    $.ajax({
-        url: 'usersByID', //collects the users call from app
-        type: 'get',
-        complete: function (data) {
-            addUserToTrip(data.responseJSON.message);
-        }
-    });
-}
-*/
-

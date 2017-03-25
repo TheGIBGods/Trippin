@@ -6,7 +6,7 @@
 $(document).ready(
     function() {
         $.ajax({
-            url: '/trip', //collects the users call from app
+            url: '/trips', //collects the users call from app
             type: "get",
             complete: function(data){
 

@@ -28,7 +28,7 @@ function shareTrip(){
 function shareWithUser(shareUser){
     console.log("trying to share trip")
     $.ajax({
-     url: '/user/' + shareUser.username + '/'+ getTripFromURL(), //collects the users call from app
+     url: '/users/' + shareUser.username + '/'+ getTripFromURL(), //collects the users call from app
      type: 'put',
      complete: function(data){
      var userDB = data;

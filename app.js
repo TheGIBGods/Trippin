@@ -7,18 +7,12 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 //lag en variabel som viser til modelfilen
 var users = require('./models/user');
-var userByUsername = require('./models/user');
-var userByID= require('./models/user');
-var trip = require('./models/trip');
-var tripOnId = require('./models/trip');
-var point = require('./models/point');
+var trips = require('./models/trip');
+var points = require('./models/point');
 var mongoose = require('mongoose');
 var moment = require('moment');
 
-
-
 var app = express();
-
 
 //Connecting to the database using mongoose
 mongoose.Promise = global.Promise;
@@ -30,163 +24,166 @@ db.once('open', function() {
     // we're connected!
 });
 
-
 //var routes = require('./routes/api.js');
 var router = express.Router();
 
-//hent dataen fra dataasen
-router.get('/users', function (req, res) {
-    console.log('in users method');
-    var response = {};
-    users.find({}, function (err, data) {
-     response = {"message": data};
-     //console.log('response from db is:');
-     //console.log(data);
-     res.json(response);
-     });
-});
-
-router.get('/users/:name', function (req, res) {
-    console.log('in userID method');
-    var userName = req.params.name;
-    console.log("TripID in app: " + userName);
-    var response = {};
-    users.find({username: userName}, function (err, data) {
-        if(err) {
-            console.log("This user does not exist")
-            res.send(err);
-        }
-        response = {"message": data};
-        console.log('response from db is:');
-        console.log(data);
-        res.json(response);
-    });
-});
-
-router.put('/user/:name/:tripID', function(req, res){
-    console.log("in put")
-    users.update({username: req.params.name}, {$set: {'trips': req.params.tripID}}, function(err, data){
-        console.log("in put find")
-        if (err)
-            console.log("couldn't find user")
-            res.send(err);
-    })
-});
-
-router.get('/trip', function (req, res) {
-    console.log('in trip method');
-    var response = {};
-    trip.find({}, function (err, data) {
-        response = {"message": data};
-        //console.log('response from db is:');
-        //console.log(data);
-        res.json(response);
-    });
-});
-
-router.get('/trip/:id', function (req, res) {
-    console.log('in one trip method');
-    var tripID = req.params.id;
-    console.log("TripID in app: " + tripID);
-    var response = {};
-    trip.find({_id: tripID}, function (err, data) {
-        response = {"message": data};
-        console.log('response from db is:');
-        console.log(data);
-        res.json(response);
-    });
-});
-
-router.route('/point')
-    .get( function (req, res) {
-        console.log('in point method');
+//controllers for user
+//all users
+router.route('/users')
+    /*.get( function (req, res) {
+        console.log('in users method');
         var response = {};
-        point.find({}, function (err, data) {
-
+        users.find({}, function (err, data) {
             if(err)
+                console.log("couldn't find users");
                 res.send(err);
             response = {"message": data};
-            res.json(response);
+            //res.json(response);
+        });
+    })*/
 
-
-        }).sort({'name': 1});
+    .post( function(req, res){
+        var newUser = new users(req.body);
+        console.log("in savePoint");
+        newUser.save(function(err, user)  {
+            if (err) return console.error(err);
+            else console.log("user registration success");
+        });
     });
 
-
-router.route('/points/:points_id')
-
+//one user
+router.route('/users/:name')
     .get( function (req, res) {
-        console.log('in point method');
+        var userName = req.params.name;
         var response = {};
-        point.find(res, function (err, data) {
-
-            if(err)
+        users.find({username: userName}, function (err, data) {
+            if(err) {
+                console.log("This user does not exist");
                 res.send(err);
+            }
+            response = {"message": data};
+            res.json(response);
+        });
+    });
 
-            res.json(data);
+//controllers for trips
+//all trips
+router.route('/trips')
+    .get( function (req, res) {
+        console.log("In trips.get");
+        var response = {};
+        trips.find({}, function (err, data) {
+            console.log("finding trips");
+            if(err) {
+                console.log("couldn't get all trips");
+                res.send(err);
+            }
 
-
+            response = {"message": data};
+            res.json(response);
         });
     })
+
+    .post( function(req, res){
+        var newTrip = new trips(req.body);
+        newTrip.save(function(err, point)  {
+            if (err) return console.error(err);
+            else console.log("user registration success")
+        });
+    });
+
+//one trip
+router.route('/trips/:id')
+    .get( function (req, res) {
+        var tripID = req.params.id;
+        var response = {};
+        trips.find({_id: tripID}, function (err, data) {
+            if(err) {
+                console.log("Couldn't find trip");
+                res.send(err);
+            }
+
+            response = {"message": data};
+            res.json(response);
+        });
+    });
+
+//controllers for point
+//all points
+router.route('/points')
+    .get( function (req, res) {
+        console.log('in point.get');
+        var response = {};
+        points.find({}, function (err, data) {
+            if(err) {
+                console.log("error in get all points");
+                res.send(err);
+            }
+
+            response = {"message": data};
+            res.json(response);
+        }).sort({'name': 1});
+    })
+
+    .post( function(req, res){
+        var newPoint = new points(req.body);
+        var Point = newPoint.save(function(err, point)  {
+            if (err) return console.error(err);
+            else console.log("signIn success")
+        });
+        return Point;
+    });
+
+//one point
+router.route('/points/:id')
+    .get( function (req, res) {
+        console.log('in point method');
+        //var response = {};
+        points.find({trip_ID: req.params.id}, function (err, data) {
+            if(err) {
+                console.log("couldn't find point for this trip id");
+                res.send(err);
+            }
+
+            res.json(data);
+        });
+    })
+
     .delete(function (req,res) {
         console.log(" in point delete");
-        point.remove({
-            _id: req.params.points_id
+        points.remove({
+            _id: req.params.id
         }, function (err, point) {
             if(err)
                 res.send(err);
 
-
             res.json({message:'Successfully deleted'});
         });
-
     });
 
-router.post('/savePoint', function(req, res){
-    var newPoint = new point(req.body);
-    var Point = newPoint.save(function(err, point)  {
-            if (err) return console.error(err);
-            else console.log("signIn success")
+//controllers for arrays
+//save tripID to user
+router.route('/users/:name/:tripID')
+    .put( function(req, res){
+    users.update({username: req.params.name}, {$set: {'trips': req.params.tripID}}, function(err, data){
+        if (err) {
+            console.log("couldn't find user or save tripID");
+            res.send(err);
         }
-    )
-    console.log("in savePoint");
-    return Point;
-});
+        });
+    });
 
-router.post('/saveUser', function(req, res){
-    var newUser = new users(req.body);
-    newUser.save(function(err, user)  {
-            if (err) return console.error(err);
-            else console.log("user registration success")
-        }
-    )
-    console.log("in savePoint");
-});
+//save username to trip
+router.route('trip/:tripID/:userName')
+    .post( function (req, res){
+        var tripID = req.body.tripID;
+        var userID = req.body.userID;
+        console.log('tripID and User ID: ' + tripID + ', '+ userName);
 
-router.post('/addTripToUser', function (req, res){
-    var tripID = req.body.tripID;
-    var userID = req.body.userID;
-    console.log('tripID and User ID: ' + tripID + ', '+ userID);
-
-    users.findByIdAndUpdate(
-        userID,
-        {$push: {trips: tripID} },
-        {safe: true, upsert: true},
-        function(err, model) {
-            if(err) return handleError(err);
-        }
-    );
-});
-
-router.post('/createTrip', function(req, res){
-    var newTrip = new trip(req.body);
-    newTrip.save(function(err, point)  {
-            if (err) return console.error(err);
-            else console.log("user registration success")
-        }
-    )
-    console.log("in createTrip");
-});
+        trips.findByIdAndUpdate(function(err, model) {
+                if(err) return handleError(err);
+            });
+    });
 
 // view engine setup
 app.set('views', path.join(__dirname, 'public/views'));
