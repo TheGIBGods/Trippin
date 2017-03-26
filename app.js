@@ -175,7 +175,7 @@ router.route('/points/:id')
     .get( function (req, res) {
         console.log('in point method');
         var response = {};
-        points.find({trip_ID: req.params.id}, function (err, data) {
+        points.find({_id: req.params.id}, function (err, data) {
             if(err) {
                 console.log("couldn't find point for this trip id");
                 res.send(err);
@@ -215,6 +215,23 @@ router.route('/points/:id')
 
                 res.json({message: 'Point updated!'});
             });
+        });
+    });
+
+router.route('/points/trip/:id')
+    .get( function (req, res) {
+        console.log('in point method');
+        var response = {};
+        points.find({trip_ID: req.params.id}, function (err, data) {
+            if(err) {
+                console.log("couldn't find point for this trip id");
+                res.send(err);
+            }
+
+            response = {"message": data};
+            console.log("getting points");
+            console.log(data)
+            res.json(data);
         });
     });
 

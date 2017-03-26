@@ -82,11 +82,12 @@ function initGoogleSearch() {
     });
 
     $.ajax({
-        url: '../points', //collects the users call from app
+        url: '/points/trip/' + getTripFromURL(), //collects the users call from app
         type: "get",
         complete: function(data){
             console.log("in setup leaflet");
-            setPointsOnMap(data.responseJSON.message);
+            console.log(data);
+            setPointsOnMap(data.responseJSON);
         }
     });
 
@@ -104,40 +105,37 @@ function initGoogleSearch() {
 var markersOnMap = new Array();
 var setPointsOnMap = function (points) {
 
-    var tripID = getTripFromURL();
-
     for(p in points) {
-        if(points[p].trip_ID == tripID) {
-            var x = points[p].x_koord;
-            var y = points[p].y_koord;
+        var x = points[p].x_koord;
+        var y = points[p].y_koord;
 
-            //Making markers
-            var Icon = L.icon({
-                iconUrl: '/images/' + points[p].category + '.png',
-                iconSize: [38, 40], // size of the icon
-                popupAnchor: [0, -10] // point from which the popup should open relative to the iconAnchor
-            });
+        //Making markers
+        var Icon = L.icon({
+            iconUrl: '/images/' + points[p].category + '.png',
+            iconSize: [38, 40], // size of the icon
+            popupAnchor: [0, -10] // point from which the popup should open relative to the iconAnchor
+        });
 
-            var marker = L.marker([x, y], {icon: Icon});
-            marker.addTo(mymap); //adding marker to map
-            //adding popup to marker
-            marker.bindPopup(
+        console.log(x + " " + y);
+        var marker = L.marker([x, y], {icon: Icon});
+        marker.addTo(mymap); //adding marker to map
+        //adding popup to marker
+        marker.bindPopup(
 
-                "<span class = 'popupHeader'><h5 class = 'popupName' id = popName>" + points[p].name  + "</h5>"  +
-                " <hr class = 'myline'> </span>" +
-                "<span class='dateBox'><b>" + "Dato: " + "</b><span id='popDate'>" + points[p].date + "</span></span> " +
-                "<span class = addedByBox><b>" + "Lagt til av: "+ "</b><span id = 'popCreatedBy'>" + points[p].created_by + "</span></span>" +
-                "<hr class = 'myline'><b>" + "Adresse: " + "</b><span id='popAddress'>" + points[p].address + "</span></span><br><br>   " +
-                "<b>" + "Kommentar: " + "</b></span><span id='popComment'>" + points[p].comment + "</span><br><br>" +
-                "<input  type='hidden' id='pointID' value =" + points[p]._id + ">"  +
-                "<input type='hidden' id='pointCategory' value =" + points[p].category + ">" +
-                "<button onclick='openEditWindow()' type = 'button' class = 'btn  editButton'>Endre</button>" +
-                "<button onclick ='deleteOpenPoint()'  type = 'button' class = 'btn deleteButton'>Slett</button>"
+            "<span class = 'popupHeader'><h5 class = 'popupName' id = popName>" + points[p].name  + "</h5>"  +
+            " <hr class = 'myline'> </span>" +
+            "<span class='dateBox'><b>" + "Dato: " + "</b><span id='popDate'>" + points[p].date + "</span></span> " +
+            "<span class = addedByBox><b>" + "Lagt til av: "+ "</b><span id = 'popCreatedBy'>" + points[p].created_by + "</span></span>" +
+            "<hr class = 'myline'><b>" + "Adresse: " + "</b><span id='popAddress'>" + points[p].address + "</span></span><br><br>   " +
+            "<b>" + "Kommentar: " + "</b></span><span id='popComment'>" + points[p].comment + "</span><br><br>" +
+            "<input  type='hidden' id='pointID' value =" + points[p]._id + ">"  +
+            "<input type='hidden' id='pointCategory' value =" + points[p].category + ">" +
+            "<button onclick='openEditWindow()' type = 'button' class = 'btn  editButton'>Endre</button>" +
+            "<button onclick ='deleteOpenPoint()'  type = 'button' class = 'btn deleteButton'>Slett</button>"
 
-            );
+        );
 
-            markersOnMap.push(marker);
-        }
+        markersOnMap.push(marker);
     }
     if (markersOnMap.length == 0){
         mymap.setView([38.82259, -2.8125], 0);
