@@ -108,8 +108,8 @@ function makeTripList(trips) {
 
 function createTrip(){
     var name = $('#nameTrip').val();
-    var comment = $('#imgUrl').val();
-    var imglink = $('#commentTrip').val();
+    var comment = $('#commentTrip').val();
+    var imglink = $('#imgUrl').val();
 
     if(name != "") {
         $(function () {
