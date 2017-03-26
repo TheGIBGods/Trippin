@@ -51,18 +51,6 @@ router.route('/users')
         });
     });
 
-//save tripID to user
-router.route('/users/:name/:tripID')
-    .put( function(req, res){
-        users.update({username: req.params.name}, {$push: {'trips': {'tripName': req.params.tripID}}}, function(err, data){
-            if (err) {
-                console.log("couldn't save tripID to user");
-                res.send(err);
-            }
-            console.log("saved tripID")
-        });
-    });
-
 //one user
 router.route('/users/:name')
     .get( function (req, res) {
@@ -77,6 +65,19 @@ router.route('/users/:name')
             res.json(response);
         });
     });
+
+//save tripID to user
+router.route('/users/:name/:tripID')
+    .put( function(req, res){
+        users.update({username: req.params.name}, {$push: {'trips': {'tripName': req.params.tripID}}}, function(err, data){
+            if (err) {
+                console.log("couldn't save tripID to user");
+                res.send(err);
+            }
+            console.log("saved tripID")
+        });
+    });
+
 
 //controllers for trips
 //all trips
@@ -112,17 +113,6 @@ router.route('/trips')
         });
     });
 
-//save username to trip
-router.route('/trips/:tripID/:userName')
-    .put( function (req, res){
-        trips.update({_id: req.params.tripID}, {$push: {'users': {'userName': req.params.userName}}}, function(err, data){
-            if(err){
-                console.log("couldn't save username to trip")
-                res.send(err);
-            }
-        });
-    });
-
 //one trip
 router.route('/trips/:id')
     .get( function (req, res) {
@@ -136,6 +126,17 @@ router.route('/trips/:id')
 
             response = {"message": data};
             res.json(response);
+        });
+    });
+
+//save username to trip
+router.route('/trips/:tripID/:userName')
+    .put( function (req, res){
+        trips.update({_id: req.params.tripID}, {$push: {'users': {'userName': req.params.userName}}}, function(err, data){
+            if(err){
+                console.log("couldn't save username to trip")
+                res.send(err);
+            }
         });
     });
 
@@ -215,31 +216,6 @@ router.route('/points/:id')
                 res.json({message: 'Point updated!'});
             });
         });
-    });
-
-
-//controllers for arrays
-//save tripID to user
-router.route('/users/:name/:tripID')
-    .put( function(req, res){
-    users.update({username: req.params.name}, {$set: {'trips': req.params.tripID}}, function(err, data){
-        if (err) {
-            console.log("couldn't find user or save tripID");
-            res.send(err);
-        }
-        });
-    });
-
-//save username to trip
-router.route('trip/:tripID/:userName')
-    .post( function (req, res){
-        var tripID = req.body.tripID;
-        var userID = req.body.userID;
-        console.log('tripID and User ID: ' + tripID + ', '+ userName);
-
-        trips.findByIdAndUpdate(function(err, model) {
-                if(err) return handleError(err);
-            });
     });
 
 // view engine setup
