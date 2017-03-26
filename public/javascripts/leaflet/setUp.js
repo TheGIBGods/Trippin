@@ -115,8 +115,7 @@ var setPointsOnMap = function (points) {
             iconSize: [38, 40], // size of the icon
             popupAnchor: [0, -10] // point from which the popup should open relative to the iconAnchor
         });
-
-        console.log(x + " " + y);
+        
         var marker = L.marker([x, y], {icon: Icon});
         marker.addTo(mymap); //adding marker to map
         //adding popup to marker
