@@ -102,14 +102,12 @@ function saveToDatabase(name, category, comment, date, address){
             created_by: getUserFromURL(),
             trip_ID: getTripFromURL()
 
-        },
-        function(data,status){
+        }).done(function(data,status){
                 console.log("Data loaded: " + data + "\nStatus: " + status);
                 console.log(data);
                 //callback function
                 setPointsOnMap(data);
-        }
-        );
+        });
 
     addSinglePointToMap(name, category, comment, date, address, x, y);
 

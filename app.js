@@ -158,11 +158,15 @@ router.route('/points')
 
     .post( function(req, res){
         var newPoint = new points(req.body);
-        var Point = newPoint.save(function(err, point)  {
+        var response = {};
+        newPoint.save(function(err, point)  {
             if (err) return console.error(err);
             else console.log("signIn success")
+
+            response = {"message": point};
+            console.log(response);
+            res.json(response.message._id);
         });
-        return Point;
     });
 
 //one point
