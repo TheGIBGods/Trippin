@@ -153,6 +153,9 @@ var setPointsOnMap = function (points) {
     else if(firstIteration){
         var group = L.featureGroup((markersOnMap));
         mymap.fitBounds(group.getBounds());
+        if (mymap.getZoom() > 15) {
+            mymap.setZoom(15);
+        }
         firstIteration = false;
     }
 
