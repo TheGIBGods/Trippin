@@ -13,6 +13,8 @@ initGoogleSearch();
 function initLeaflet(){
     mymap = new L.map('mapid').setView([miami[0], miami[1]], 3);
 
+    //http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x} alternative map
+
     L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
         maxZoom: 18,
         minZoom: 2,
