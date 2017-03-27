@@ -198,32 +198,45 @@ function handleNewTripElementClick(){
     $('#modalTrip').modal('toggle');
 }
 
-function makeTripTable(trips) {
+function makeTripTable(tripsall) {
+    var username = getUserFromURL();
+    var trips = new Array;
+
+    for (i =0; i< tripsall.length; i++){
+        console.log(tripsall[i].users)
+        for(j in tripsall[i].users){
+            if(tripsall[i].users[j].userName == username){
+                trips.push(tripsall[i]);
+            }
+        }
+    }
+    console.log("Trips length: " + trips.length);
     var count = 0;
     var row = 0;
 
     for (i =0; i< trips.length +1; i++){
+
         if(count == 4){
             count = 0;
             row++;
             //console.log("row er: "+ row)
             //var el1 = document.createElement("tr")
             //el1.setAttribute("id", "tableRow"+row)
-
+            console.log("count, row" + count + ", " + row);
             $('#myTable tr:last').after("<tr id = tableRow"+ row+ "> </tr> ");
             for (j=0; j< 5; j++){
-                var el = document.createElement("td")
+                var el = document.createElement("td");
                 var num = i+j+1;
-                el.setAttribute("id", "tableElement" + num)
+                el.setAttribute("id", "tableElement" + num);
+                el.setAttribute("class", "tripTableElem");
                 $("#tableRow"+row).append(el)
             }
-
         }else{
             count ++;
-            //console.log(count)
+            console.log("count: " + count);
         }
 
-        //console.log("i er: " + i)
+        console.log("i er: " + i);
         if(i == trips.length){
             var img = document.createElement("img");
             img.setAttribute("src", "/images/nytur.png");
@@ -236,7 +249,7 @@ function makeTripTable(trips) {
 
             $(str).append(img);
         }else{
-            if(userTrips.includes(trips[i]._id)) {
+            //if(userTrips.includes(trips[i]._id)) {
                 var x = document.getElementById("tableElement" + i);
                 x.innerHTML = trips[i].name;
                 //x.setAttribute("id", "tableElement"+ count+1)
@@ -254,9 +267,9 @@ function makeTripTable(trips) {
                 $(str).append(img);
 
                 var p = document.createElement("p");
-                p.innerHTML = "hei"//trips[i].comment;
+                p.innerHTML = trips[i].comment;
                 $(str).append(p);
-            }
+            //}
         }
 
     }

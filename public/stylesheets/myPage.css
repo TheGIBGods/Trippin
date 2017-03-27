@@ -34,6 +34,10 @@ html, body{
     width: 100%;
     height: 100%;
 }
+.tripTableElem{
+    width: 100px;
+    height: 100px;
+}
 
 .canBeClicked:hover{
     cursor: pointer;
