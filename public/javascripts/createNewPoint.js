@@ -84,32 +84,34 @@ function editToDatabase(name, category, comment, date, address){
 
 }
 
+function saveToDatabase(name, category, comment, date, address){
 
-function saveToDatabase(name, category, comment, date, address) {
     var x = lat;
     var y = lng;
+    $.post("/points",
+        {
+            x_koord: x,
+            y_koord: y,
+            name: name,
+            category: category,
+            comment: comment,
+            date: date,
 
-    var data = {
-        name: name,
-        category: category,
-        comment: comment,
-        date: date,
-        address: address,
-        x_koord: x,
-        y_koord: y,
-        created_by: getUserFromURL(),
-        trip_ID: getTripFromURL()
-    }
-
-    $.ajax({
-
-        url:"/points",
-        type:"post",
-        data: data
-        });
+            address: address,
+            created_by: getUserFromURL(),
+            trip_ID: getTripFromURL()
 
 
-    addSinglePointToMap(name, category, comment, date, address, x, y);
+            }).done(function(data,status){
+            console.log("Data loaded: " + data + "\nStatus: " + status);
+            console.log(data);
+            //callback function
+            //setPointsOnMap(data);
+
+
+           });
+
+addSinglePointToMap(name, category, comment, date, address, x, y);
 }
 
 
