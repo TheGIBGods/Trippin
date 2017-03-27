@@ -13,6 +13,8 @@ initGoogleSearch();
 function initLeaflet(){
     mymap = new L.map('mapid').setView([miami[0], miami[1]], 3);
 
+    //http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x} alternative map
+
     L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
         maxZoom: 18,
         minZoom: 2,
@@ -59,9 +61,14 @@ function initGoogleSearch() {
                 place.geometry.location.lat().toString(),
                 place.geometry.location.lng().toString()
                 ]);
-            marker.bindPopup("<b>Navn: </b>" + "<span  id='pointName'>" + place.name + "</span>" + "<br>"
-                + "<b > Adresse: </b>" + "<span  id='pointAddress'>" + place.formatted_address + "</span>" + "<br>"
-             + '<button onclick ="openSaveWindow();"  type = "button" class = "btn saveButton"> Lagre punkt!</button>'
+            marker.bindPopup(
+
+
+                "<span class = 'popupHeader'><h5 class = 'popupName' id = pointName>" + place.name  + "</h5>"  +
+                " <hr class = 'myline'> </span>" +
+                "<b > Adresse: </b>" + "<span  id='pointAddress'>" + place.formatted_address + "</span>" + "<br>" +
+                "<b > Nettside: </b>" + "<a href = " + place.website + " id='pointWebsite'>" + place.website + "</a>" + "<br>" +
+                '<button onclick ="openSaveWindow();"  type = "button" class = "btn saveButton"> Lagre punkt!</button>'
                 );
 
 
@@ -93,15 +100,14 @@ function initGoogleSearch() {
 
     //getPointsFromDB(); //We now know that the map has been initialied, so we can add points to it, calling the method below
 
-};
+}
 
 //A getMap-function in case we need it
 /*var getMap = function () {
     console.log('In getMap() function');
     return map;
 };*/
-
-
+var firstIteration = true;
 var markersOnMap = new Array();
 var setPointsOnMap = function (points) {
 
@@ -119,6 +125,7 @@ var setPointsOnMap = function (points) {
         var marker = L.marker([x, y], {icon: Icon});
         marker.addTo(mymap); //adding marker to map
         //adding popup to marker
+
         marker.bindPopup(
 
             "<span class = 'popupHeader'><h5 class = 'popupName' id = popName>" + points[p].name  + "</h5>"  +
@@ -136,13 +143,28 @@ var setPointsOnMap = function (points) {
 
         markersOnMap.push(marker);
     }
+
+
+
+
+
     if (markersOnMap.length == 0){
         mymap.setView([38.82259, -2.8125], 0);
     }
+    else if(firstIteration){
+        var group = L.featureGroup((markersOnMap));
+        mymap.fitBounds(group.getBounds());
+        if (mymap.getZoom() > 15) {
+            mymap.setZoom(15);
+        }
+        firstIteration = false;
+    }
+
     else{
-        setMapView(markersOnMap[0].getLatLng().lat, markersOnMap[0].getLatLng().lng);
+        setMapView(markersOnMap[markersOnMap.length - 1].getLatLng().lat, markersOnMap[markersOnMap.length - 1].getLatLng().lng);
 
     }
+
 
 };
 
@@ -196,7 +218,7 @@ function setlng(lng){
 var currentMarker;
 mymap.on('popupopen', function (e) {
     currentMarker = e.popup._source;
-})
+});
 
 
 var setMapView = function (x, y) {

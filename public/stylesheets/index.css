@@ -205,6 +205,10 @@ button:hover{
     padding: 0px 10px;
 }
 
+#popComment{
+    white-space: pre-wrap;
+}
+
 ul{
     display: none;
 }

@@ -61,35 +61,47 @@ function editPoint(){
     }
 }
 
-function editToDatabase(name, category, comment, date, address){
+function editToDatabase(name, category, comment, date, address) {
     var pointid = document.getElementById('pointID').value;
     var x = lat;
     var y = lng;
     $.ajax({
         url: '../points/' + pointid, //collects the users call from app
 
-        data:{x_koord: x,
+        data: {
+            x_koord: x,
             y_koord: y,
             name: name,
             category: category,
             comment: comment,
             date: date,
-            address: address},
+            address: address
+        },
 
         success: function () {
             console.log("Point changed")
         },
         type: "put"
+    }).done(function (data, status) {
+        console.log("Data loaded: " + data + "\nStatus: " + status);
+        console.log(data);
+        //callback function
+        var pointArray = new Array();
+        pointArray.push(data);
+        currentMarker.remove()
+        $('#' + pointid).remove();
+
+        setPointsOnMap(pointArray);
+        createPointList(pointArray);
+        markersOnMap[markersOnMap.length - 1].openPopup();
+
     });
-
 }
-
-
 function saveToDatabase(name, category, comment, date, address){
 
     var x = lat;
     var y = lng;
- $.post("/points",
+    $.post("/points",
         {
             x_koord: x,
             y_koord: y,
@@ -102,18 +114,24 @@ function saveToDatabase(name, category, comment, date, address){
             created_by: getUserFromURL(),
             trip_ID: getTripFromURL()
 
-        }).done(function(data,status){
-                console.log("Data loaded: " + data + "\nStatus: " + status);
-                console.log(data);
-                //callback function
-                setPointsOnMap(data);
-        });
 
-    addSinglePointToMap(name, category, comment, date, address, x, y);
+            }).done(function(data,status){
+            console.log("Data loaded: " + data + "\nStatus: " + status);
+            console.log(data);
+            //callback function
+            var pointArray = new Array();
+            pointArray.push(data);
+            setPointsOnMap(pointArray);
+            createPointList(pointArray);
+            markersOnMap[markersOnMap.length -1 ].openPopup();
 
 
+           });
 
 }
+
+
+
 
 function deleteOpenPoint() {
     var pointid = document.getElementById('pointID').value;
@@ -128,5 +146,6 @@ function deleteOpenPoint() {
 
     })
 }
+
 
 
