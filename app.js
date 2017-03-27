@@ -166,7 +166,7 @@ router.route('/points')
 
             response = {"message": point};
             console.log(response);
-            res.json(response.message._id);
+            res.json(response.message);
         });
     });
 
