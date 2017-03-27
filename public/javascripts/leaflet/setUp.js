@@ -125,6 +125,7 @@ var setPointsOnMap = function (points) {
         var marker = L.marker([x, y], {icon: Icon});
         marker.addTo(mymap); //adding marker to map
         //adding popup to marker
+
         marker.bindPopup(
 
             "<span class = 'popupHeader'><h5 class = 'popupName' id = popName>" + points[p].name  + "</h5>"  +
