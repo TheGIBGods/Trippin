@@ -88,6 +88,7 @@ function editToDatabase(name, category, comment, date, address) {
         //callback function
         var pointArray = new Array();
         pointArray.push(data);
+        currentMarker.remove()
         $('#' + pointid).remove();
 
         setPointsOnMap(pointArray);

@@ -107,7 +107,7 @@ function initGoogleSearch() {
     console.log('In getMap() function');
     return map;
 };*/
-
+var firstIteration = true;
 var markersOnMap = new Array();
 var setPointsOnMap = function (points) {
 
@@ -143,14 +143,24 @@ var setPointsOnMap = function (points) {
         markersOnMap.push(marker);
     }
 
+
+
+
+
     if (markersOnMap.length == 0){
         mymap.setView([38.82259, -2.8125], 0);
+    }
+    else if(firstIteration){
+        var group = L.featureGroup((markersOnMap));
+        mymap.fitBounds(group.getBounds());
+        firstIteration = false;
     }
 
     else{
         setMapView(markersOnMap[markersOnMap.length - 1].getLatLng().lat, markersOnMap[markersOnMap.length - 1].getLatLng().lng);
 
     }
+
 
 };
 
