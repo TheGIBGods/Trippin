@@ -59,9 +59,14 @@ function initGoogleSearch() {
                 place.geometry.location.lat().toString(),
                 place.geometry.location.lng().toString()
                 ]);
-            marker.bindPopup("<b>Navn: </b>" + "<span  id='pointName'>" + place.name + "</span>" + "<br>"
-                + "<b > Adresse: </b>" + "<span  id='pointAddress'>" + place.formatted_address + "</span>" + "<br>"
-             + '<button onclick ="openSaveWindow();"  type = "button" class = "btn saveButton"> Lagre punkt!</button>'
+            marker.bindPopup(
+
+
+                "<span class = 'popupHeader'><h5 class = 'popupName' id = pointName>" + place.name  + "</h5>"  +
+                " <hr class = 'myline'> </span>" +
+                "<b > Adresse: </b>" + "<span  id='pointAddress'>" + place.formatted_address + "</span>" + "<br>" +
+                "<b > Nettside: </b>" + "<a href = " + place.website + " id='pointWebsite'>" + place.website + "</a>" + "<br>" +
+                '<button onclick ="openSaveWindow();"  type = "button" class = "btn saveButton"> Lagre punkt!</button>'
                 );
 
 

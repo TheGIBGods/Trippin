@@ -11,13 +11,9 @@ $(document).ready(
             var userDB = data.responseJSON.message[0];
             console.log(userDB);
             try {
-                console.log("in try");
-                console.log(userDB.trips);
                 for (var i = 0; i < userDB.trips.length; i++){
                     userTrips.push(userDB.trips[i].tripName);
                 }
-
-                console.log(userTrips);
                 /*userTrips = userDB.trips[0].tripName;
                 console.log(userDB.trips.length);
                 console.log(userTrips);*/
@@ -134,6 +130,7 @@ function createTrip(){
                 addUsernameToTrip(getUserFromURL(), tripID);
                 console.log(tripID);
                 tripUrl(tripID);
+
 
         });
     };

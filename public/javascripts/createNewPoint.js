@@ -85,35 +85,35 @@ function editToDatabase(name, category, comment, date, address){
 }
 
 
-function saveToDatabase(name, category, comment, date, address){
-
+function saveToDatabase(name, category, comment, date, address) {
     var x = lat;
     var y = lng;
- $.post("/points",
-        {
-            x_koord: x,
-            y_koord: y,
-            name: name,
-            category: category,
-            comment: comment,
-            date: date,
 
-            address: address,
-            created_by: getUserFromURL(),
-            trip_ID: getTripFromURL()
+    var data = {
+        name: name,
+        category: category,
+        comment: comment,
+        date: date,
+        address: address,
+        x_koord: x,
+        y_koord: y,
+        created_by: getUserFromURL(),
+        trip_ID: getTripFromURL()
+    }
 
-        }).done(function(data,status){
-                console.log("Data loaded: " + data + "\nStatus: " + status);
-                console.log(data);
-                //callback function
-                setPointsOnMap(data);
+    $.ajax({
+
+        url:"/points",
+        type:"post",
+        data: data
         });
 
+
     addSinglePointToMap(name, category, comment, date, address, x, y);
-
-
-
 }
+
+
+
 
 function deleteOpenPoint() {
     var pointid = document.getElementById('pointID').value;
