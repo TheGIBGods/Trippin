@@ -61,29 +61,41 @@ function editPoint(){
     }
 }
 
-function editToDatabase(name, category, comment, date, address){
+function editToDatabase(name, category, comment, date, address) {
     var pointid = document.getElementById('pointID').value;
     var x = lat;
     var y = lng;
     $.ajax({
         url: '../points/' + pointid, //collects the users call from app
 
-        data:{x_koord: x,
+        data: {
+            x_koord: x,
             y_koord: y,
             name: name,
             category: category,
             comment: comment,
             date: date,
-            address: address},
+            address: address
+        },
 
         success: function () {
             console.log("Point changed")
         },
         type: "put"
+    }).done(function (data, status) {
+        console.log("Data loaded: " + data + "\nStatus: " + status);
+        console.log(data);
+        //callback function
+        var pointArray = new Array();
+        pointArray.push(data);
+        $('#' + pointid).remove();
+
+        setPointsOnMap(pointArray);
+        createPointList(pointArray);
+        markersOnMap[markersOnMap.length - 1].openPopup();
+
     });
-
 }
-
 function saveToDatabase(name, category, comment, date, address){
 
     var x = lat;
@@ -106,12 +118,15 @@ function saveToDatabase(name, category, comment, date, address){
             console.log("Data loaded: " + data + "\nStatus: " + status);
             console.log(data);
             //callback function
-            //setPointsOnMap(data);
+            var pointArray = new Array();
+            pointArray.push(data);
+            setPointsOnMap(pointArray);
+            createPointList(pointArray);
+            markersOnMap[markersOnMap.length -1 ].openPopup();
 
 
            });
 
-addSinglePointToMap(name, category, comment, date, address, x, y);
 }
 
 
@@ -130,5 +145,6 @@ function deleteOpenPoint() {
 
     })
 }
+
 
 

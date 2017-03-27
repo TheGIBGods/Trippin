@@ -213,7 +213,9 @@ router.route('/points/:id')
                 if(err)
                     res.send(err);
 
-                res.json({message: 'Point updated!'});
+                response = {"message": points};
+                console.log(response);
+                res.json(response.message);
             });
         });
     });

@@ -100,14 +100,13 @@ function initGoogleSearch() {
 
     //getPointsFromDB(); //We now know that the map has been initialied, so we can add points to it, calling the method below
 
-};
+}
 
 //A getMap-function in case we need it
 /*var getMap = function () {
     console.log('In getMap() function');
     return map;
 };*/
-
 
 var markersOnMap = new Array();
 var setPointsOnMap = function (points) {
@@ -143,11 +142,13 @@ var setPointsOnMap = function (points) {
 
         markersOnMap.push(marker);
     }
+
     if (markersOnMap.length == 0){
         mymap.setView([38.82259, -2.8125], 0);
     }
+
     else{
-        setMapView(markersOnMap[0].getLatLng().lat, markersOnMap[0].getLatLng().lng);
+        setMapView(markersOnMap[markersOnMap.length - 1].getLatLng().lat, markersOnMap[markersOnMap.length - 1].getLatLng().lng);
 
     }
 
@@ -203,7 +204,7 @@ function setlng(lng){
 var currentMarker;
 mymap.on('popupopen', function (e) {
     currentMarker = e.popup._source;
-})
+});
 
 
 var setMapView = function (x, y) {
