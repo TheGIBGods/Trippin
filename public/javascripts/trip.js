@@ -110,6 +110,11 @@ function createTrip(){
     var name = $('#nameTrip').val();
     var comment = $('#commentTrip').val();
     var imglink = $('#imgUrl').val();
+    console.log("imglink: " + imglink);
+    if(imglink.trim().length == 0){
+        console.log("Empty imglink");
+        imglink = "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Globe_centered_in_the_Atlantic_Ocean_(green_and_grey_globe_scheme).svg/2000px-Globe_centered_in_the_Atlantic_Ocean_(green_and_grey_globe_scheme).svg.png";
+    }
 
     if(name != "") {
         $(function () {
