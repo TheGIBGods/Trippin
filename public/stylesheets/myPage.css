@@ -4,8 +4,30 @@ html, body{
     padding: 0px;
 }
 
+.modal-header{
+    background-color: #ffcc99;
+    border-bottom: 20px;
+}
+
 *{
     font-family: Raleway, Arial;
+}
+
+
+.form{
+    width: 20%;
+    text-align: right;
+    padding-right: 10px;
+    vertical-align: top;
+}
+.popup {
+    padding: 10px;
+}
+
+
+#nameTrip, #imgUrl, #commentTrip{
+    width: 66%;
+    vertical-align: top;
 }
 
 #createNewTrip{
@@ -88,7 +110,7 @@ th{
     display: none;
     position: absolute;
     background-color: #ffbf80;
-    max-width: 100px;
+    max-width: 200px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     padding: 12px 16px;
     z-index: 1;
@@ -140,6 +162,32 @@ a{
     overflow-y:auto;
 }
 
+.submit-btn{
+    float: right;
+    background-color: #f2f2f2;
+    width: 30%;
+}
+
+.cancel-btn{
+    float: left;
+    background-color: #f2f2f2;
+    width: 30%;
+    margin: 0;
+}
+
+.break-text{
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+
+.tripClick:hover{
+
+    text-decoration: underline;
+}
 
 
 

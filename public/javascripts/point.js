@@ -95,7 +95,7 @@ function  websiteHTML(website) {
     }
     else{
         console.log("Komt Hit");
-       return "<a href = " + website + " id='pointWebsite'>" + website + "</a>"
+       return "<a href = " + website + " id='pointWebsite' target='_blank'>" + website + "</a>"
     }
 
 }
@@ -105,7 +105,7 @@ function markerWebsite(website) {
         return ""
     }
     else {
-        return "<b class = popup-list-left>" + "Nettside: " + "</b>" + "<a id = 'popWebsite' href =" + website + ">" + website+ "</a><br><br>"
+        return "<b class = popup-list-left>" + "Nettside: " + "</b>" + "<a id = 'popWebsite' href =" + website + " target='_blank'>" + website+ "</a><br><br>"
     }
 
 }

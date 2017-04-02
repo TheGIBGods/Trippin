@@ -19,6 +19,12 @@ h4{
 #namePointEdit, #namePoint, #datepickerEdit, #datepicker, #addressPointEdit, #addressPoint, #commentPointEdit, #commentPoint, #websitePointEdit, #websitePoint{
     width: 66%;
     vertical-align: top;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
 
 }
 #commentPointEdit, #commentPoint{
@@ -175,6 +181,12 @@ iframe{
     z-index: 1;
 }
 
+.tripClick:hover{
+
+    text-decoration: underline;
+}
+
+
 #user:hover .user-content, #trips:hover .trips-content {
     display: block;
 }
@@ -206,9 +218,18 @@ p, li{
     width: 300px;
 }
 
+.leaflet-popup{
+}
+
 .leaflet-popup-content{
     display:inline-block;
     min-width: 300px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
 }
 
 button{
@@ -253,7 +274,10 @@ button:hover{
 }
 
 #popComment{
+    max-height: 250px;
+    width: 320px;
     white-space: pre-wrap;
+    overflow-y: auto;
 }
 
 
@@ -277,6 +301,7 @@ ul{
 .scrollbar{
     overflow-y:auto;
 }
+
 
 .form{
     width: 20%;
@@ -306,5 +331,7 @@ a{
 .pointClick{
     color: dimgrey;
 }
+
+
 
 

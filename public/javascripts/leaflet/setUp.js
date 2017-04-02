@@ -134,7 +134,7 @@ var setPointsOnMap = function (points) {
             "<span class = addedByBox><b>" + "Lagt til av: "+ "</b><span id = 'popCreatedBy'>" + points[p].created_by + "</span></span>" +
             "<hr class = 'myline'><b class = popup-list-left>" + "Adresse: " + "</b><span id='popAddress'>" + points[p].address + "</span></span><br><br>   " +
             markerWebsite(points[p].website) +
-            "<b class = popup-list-left>" + "Kommentar: " + "</b></span><span id='popComment'>" + points[p].comment + "</span><br><br>" +
+            "<b class = popup-list-left>" + "Kommentar: " + "</b></span><span id='popComment' class = 'scrollbar'>" + points[p].comment + "</span><br><br>" +
             "<input  type='hidden' id='pointID' value =" + points[p]._id + ">"  +
             "<input type='hidden' id='pointCategory' value =" + points[p].category + ">" +
             "<button onclick='openEditWindow()' type = 'button' class = 'btn btn-default  editButton'>Endre</button>" +
