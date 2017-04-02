@@ -208,6 +208,7 @@ router.route('/points/:id')
             points.date = req.body.date;
             points.address = req.body.address;
             points.comment = req.body.comment;
+            points.website = req.body.website;
 
             points.save(function(err){
                 if(err)

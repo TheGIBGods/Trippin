@@ -66,15 +66,14 @@ function initGoogleSearch() {
 
                 "<span class = 'popupHeader'><h5 class = 'popupName' id = pointName>" + place.name  + "</h5>"  +
                 " <hr class = 'myline'> </span>" +
-                "<b > Adresse: </b>" + "<span  id='pointAddress'>" + place.formatted_address + "</span>" + "<br>" +
-                "<b > Nettside: </b>" + "<a href = " + place.website + " id='pointWebsite'>" + place.website + "</a>" + "<br>" +
+                "<b > Adresse: </b>" + "<span  id='pointAddress'>" + place.formatted_address + "</span>" + "<br><br>" +
+                "<b > Nettside: </b>" + websiteHTML(place.website) + "<br><br>" +
                 '<button onclick ="openSaveWindow();"  type = "button" class = "btn saveButton"> Lagre punkt!</button>'
                 );
 
 
-
-
             group.addLayer(marker);
+            console.log((place.website));
         });
 
         group.addTo(mymap);
@@ -115,6 +114,7 @@ var setPointsOnMap = function (points) {
         var x = points[p].x_koord;
         var y = points[p].y_koord;
 
+
         //Making markers
         var Icon = L.icon({
             iconUrl: '/images/' + points[p].category + '.png',
@@ -132,12 +132,13 @@ var setPointsOnMap = function (points) {
             " <hr class = 'myline'> </span>" +
             "<span class='dateBox'><b>" + "Dato: " + "</b><span id='popDate'>" + points[p].date + "</span></span> " +
             "<span class = addedByBox><b>" + "Lagt til av: "+ "</b><span id = 'popCreatedBy'>" + points[p].created_by + "</span></span>" +
-            "<hr class = 'myline'><b>" + "Adresse: " + "</b><span id='popAddress'>" + points[p].address + "</span></span><br><br>   " +
-            "<b>" + "Kommentar: " + "</b></span><span id='popComment'>" + points[p].comment + "</span><br><br>" +
+            "<hr class = 'myline'><b class = popup-list-left>" + "Adresse: " + "</b><span id='popAddress'>" + points[p].address + "</span></span><br><br>   " +
+            markerWebsite(points[p].website) +
+            "<b class = popup-list-left>" + "Kommentar: " + "</b></span><span id='popComment'>" + points[p].comment + "</span><br><br>" +
             "<input  type='hidden' id='pointID' value =" + points[p]._id + ">"  +
             "<input type='hidden' id='pointCategory' value =" + points[p].category + ">" +
-            "<button onclick='openEditWindow()' type = 'button' class = 'btn  editButton'>Endre</button>" +
-            "<button onclick ='deleteOpenPoint()'  type = 'button' class = 'btn deleteButton'>Slett</button>"
+            "<button onclick='openEditWindow()' type = 'button' class = 'btn btn-default  editButton'>Endre</button>" +
+            "<button onclick ='deleteOpenPoint()'  type = 'button' class = 'btn btn-default deleteButton'>Slett</button>"
 
         );
 
@@ -191,6 +192,7 @@ function getlat(){
 function openSaveWindow() {
     $('#modalPoint').modal('show');
     $('#namePoint').val(document.getElementById('pointName').innerHTML);
+    $('#websitePoint').val(document.getElementById('pointWebsite').innerHTML);
 }
 
 function openEditWindow() {
@@ -200,6 +202,12 @@ function openEditWindow() {
     $('#datepickerEdit').val(document.getElementById('popDate').innerHTML);
     $('#commentPointEdit').val(document.getElementById('popComment').innerHTML);
     $('#addressPointEdit').val(document.getElementById('popAddress').innerHTML);
+    try {
+        $('#websitePointEdit').val(document.getElementById('popWebsite').innerHTML);
+    }
+    catch (err) {
+        $('#websitePointEdit').val("");
+    }
 }
 
 function setlat(lat){

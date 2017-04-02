@@ -3,6 +3,10 @@ html, body{
     margin: 0px;
     padding: 0px;
 }
+.modal-header{
+    background-color: #ffcc99;
+    border-bottom: 20px;
+}
 
 *{
     font-family: Raleway, Arial;
@@ -10,6 +14,15 @@ html, body{
 
 h4{
     font-weight: bold;
+}
+
+#namePointEdit, #namePoint, #datepickerEdit, #datepicker, #addressPointEdit, #addressPoint, #commentPointEdit, #commentPoint, #websitePointEdit, #websitePoint{
+    width: 66%;
+    vertical-align: top;
+
+}
+#commentPointEdit, #commentPoint{
+    height: 300px;
 }
 
 .popupHeader{
@@ -46,16 +59,36 @@ h4{
     float:right;
     background-color: #f2f2f2;
     width: 40%;
+    box-shadow: none;
 }
 
 .editButton{
     float: left;
     background-color: #f2f2f2;
     width: 40%;
+    box-shadow: none;
 }
 
-.deleteButton:hover, .editButton:hover{
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 3px 10px 0 rgba(0,0,0,0.10);
+.submit-btn{
+    float: right;
+    background-color: #f2f2f2;
+    width: 30%;
+}
+
+.cancel-btn{
+    float: left;
+    background-color: #f2f2f2;
+    width: 30%;
+    margin: 0;
+}
+
+.popup-list-left{
+    text-align: right;
+    vertical-align: top;
+}
+
+.deleteButton:hover, .editButton:hover, .submit-btn:hover, .cancel-btn:hover{
+    box-shadow: none;
 }
 
 
@@ -69,6 +102,15 @@ h4{
 
 #logo_img{
     height: 50px;
+}
+
+.break-text{
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
 }
 
 #header{
@@ -91,6 +133,11 @@ h4{
     text-align: center;
     border: 2px dashed #f69c55;
 }
+
+#tripName{
+    word-wrap:break-word ;
+}
+
 span {
     display: inline-block;
     vertical-align: middle;
@@ -122,7 +169,7 @@ iframe{
     display: none;
     position: absolute;
     background-color: #ffbf80;
-    max-width: 100px;
+    max-width: 200px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     padding: 12px 16px;
     z-index: 1;
@@ -209,12 +256,18 @@ button:hover{
     white-space: pre-wrap;
 }
 
+
 ul{
     display: none;
 }
 
 #sidebar_nav{
     height: 80%;
+    width: 100%;
+    float:left;
+}
+.sidebar-trip-name{
+    width:100%;
 }
 
 #myTrips{
@@ -226,7 +279,10 @@ ul{
 }
 
 .form{
-    width: 25%;
+    width: 20%;
+    text-align: right;
+    padding-right: 10px;
+    vertical-align: top;
 }
 
 a{
@@ -235,7 +291,7 @@ a{
 }
 
 .popup{
-    padding: 5px;
+    padding: 10px;
 }
 
 .search-input {

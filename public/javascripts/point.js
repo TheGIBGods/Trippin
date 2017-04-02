@@ -75,68 +75,6 @@ var getPoints = function () {
     return points;
 };
 
-function addSinglePointToMap(name, category, comment, date, address, x_koord, y_koord) {
-
-    var Icon = L.icon({
-        iconUrl: '/images/' + category + '.png',
-        iconSize: [38, 40], // size of the icon
-        popupAnchor: [0, -10] // point from which the popup should open relative to the iconAnchor
-    });
-
-    var marker = L.marker([x_koord, y_koord], {icon: Icon});
-    marker.addTo(mymap); //adding marker to map
-    //adding popup to marker
-    marker.bindPopup(
-        "<span class = 'popupHeader'><h5 class = 'popupName'>" + name  + "</h5>"  +
-        " <hr class = 'myline'> </span>" +
-        "<span class='dateBox'><b>" + "Dato: " + "</b>" + date + "</span> " +
-        "<span class = addedByBox><b>" + "Lagt til av: "+ "</b>" + getUserFromURL() + "</span>" +
-        "<hr class = 'myline'><b>" + "Adresse: " + "</b>" + address + "<br><br>   " +
-        "<b>" + "Kommentar: " + "</b>" + comment + "<br><br>" +
-        "<input  type='hidden' id='pointID' >"  +
-            "<p class = refreshUpdateText> For å kunne endre/slette punkt må du oppdatere siden:(</p>"
-       );
-
-    currentMarker.closePopup();
-    marker.openPopup();
-    markersOnMap.push(marker);
-
-    var x = document.createElement("li");
-    x.innerHTML = name;
-    x.setAttribute("class", "pointClick canBeClicked");
- //   x.setAttribute("id", points[i]._id);
-    x.setAttribute("xkoord", "" + x_koord);
-    x.setAttribute("ykoord", "" + y_koord);
-    x.addEventListener('click', function () {
-        handleListElementClick(event.target.getAttribute("xkoord"), event.target.getAttribute("ykoord"));
-    });
-
-    switch (category) {
-        case "hotel":
-            $("#hotels_list").append(x);
-            break
-        case "restaurant":
-            $("#restaurants_list").append(x);
-            break
-        case "activity":
-            $("#activity_list").append(x);
-            break
-        case "transportation":
-            $("#transportation_list").append(x);
-            break
-        case "attraction":
-            $("#attractions_list").append(x);
-            break
-        case "shopping":
-            $("#shopping_list").append(x);
-            break
-        case "other":
-            $("#other_list").append(x);
-            break
-    }
-}
-
-
 
 $("#datepicker").pikaday({
         defaultDate: new Date(),
@@ -149,3 +87,25 @@ $("#datepickerEdit").pikaday({
     firstDay: 1,
     format: "DD/MM/YYYY"
 });
+
+function  websiteHTML(website) {
+
+    if(website == undefined){
+        return "<span id = 'pointWebsite'> Ingen funnet </span>"
+    }
+    else{
+        console.log("Komt Hit");
+       return "<a href = " + website + " id='pointWebsite'>" + website + "</a>"
+    }
+
+}
+
+function markerWebsite(website) {
+    if(website == undefined) {
+        return ""
+    }
+    else {
+        return "<b class = popup-list-left>" + "Nettside: " + "</b>" + "<a id = 'popWebsite' href =" + website + ">" + website+ "</a><br><br>"
+    }
+
+}

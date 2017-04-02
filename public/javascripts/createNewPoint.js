@@ -9,16 +9,9 @@ function savePoint(){
     var category = $('#curtain').val();
     var date = $('#datepicker').val();
     var address = $('#pointAddress').html();
-/*
-    var pointX = document.createElement('points');
+    var website = $('#pointWebsite').html();
 
-    pointX.setAttribute("name", name);
-    pointX.setAttribute("comment", comment);
-    pointX.setAttribute("category", category);
-    pointX.setAttribute("x_koord", getlat());
-    pointX.setAttribute("y_koord", getlng());
 
-    */
 
     //resets all the fields in the form
     if(name != "" && category != null) {
@@ -31,7 +24,7 @@ function savePoint(){
         });
 
 //        console.log("Name: " + name + "\nKategori: " + category + "\nKommentar: " + comment + "\nDato: " + date + "\naddress: " + address);
-        saveToDatabase(name, category, comment, date, address);
+        saveToDatabase(name, category, comment, date, address, website);
         //setPointsOnMap(newPoint);
     }
 };
@@ -43,6 +36,8 @@ function editPoint(){
     var category = $('#curtainEdit').val();
     var date = $('#datepickerEdit').val();
     var address = $('#addressPointEdit').val();
+    var website = $('#websitePointEdit').val();
+
 
 
     //resets all the fields in the form
@@ -56,12 +51,12 @@ function editPoint(){
         });
 
 //        console.log("Name: " + name + "\nKategori: " + category + "\nKommentar: " + comment + "\nDato: " + date + "\naddress: " + address);
-        editToDatabase(name, category, comment, date, address);
+        editToDatabase(name, category, comment, date, address, website);
         //setPointsOnMap(newPoint);
     }
 }
 
-function editToDatabase(name, category, comment, date, address) {
+function editToDatabase(name, category, comment, date, address, website) {
     var pointid = document.getElementById('pointID').value;
     var x = lat;
     var y = lng;
@@ -75,7 +70,8 @@ function editToDatabase(name, category, comment, date, address) {
             category: category,
             comment: comment,
             date: date,
-            address: address
+            address: address,
+            website: website
         },
 
         success: function () {
@@ -88,7 +84,7 @@ function editToDatabase(name, category, comment, date, address) {
         //callback function
         var pointArray = new Array();
         pointArray.push(data);
-        currentMarker.remove()
+        currentMarker.remove();
         $('#' + pointid).remove();
 
         setPointsOnMap(pointArray);
@@ -97,7 +93,7 @@ function editToDatabase(name, category, comment, date, address) {
 
     });
 }
-function saveToDatabase(name, category, comment, date, address){
+function saveToDatabase(name, category, comment, date, address, website){
 
     var x = lat;
     var y = lng;
@@ -111,6 +107,7 @@ function saveToDatabase(name, category, comment, date, address){
             date: date,
 
             address: address,
+            website: website,
             created_by: getUserFromURL(),
             trip_ID: getTripFromURL()
 
