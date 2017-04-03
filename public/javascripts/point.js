@@ -105,7 +105,7 @@ function markerWebsite(website) {
         return ""
     }
     else {
-        return "<b class = popup-list-left>" + "Nettside: " + "</b>" + "<a id = 'popWebsite' href =" + website + " target='_blank'>" + website+ "</a><br><br>"
+            return "<b class = popup-list-left>" + "Nettside: " + "</b>" + "<a id = 'popWebsite' href =" + website + " target='_blank'>" + website+ "</a><br><br>"
     }
 
 }

@@ -10,6 +10,10 @@ function savePoint(){
     var date = $('#datepicker').val();
     var address = $('#pointAddress').html();
     var website = $('#pointWebsite').html();
+    if((website.indexOf('http://') === 0 || website.indexOf('https://') === 0)){
+        website = "//" + website;
+    }
+
 
 
 
@@ -37,6 +41,16 @@ function editPoint(){
     var date = $('#datepickerEdit').val();
     var address = $('#addressPointEdit').val();
     var website = $('#websitePointEdit').val();
+    console.log(website);
+
+    var pat = /^https?:\/\//i;
+    if (!pat.test(website))
+    {
+        website = "//" + website;
+        console.log(website);
+        //do stuff
+    }
+
 
 
 
@@ -143,6 +157,8 @@ function deleteOpenPoint() {
 
     })
 }
+
+
 
 
 

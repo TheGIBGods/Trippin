@@ -68,7 +68,7 @@ function displayInfo(trip){
     for(var i = 0 ; i < trip.users.length; i++){
         addedUsers.push(" " + trip.users[i].userName);
     }
-    document.getElementById("tripComment").innerHTML = "<b>"+ "Kommentar: " +"</b>"+ trip.comment;
+    document.getElementById("tripComment").innerHTML = "<b>"+ "Kommentar: " +"</b>"+ "<span id = realTripComment>" + trip.comment + "</span>";
     document.getElementById("tripName").innerHTML = trip.name;
     document.getElementById("tripNamePop").innerHTML = trip.name;
     if (trip.date != null){
@@ -271,6 +271,8 @@ function makeTripTable(tripsall) {
 
     }
 };
+
+
 
 
 
