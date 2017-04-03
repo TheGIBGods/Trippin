@@ -159,7 +159,7 @@ span {
 }
 
 #sidebar{
-    background-color: #ffcc99;
+    background-color: #ffbf80;
     height: 100%;
 }
 
@@ -208,7 +208,7 @@ p, li{
 
 #trip_heading{
     text-align: center;
-    height: 75px;
+    height:10%;
 }
 
 #img_helper {
@@ -237,10 +237,10 @@ p, li{
 
 button{
     background-color: #ff9933;
-    border: solid #ff6600;
+    border: solid #ff6600 0px;
     text-align: center;
     cursor: pointer;
-    border-radius: 5px;
+    /*border-radius: 5px;*/
     float: left;
     width: 80%;
     margin: 5px 10px;
@@ -248,13 +248,15 @@ button{
 }
 
 button:hover{
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    /*box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);*/
+    background-color: #ff8913;
 }
 
 .saveButton{
     width: 40%;
     margin-left: 30%;
     margin-right: 30%;
+    background-color: #ffbf80;
 
 }
 .refreshUpdateText{
@@ -265,7 +267,7 @@ button:hover{
 
 
 #sidebar_content{
-    height: 80%;
+    height: 70%;
 }
 
 .canBeClicked:hover{
@@ -295,7 +297,7 @@ ul{
 }
 
 #sidebar_nav{
-    height: 80%;
+    height: 90%;
     width: 100%;
     float:left;
 }

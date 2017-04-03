@@ -86,7 +86,7 @@ span {
     height: 90%;
 }
 
-table, th, td {
+#myTable, #tripHead, .tripTableElem {
     border-collapse: collapse;
     text-align: center;
     vertical-align: center;
@@ -94,7 +94,7 @@ table, th, td {
 
 }
 
-table{
+#myTable{ /*HUSK Å ENDRE TIL Å GÅ PÅ ID I STEDET!!!*/
     width: 100%;
     background: #ffb366; /* fallback for old browsers */
     background: -webkit-linear-gradient(right, #ffb366, #ffbf80);
@@ -103,15 +103,13 @@ table{
     background: linear-gradient(to left, #ffb366, #ffbf80);
 }
 
-td{
+.tripTableElem{
     align: center;
     font-weight: bold;
     width: 150px;
     height: 150px;
 }
-.tripTableElem{
 
-}
 
 .tripTableElem:hover{
     background: #ffce92;
@@ -129,7 +127,6 @@ th{
 
 .tripImg:hover{
     cursor: pointer;
-
 }
 
 .imgCon{
@@ -173,10 +170,10 @@ p, li{
 
 button{
     background-color: #ff9933;
-    border: solid #ff6600;
+    border: solid #ff6600 0px;
     text-align: center;
     cursor: pointer;
-    border-radius: 5px;
+    /*border-radius: 5px;*/
     float: left;
     width: 80%;
     margin: 5px 10px;
