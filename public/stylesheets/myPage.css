@@ -119,8 +119,11 @@ th{
 }
 
 .tripImg{
-    cursor: pointer;
     align: center;
+}
+
+.tripImg:hover{
+    cursor: pointer;
 }
 
 img{
@@ -131,7 +134,7 @@ img{
     border-radius:4%
 }
 
-.centered-and-cropped { object-fit:  cover }
+/*.centered-and-cropped { object-fit:  cover }*/
 
 .user-content, .trips-content {
     display: none;
@@ -212,7 +215,6 @@ a{
 }
 
 .tripClick:hover{
-
     text-decoration: underline;
 }
 

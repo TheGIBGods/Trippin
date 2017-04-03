@@ -248,7 +248,6 @@ function makeTripTable(tripsall) {
 
             $(str).append(img);
         }else{
-            //if(userTrips.includes(trips[i]._id)) {
                 var x = document.getElementById("tableElement" + i);
                 x.innerHTML = trips[i].name;
                 x.setAttribute("class", "tripTableElem");
@@ -257,7 +256,7 @@ function makeTripTable(tripsall) {
                 var img = document.createElement("img");
                 img.setAttribute("src", trips[i].imglink);
                 img.setAttribute("class", "tripImg");
-                img.setAttribute("class", "centered-and-cropped");
+                //img.setAttribute("class", "centered-and-cropped");
                 img.setAttribute("tripID", trips[i]._id)
                 img.addEventListener('click', function () {
                     handleTripElementClick(event.target.getAttribute("tripID"));
@@ -267,10 +266,6 @@ function makeTripTable(tripsall) {
 
                 $(str).append(img);
 
-                /*var p = document.createElement("p");
-                p.innerHTML = trips[i].comment;
-                $(str).append(p);*/
-            //}
         }
 
     }
