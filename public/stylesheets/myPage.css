@@ -109,6 +109,9 @@ td{
     width: 150px;
     height: 150px;
 }
+.tripTableElem{
+
+}
 
 .tripTableElem:hover{
     background: #ffce92;
@@ -119,19 +122,28 @@ th{
 }
 
 .tripImg{
-    align: center;
+    /*align: center;*/
+    margin-left: 0px;
+    margin-top: 0px;
 }
 
 .tripImg:hover{
     cursor: pointer;
+
+}
+
+.imgCon{
+    height: 150px;
+    width: 150px;
+    border-radius:4%;
+    overflow: hidden;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 img{
     position: relative;
-    height: 130px;
-    weight: 130px;
-    /*clip: rect(0px,130px,130px,0px);*/
-    border-radius:4%
+    height: 100%;
 }
 
 /*.centered-and-cropped { object-fit:  cover }*/
