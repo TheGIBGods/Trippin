@@ -219,22 +219,27 @@ function makeTripTable(tripsall) {
             //console.log("row er: "+ row)
             //var el1 = document.createElement("tr")
             //el1.setAttribute("id", "tableRow"+row)
-            console.log("count, row" + count + ", " + row);
+            //console.log("count, row" + count + ", " + row);
             $('#myTable tr:last').after("<tr id = tableRow"+ row+ "> </tr> ");
             for (j=0; j< 5; j++){
                 var el = document.createElement("td");
                 var num = i+j+1;
                 el.setAttribute("id", "tableElement" + num);
-                el.setAttribute("class", "tripTableElem");
+                //el.setAttribute("class", "tripTableElem");
                 $("#tableRow"+row).append(el)
             }
         }else{
             count ++;
-            console.log("count: " + count);
+            //console.log("count: " + count);
         }
 
         console.log("i er: " + i);
         if(i == trips.length){
+            var x = document.getElementById("tableElement" + i);
+            x.setAttribute("class", "tripTableElem");
+            var imgCon = document.createElement("div");
+            imgCon.setAttribute("class", "imgCon");
+            imgCon.setAttribute("id", "imgCon" +i);
             var img = document.createElement("img");
             img.setAttribute("src", "/images/nytur.png");
             img.setAttribute("id", "createNewTrip");
@@ -244,16 +249,21 @@ function makeTripTable(tripsall) {
 
             var str = "#tableElement" + i;
 
-            $(str).append(img);
+            $(str).append(imgCon);
+            document.getElementById("imgCon" + i).appendChild(img);
         }else{
-            //if(userTrips.includes(trips[i]._id)) {
                 var x = document.getElementById("tableElement" + i);
                 x.innerHTML = trips[i].name;
+                x.setAttribute("class", "tripTableElem");
                 //x.setAttribute("id", "tableElement"+ count+1)
 
+                var imgCon = document.createElement("div");
+                imgCon.setAttribute("class", "imgCon");
+                imgCon.setAttribute("id", "imgCon" +i);
                 var img = document.createElement("img");
                 img.setAttribute("src", trips[i].imglink);
                 img.setAttribute("class", "tripImg");
+                //img.setAttribute("class", "centered-and-cropped");
                 img.setAttribute("tripID", trips[i]._id)
                 img.addEventListener('click', function () {
                     handleTripElementClick(event.target.getAttribute("tripID"));
@@ -261,12 +271,9 @@ function makeTripTable(tripsall) {
 
                 var str = "#tableElement" + i;
 
-                $(str).append(img);
+                $(str).append(imgCon);
+                document.getElementById("imgCon" + i).appendChild(img);
 
-                var p = document.createElement("p");
-                p.innerHTML = trips[i].comment;
-                $(str).append(p);
-            //}
         }
 
     }

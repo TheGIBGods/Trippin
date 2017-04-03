@@ -2,6 +2,11 @@ html, body{
     height: 100%;
     margin: 0px;
     padding: 0px;
+    background: #ffb366; /* fallback for old browsers */
+    background: -webkit-linear-gradient(right, #ffb366, #ffbf80);
+    background: -moz-linear-gradient(right, #ffb366, #ffbf80);
+    background: -o-linear-gradient(right, #ffb366, #ffbf80);
+    background: linear-gradient(to left, #ffb366, #ffbf80);
 }
 
 .modal-header{
@@ -31,10 +36,11 @@ html, body{
 }
 
 #createNewTrip{
-    height: 100px;
-    width: 100px;
+    height: 140px;
+    width: 140px;
     cursor: pointer;
 }
+
 
 #logo_img{
     height: 50px;
@@ -81,19 +87,34 @@ span {
 }
 
 table, th, td {
-    border: 1px solid black;
     border-collapse: collapse;
     text-align: center;
+    vertical-align: center;
+    padding: 10px;
+
 }
 
 table{
-    width: 90%;
-    background-color: #ffbf80;
+    width: 100%;
+    background: #ffb366; /* fallback for old browsers */
+    background: -webkit-linear-gradient(right, #ffb366, #ffbf80);
+    background: -moz-linear-gradient(right, #ffb366, #ffbf80);
+    background: -o-linear-gradient(right, #ffb366, #ffbf80);
+    background: linear-gradient(to left, #ffb366, #ffbf80);
 }
 
 td{
     align: center;
     font-weight: bold;
+    width: 150px;
+    height: 150px;
+}
+.tripTableElem{
+
+}
+
+.tripTableElem:hover{
+    background: #ffce92;
 }
 
 th{
@@ -101,10 +122,31 @@ th{
 }
 
 .tripImg{
-    height: 100px;
-    weight: 100px;
-    cursor: pointer;
+    /*align: center;*/
+    margin-left: 0px;
+    margin-top: 0px;
 }
+
+.tripImg:hover{
+    cursor: pointer;
+
+}
+
+.imgCon{
+    height: 150px;
+    width: 150px;
+    border-radius:4%;
+    overflow: hidden;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+img{
+    position: relative;
+    height: 100%;
+}
+
+/*.centered-and-cropped { object-fit:  cover }*/
 
 .user-content, .trips-content {
     display: none;
@@ -185,8 +227,12 @@ a{
 }
 
 .tripClick:hover{
-
     text-decoration: underline;
+}
+
+.tripTableElem{
+    font-weight: 550;
+    color: #4d4d4d;
 }
 
 
