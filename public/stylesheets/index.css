@@ -16,7 +16,7 @@ h4{
     font-weight: bold;
 }
 
-#namePointEdit, #namePoint, #datepickerEdit, #datepicker, #addressPointEdit, #addressPoint, #commentPointEdit, #commentPoint, #websitePointEdit, #websitePoint{
+#namePointEdit, #namePoint, #datepickerEdit, #datepicker, #addressPointEdit, #addressPoint, #commentPointEdit, #commentPoint, #websitePointEdit, #websitePoint, #shareName, #nameTripEdit,#commentTripEdit,#commentTrip{
     width: 66%;
     vertical-align: top;
     overflow-wrap: break-word;
@@ -27,8 +27,11 @@ h4{
     hyphens: auto;
 
 }
-#commentPointEdit, #commentPoint{
+#commentPointEdit, #commentPoint, #commentTripEdit, #commentTrip{
     height: 300px;
+}
+#shareForm{
+    padding-top: 10px;
 }
 
 .popupHeader{
@@ -282,6 +285,12 @@ button:hover{
     overflow-y: auto;
 }
 
+#realTripComment{
+    white-space: pre-wrap;
+    overflow-y: auto;
+    max-height: 50vh;
+}
+
 
 ul{
     display: none;
@@ -297,7 +306,9 @@ ul{
 }
 
 #myTrips{
-    height: 500px;
+    height: auto;
+    overflow-y: auto;
+    width: 250px;
 }
 
 .scrollbar{

@@ -127,6 +127,27 @@ router.route('/trips/:id')
             response = {"message": data};
             res.json(response);
         });
+    })
+
+    .put(function (req,res) {
+        trips.findById(req.params.id, function(err, trips){
+            if(err)
+                res.send(err);
+
+            console.log(trips.name);
+
+            trips.name = req.body.name;
+            trips.comment = req.body.comment;
+
+            trips.save(function(err){
+                if(err)
+                    res.send(err);
+
+                response = {"message": trips};
+                console.log(response);
+                res.json(response.message);
+            });
+        });
     });
 
 //save username to trip
