@@ -3,6 +3,7 @@
 <head>
     <title>Mine Turer</title>
     <link rel="shortcut icon" href="http://www.iconj.com/ico/p/r/prqt9qshot.ico" type="image/x-icon" />    <meta charset="utf-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
@@ -11,6 +12,13 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../stylesheets/myPage.css">
+
+    <script src = /../node_modules/moment/moment.js></script>
+    <script src="/javascripts/pikaday.js"></script>
+    <script src ="/javascripts/plugins/pikaday.jquery.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="/stylesheets/pikaday.css">
+
 
 </head>
 <body>
@@ -93,6 +101,12 @@
                                     <div class="popup">
                                         <p><span class="form">Navn på tur:</span>
                                             <input type="text" id="nameTrip" autofocus required></p>
+                                        <p><span class="form">Dato:</span>
+
+                                            <input type="text" id="fromDate" placeholder="Fra">
+
+                                            <input type="text" id="toDate" placeholder="Til">
+                                        </p>
                                         <p><span class="form">Bildelink:</span>
                                             <input type="text" id="imgUrl"></p>
                                         <p><span class="form">Kommentar:</span>
@@ -121,6 +135,7 @@
 <script src = "/javascripts/loginPage/logIn.js"></script>
 <script src = "/javascripts/user.js"></script>
 <script src = "/javascripts/trip.js"></script>
+<script src = "/javascripts/datePickers.js"></script>
 
 </body>
 </html>

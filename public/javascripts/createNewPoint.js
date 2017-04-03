@@ -9,9 +9,15 @@ function savePoint(){
     var category = $('#curtain').val();
     var date = $('#datepicker').val();
     var address = $('#pointAddress').html();
-    var website = $('#pointWebsite').html();
-    if((website.indexOf('http://') === 0 || website.indexOf('https://') === 0)){
+    var website = $('#websitePoint').val();
+
+
+    var pat = /^https?:\/\//i;
+    if (!pat.test(website))
+    {
         website = "//" + website;
+        console.log(website);
+        //do stuff
     }
 
 

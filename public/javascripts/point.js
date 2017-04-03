@@ -76,18 +76,6 @@ var getPoints = function () {
 };
 
 
-$("#datepicker").pikaday({
-        defaultDate: new Date(),
-        firstDay: 1,
-        format: "DD/MM/YYYY"
-});
-
-$("#datepickerEdit").pikaday({
-    defaultDate: new Date(),
-    firstDay: 1,
-    format: "DD/MM/YYYY"
-});
-
 function  websiteHTML(website) {
 
     if(website == undefined){
