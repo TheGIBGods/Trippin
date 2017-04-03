@@ -225,7 +225,7 @@ function makeTripTable(tripsall) {
                 var el = document.createElement("td");
                 var num = i+j+1;
                 el.setAttribute("id", "tableElement" + num);
-                el.setAttribute("class", "tripTableElem");
+                //el.setAttribute("class", "tripTableElem");
                 $("#tableRow"+row).append(el)
             }
         }else{
@@ -235,6 +235,8 @@ function makeTripTable(tripsall) {
 
         console.log("i er: " + i);
         if(i == trips.length){
+            var x = document.getElementById("tableElement" + i);
+            x.setAttribute("class", "tripTableElem");
             var img = document.createElement("img");
             img.setAttribute("src", "/images/nytur.png");
             img.setAttribute("id", "createNewTrip");
@@ -249,11 +251,13 @@ function makeTripTable(tripsall) {
             //if(userTrips.includes(trips[i]._id)) {
                 var x = document.getElementById("tableElement" + i);
                 x.innerHTML = trips[i].name;
+                x.setAttribute("class", "tripTableElem");
                 //x.setAttribute("id", "tableElement"+ count+1)
 
                 var img = document.createElement("img");
                 img.setAttribute("src", trips[i].imglink);
                 img.setAttribute("class", "tripImg");
+                img.setAttribute("class", "centered-and-cropped");
                 img.setAttribute("tripID", trips[i]._id)
                 img.addEventListener('click', function () {
                     handleTripElementClick(event.target.getAttribute("tripID"));
@@ -263,9 +267,9 @@ function makeTripTable(tripsall) {
 
                 $(str).append(img);
 
-                var p = document.createElement("p");
+                /*var p = document.createElement("p");
                 p.innerHTML = trips[i].comment;
-                $(str).append(p);
+                $(str).append(p);*/
             //}
         }
 
