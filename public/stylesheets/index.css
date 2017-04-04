@@ -16,6 +16,14 @@ h4{
     font-weight: bold;
 }
 
+#noUnder{
+    text-decoration: none;
+}
+
+a:hover{
+    color: #252525;
+}
+
 #namePointEdit, #namePoint, #datepickerEdit, #datepicker, #addressPointEdit, #addressPoint, #commentPointEdit, #commentPoint, #websitePointEdit, #websitePoint, #shareName, #nameTripEdit,#commentTripEdit,#commentTrip{
     width: 66%;
     vertical-align: top;
@@ -238,6 +246,9 @@ p, li{
     hyphens: auto;
 }
 
+#aboutPopup{
+    text-align: left;
+}
 button{
     background-color: #ff9933;
     border: solid #ff6600 0px;
@@ -345,7 +356,7 @@ a{
 }
 
 .pointClick{
-    color: dimgrey;
+    color: #5b5b5b;
 }
 
 .tripDateHolder{

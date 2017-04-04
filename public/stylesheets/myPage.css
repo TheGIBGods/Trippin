@@ -18,6 +18,10 @@ html, body{
     font-family: Raleway, Arial;
 }
 
+#aboutPopup{
+    text-align: left;
+}
+
 
 .form{
     width: 20%;
@@ -27,6 +31,14 @@ html, body{
 }
 .popup {
     padding: 10px;
+}
+
+h4{
+    font-weight: bold;
+}
+
+a:hover{
+    color: #000000;
 }
 
 
@@ -95,7 +107,7 @@ span {
 
 }
 
-#myTable{ /*HUSK Å ENDRE TIL Å GÅ PÅ ID I STEDET!!!*/
+#myTable{
     width: 100%;
     background: #ffb366; /* fallback for old browsers */
     background: -webkit-linear-gradient(right, #ffb366, #ffbf80);
@@ -187,6 +199,9 @@ button:hover{
 
 a{
     color: black;
+    text-decoration: none;
+}
+#noUnder{
     text-decoration: none;
 }
 
