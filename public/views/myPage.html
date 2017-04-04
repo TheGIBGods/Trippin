@@ -24,17 +24,27 @@
         </div>
         <div class = "col-lg-8 text-center"></div>
         <div class = "col-lg-1 text-center" id="aboutPage">
-            <span><h4 class="canBeClicked"><a data-toggle="modal" data-target="#aboutModal"><b>Om</b></a></h4></span>
+            <span><h4 class="canBeClicked"><a data-toggle="modal" data-target="#aboutModal" id="noUnder"><b>Om</b></a></h4></span>
 
             <!-- About us modal -->
             <div class="modal fade" id="aboutModal" role="dialog">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">Trippin</h4>
+                            <h4 class="modal-title"><b>Trippin</b></h4>
                         </div>
-                        <div class="popup">
-                            <p>Her skal det stå en fantastisk tekst om oss</p>
+                        <div class="popup" id="aboutPopup">
+                            <h4> Hva er Trippin?</h4>
+                            <p>
+                                Trippin er et reiseplanleggingsverktøy som har som hovedfunksjon å vise brukeren hvor ulike reisemål man måtte ønske å besøke ligger i forhold til hverandre.
+                                De fleste “anbefalte reisemål”-guider gir ikke noen oversikt over dette.. Det er mulig å dele turer med andre brukere slik at man kan planlegge en reise sammen. blabla..
+                            </p>
+                            <h4> Hvordan bruke Trippin?</h4>
+                            <p>
+                                For å kunne bruke Trippin må du først opprette deg en bruker, og logge inn. Ved inlogging vil du bli tatt til din side der du kan se alle
+                                turene du har tilgang til, det vil si de turene du er med å planlegge. For å opprette en ny tur, benytt "Opprett ny tur". Når du oppretter en ny tur, eller klikker deg inn på en eksisterende,
+                                tas du til en side med et kart som viser alle punktene tilknyttet den valgte turen. blabla...
+                            </p>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Lukk</button>
@@ -52,7 +62,7 @@
             </div>
         </div>
         <div class = "col-lg-1 text-center" id="user">
-            <span><h4 id="userName"></h4></span>
+            <span><h4 id="userName" class="canBeClicked"></h4></span>
             <div class="user-content canBeClicked">
                 <div>
                     <a onclick="backToTrip()">Min turer</a>

@@ -5,10 +5,12 @@
 .modal-header{
     background-color: #ffcc99;
     border-bottom: 20px;
+
 }
 
 .popup {
     padding: 10px;
+    text-align: left;
 }
 
 #aboutUs{
