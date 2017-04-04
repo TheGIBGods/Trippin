@@ -39,7 +39,7 @@ a:hover{
 t
 
 #commentPointEdit, #commentPoint, #commentTripEdit, #commentTrip{
-    height: 300px;
+    height: 33vh;
 }
 #shareForm{
     padding-top: 10px;
