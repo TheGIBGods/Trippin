@@ -74,6 +74,7 @@ html, body{
 #user, #trips, #aboutPage {
     text-align: center;
     border: 2px dashed #f69c55;
+
 }
 span {
     display: inline-block;
@@ -232,5 +233,21 @@ a{
     color: #4d4d4d;
 }
 
+.tripDateHolder{
+    width: 32.75%;
+    vertical-align: top;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+
+#myTrips{
+    height: auto;
+    overflow-y: auto;
+    width: 250px;
+}
 
 

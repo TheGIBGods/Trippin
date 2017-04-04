@@ -71,8 +71,39 @@ function displayInfo(trip){
     document.getElementById("tripComment").innerHTML = "<b>"+ "Kommentar: " +"</b>"+ "<span id = realTripComment>" + trip.comment + "</span>";
     document.getElementById("tripName").innerHTML = trip.name;
     document.getElementById("tripNamePop").innerHTML = trip.name;
-    if (trip.date != null){
-        document.getElementById("tripDate").innerHTML = "<b>"+ "Dato: "+ "</b>" + trip.date;
+
+
+    var fromdate = trip.fromdate;
+    var todate = trip.todate;
+
+    if(fromdate.length === 0 || fromdate == "Ikke angitt"){
+        fromdate = null;
+    }
+
+    if(todate.length === 0 || todate == "Ikke angitt"){
+        todate = null;
+    }
+
+    if ((fromdate != null)||(todate != null)){
+        if(fromdate === null){
+            document.getElementById("tripDate").innerHTML = "<b>"+ "Fra: "+ "</b>" +  "<span id = tripFromDate >" + "Ikke angitt" + "</span>" + "<b> Til: </b> <span id =tripToDate>"+ todate +"</span>";
+        }
+
+        else if( todate === null)
+            {
+
+                document.getElementById("tripDate").innerHTML = "<b>"+ "Fra: "+ "</b>" +  "<span id = tripFromDate >" + fromdate + " </span>" + "<b> Til: </b> <span id =tripToDate>"+"Ikke angitt" +"</span>";
+
+            }
+        else{
+
+            document.getElementById("tripDate").innerHTML = "<b>"+ "Fra: "+ "</b>" +  "<span id = tripFromDate >" + trip.fromdate + " </span>" + "<b> Til: </b> <span id =tripToDate>"+ trip.todate +"</span>";
+
+        }
+
+    }
+    else{
+        $("#tripDate").empty();
     }
     document.getElementById("tripUsers").innerHTML = "<b>" + "Brukere som har tilgang: "+ "</b>" + addedUsers;
 
@@ -106,6 +137,9 @@ function createTrip(){
     var name = $('#nameTrip').val();
     var comment = $('#commentTrip').val();
     var imglink = $('#imgUrl').val();
+    var fromdate = $('#fromDate').val();
+    var todate = $('#toDate').val();
+
     console.log("imglink: " + imglink);
     if(imglink.trim().length == 0){
         console.log("Empty imglink");
@@ -123,6 +157,8 @@ function createTrip(){
                 name: name,
                 comment: comment,
                 imglink: imglink,
+                fromdate: fromdate,
+                todate: todate
             }).done(function(res){
                 console.log("in on done");
                 var tripID = res.message._id;

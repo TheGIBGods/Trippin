@@ -27,6 +27,9 @@ h4{
     hyphens: auto;
 
 }
+
+t
+
 #commentPointEdit, #commentPoint, #commentTripEdit, #commentTrip{
     height: 300px;
 }
@@ -343,6 +346,17 @@ a{
 
 .pointClick{
     color: dimgrey;
+}
+
+.tripDateHolder{
+    width: 32.75%;
+    vertical-align: top;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
 }
 
 

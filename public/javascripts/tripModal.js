@@ -3,17 +3,31 @@
  */
 function openTripEditWindow() {
     $("#modalTripEdit").modal('show');
+
     $("#nameTripEdit").val(
         $("#tripNamePop").html()
     );
+
     $("#commentTripEdit").val(
         $("#realTripComment").html()
     );
+
+    $("#tripFromDateEdit").val(
+        $("#tripFromDate").html()
+    );
+
+    $("#tripToDateEdit").val(
+        $("#tripToDate").html()
+    );
+
+
 }
 
 function editTrip() {
     var name = $("#nameTripEdit").val();
     var comment = $("#commentTripEdit").val();
+    var fromdate = $("#tripFromDateEdit").val();
+    var todate = $("#tripToDateEdit").val();
 
     if(name != "") {
         $(function () {
@@ -25,11 +39,11 @@ function editTrip() {
         });
 
 //        console.log("Name: " + name + "\nKategori: " + category + "\nKommentar: " + comment + "\nDato: " + date + "\naddress: " + address);
-        editTripToDatabase(name, comment);
+        editTripToDatabase(name, comment, fromdate, todate);
     }
 }
 
-function editTripToDatabase(name, comment) {
+function editTripToDatabase(name, comment, fromdate, todate) {
 
     var tripid = getTripFromURL();
 
@@ -38,7 +52,9 @@ function editTripToDatabase(name, comment) {
 
         data: {
             name: name,
-            comment: comment
+            comment: comment,
+            fromdate: fromdate,
+            todate: todate
         },
 
         success: function () {
@@ -46,12 +62,9 @@ function editTripToDatabase(name, comment) {
         },
         type: "put"
     }).done(function (data, status) {
-        console.log("Data loaded: " + data + "\nStatus: " + status);
         console.log(data);
-        console.log(data.name);
-        console.log(data.comment);
 
-        document.getElementById("tripNamePop").innerHTML = data.name;
-        document.getElementById("realTripComment").innerHTML = data.comment;
+        displayInfo(data);
+
     });
 }
