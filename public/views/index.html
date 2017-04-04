@@ -6,10 +6,39 @@
     <link rel="shortcut icon" href="http://www.iconj.com/ico/p/r/prqt9qshot.ico" type="image/x-icon" />
     <link rel="stylesheet" href="/stylesheets/login_page.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 </head>
 
 <body>
+<div id="img-box">
+    <img src="/images/trippin-logo.png">
+</div>
+
+<div class = "col-lg-5 text-center"></div>
+<div class = "col-lg-2 text-center" id="aboutPage">
+    <span><p class="canBeClicked"><a id="aboutUs" data-toggle="modal" data-target="#aboutModal">Om Trippin</a></p></span>
+
+    <!-- About us modal  TODO: modalen fungerer ikke-->
+    <div class="modal fade" id="aboutModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Trippin</h4>
+                </div>
+                <div class="popup">
+                    <p>Her skal det stå en fantastisk tekst om oss</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Lukk</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End modal -->
+
+</div>
+
 <div class="login-page">
     <div class="form">
         <form class="register-form">

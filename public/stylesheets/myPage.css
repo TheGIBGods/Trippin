@@ -94,7 +94,7 @@ span {
 
 }
 
-#myTable{ /*HUSK Å ENDRE TIL Å GÅ PÅ ID I STEDET!!!*/
+#myTable{
     width: 100%;
     background: #ffb366; /* fallback for old browsers */
     background: -webkit-linear-gradient(right, #ffb366, #ffbf80);
