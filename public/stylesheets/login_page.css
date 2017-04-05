@@ -70,7 +70,7 @@ img{
     font-family: Raleway, Arial;
     text-transform: uppercase;
     outline: 0;
-    background: #ffa64d;
+    background: #ff9966;
     width: 100%;
     border: 0;
     padding: 15px;
@@ -79,7 +79,7 @@ img{
     cursor: pointer;
 }
 .form button:hover,.form button:active,.form button:focus {
-    background: #ff8c1a;
+    background: #ff8447;
 }
 .form .message {
     margin: 15px 0 0;
@@ -87,7 +87,7 @@ img{
     font-size: 12px;
 }
 .form .message a {
-    color: #ff9933;
+    color: #ff9966;
     text-decoration: none;
 }
 .form .register-form {

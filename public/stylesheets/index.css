@@ -250,7 +250,7 @@ p, li{
     text-align: left;
 }
 button{
-    background-color: #ff9933;
+    background-color: #ff9966;
     border: solid #ff6600 0px;
     text-align: center;
     cursor: pointer;
@@ -263,7 +263,7 @@ button{
 
 button:hover{
     /*box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);*/
-    background-color: #ff8913;
+    background-color: #ff8447;
 }
 
 .saveButton{
