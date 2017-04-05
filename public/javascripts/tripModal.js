@@ -76,3 +76,15 @@ function editTripToDatabase(name, comment, fromdate, todate, imglink) {
 
     });
 }
+
+/* function deleteTrip() {
+    var tripid = getTripFromURL();
+    $.ajax({
+        url: '../trips/' + tripid,
+        type: "delete",
+        success: function(){
+        }
+
+    })
+}
+    */

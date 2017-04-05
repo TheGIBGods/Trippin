@@ -17,9 +17,11 @@ function shareTrip(){
                 console.log(userDB[0].username + " " + userDB[0].trips)
                 shareWithUser(userDB[0].userName, getTripFromURL());
                 console.log("username");
+                $("#tripUsers").html($("#tripUsers").html() + ", " + shareUser);
                 addUsernameToTrip(userDB[0].username, getTripFromURL());
                 $(function () {
                     $('#modalShare').modal('toggle');
+                    $('#shareName').val('');
                 });
             } catch(ex){
                 // TODO: display that this user does not exist
