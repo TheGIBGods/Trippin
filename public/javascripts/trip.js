@@ -51,7 +51,8 @@ function getTrips() {
                 console.log("loaded mapPage");
                 var tripID = getTripFromURL(url);
                 console.log("TripID from splitted from url: "+tripID)
-                getTripByID(tripID, data.responseJSON.message);
+                getTripByID(tripID, "display");
+                //getTripByID(tripID, data.responseJSON.message);
             }
             makeTripList(data.responseJSON.message);
 
@@ -64,7 +65,8 @@ function displayInfo(trip) {
     //create an element to place in the userName idfield
     console.log("Displaying info: ");
     var addedUsers = Array();
-    console.log(trip);
+    //console.log("trip.users: ");
+    //console.log(trip.users);
     for (var i = 0; i < trip.users.length; i++) {
         addedUsers.push(" " + trip.users[i].userName);
     }
@@ -205,32 +207,36 @@ function handleTripElementClick(tripid){
 
 }
 
-function getTripByID(tripId, trips) {
-    //TODO: fix request to database to find trip by tripID
-    console.log('in getTripByID, tripID is:' + tripId)
+function getTripByID(tripId, callMethod, userName) {
+    //TODO: fix request to database to find trip by tripID. kind of fixed, which method should we use, get the right in the list or call from database
+    console.log('in getTripByID, tripID is:' + tripId);
 
-    for(i = 0; i <trips.length; i++){
+    /*for(i = 0; i <trips.length; i++){
         if(trips[i]._id == tripId){
             displayInfo(trips[i]);
 
             return;
         }
-    }
-
+    }*/
 
     $.ajax({
         url: "/trips/" + tripId,
         type: "get", //send it through get method
-        data: {
-            id: tripId
-        },
         complete: function(data) {
-            console.log('Displaying info: ' + data.responseJSON.message.name)
-            displayInfo(data.responseJSON.message);
-        },
-        error: function(xhr) {
-            //Do Something to handle error
+            var tripDB = data;
+            try{
+                console.log("trip in getTripByID: ")
+                console.log(tripDB.responseJSON.message[0]);
+                if (callMethod == "display"){
+                    displayInfo(tripDB.responseJSON.message[0]);
+                }else if(callMethod == "add"){
+                    addUsernameToTrip(tripDB.responseJSON.message[0], userName);
+                }
+            } catch(ex){
+                console.log("something went wrong getting trip")
+            }
         }
+
     });
 
 }

@@ -11,14 +11,16 @@ function shareTrip(){
         complete: function (data) {
             //when all the objects are retrieved, do this
             var userDB = data.responseJSON.message;
-            console.log("checking if user exists");
+            //console.log("checking if user exists");
             try {
-                console.log(userDB)
-                console.log(userDB[0].username + " " + userDB[0].trips)
+                //console.log(userDB)
+                //console.log(userDB[0].username + " " + userDB[0].trips)
                 shareWithUser(userDB[0].userName, getTripFromURL());
                 console.log("username");
                 $("#tripUsers").html($("#tripUsers").html() + ", " + shareUser);
-                addUsernameToTrip(userDB[0].username, getTripFromURL());
+                //console.log("users from trip: "+ getTripByID())
+                //addUsernameToTrip(userDB[0].username, getTripFromURL());
+                getTripByID(getTripFromURL(), "add",userDB[0].username); //add means that addUserNameToTrip should be called
                 $(function () {
                     $('#modalShare').modal('toggle');
                     $('#shareName').val('');
@@ -50,10 +52,24 @@ function shareWithUser(username, tripName){
     });
 };
 
-function addUsernameToTrip(username, tripName){
-    console.log("adding username to trip");
+
+
+function addUsernameToTrip(trip, username){
+
+    var tripID = trip._id;
+
+
+    for (var i = 0; i < trip.users.length; i++) {
+        if(trip.users[i].userName == username){
+            console.log("Trip already shared with this user");
+            alert("Denne turen er allerede delt med " + username);
+            //TODO: ikke bruke alert her, lage egen error-modal?
+            return;
+        }
+    }
+
     $.ajax({
-        url: '/trips/' + tripName + '/' + username, //collects the users call from app
+        url: '/trips/' + tripID + '/' + username, //collects the users call from app
         type: 'put',
         complete: function(data){
             var tripDB = data;
