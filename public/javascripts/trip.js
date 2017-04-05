@@ -60,31 +60,39 @@ function getTrips() {
 };
 
 //function called before
-function displayInfo(trip){
+function displayInfo(trip) {
     //create an element to place in the userName idfield
     console.log("Displaying info: ");
     var addedUsers = Array();
     console.log(trip);
-    for(var i = 0 ; i < trip.users.length; i++){
+    for (var i = 0; i < trip.users.length; i++) {
         addedUsers.push(" " + trip.users[i].userName);
     }
-    document.getElementById("tripComment").innerHTML = "<b>"+ "Kommentar: " +"</b>"+ "<span id = realTripComment>" + trip.comment + "</span>";
+    document.getElementById("tripComment").innerHTML = "<b>" + "Kommentar: " + "</b>" + "<span id = realTripComment>" + trip.comment + "</span>";
     document.getElementById("tripName").innerHTML = trip.name;
     document.getElementById("tripNamePop").innerHTML = trip.name;
+    $("#imgUrl").val(trip.imglink);
 
 
     var fromdate = trip.fromdate;
     var todate = trip.todate;
 
-    if(fromdate.length === 0 || fromdate == "Ikke angitt"){
-        fromdate = null;
+    if (fromdate != null) {
+        if (fromdate.length === 0 || fromdate == "Ikke angitt") {
+            fromdate = null;
+        }
     }
 
-    if(todate.length === 0 || todate == "Ikke angitt"){
-        todate = null;
+    if(todate != null) {
+        if (todate.length === 0 || todate == "Ikke angitt") {
+            todate = null;
+        }
     }
 
     if ((fromdate != null)||(todate != null)){
+
+
+
         if(fromdate === null){
             document.getElementById("tripDate").innerHTML = "<b>"+ "Fra: "+ "</b>" +  "<span id = tripFromDate >" + "Ikke angitt" + "</span>" + "<b> Til: </b> <span id =tripToDate>"+ todate +"</span>";
         }
@@ -97,7 +105,7 @@ function displayInfo(trip){
             }
         else{
 
-            document.getElementById("tripDate").innerHTML = "<b>"+ "Fra: "+ "</b>" +  "<span id = tripFromDate >" + trip.fromdate + " </span>" + "<b> Til: </b> <span id =tripToDate>"+ trip.todate +"</span>";
+            document.getElementById("tripDate").innerHTML = "<b>"+ "Fra: "+ "</b>" +  "<span id = tripFromDate >" +fromdate + " </span>" + "<b> Til: </b> <span id =tripToDate>"+ todate +"</span>";
 
         }
 
@@ -105,7 +113,8 @@ function displayInfo(trip){
     else{
         $("#tripDate").empty();
     }
-    document.getElementById("tripUsers").innerHTML = "<b>" + "Brukere som har tilgang: "+ "</b>" + addedUsers;
+    document.getElementById("tripUsers").innerHTML = "<b>" + "Brukere som har tilgang: "+ "</b>" + addedUsers;4
+    setDatePickers(trip.fromdate, trip.todate);
 
     //innerHTML sets the content of the element
     //hvordan hente username for alle brukere?

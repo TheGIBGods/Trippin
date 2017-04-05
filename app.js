@@ -140,6 +140,7 @@ router.route('/trips/:id')
             trips.comment = req.body.comment;
             trips.fromdate = req.body.fromdate;
             trips.todate = req.body.todate;
+            trips.imglink = req.body.imglink;
 
             trips.save(function(err){
                 if(err)

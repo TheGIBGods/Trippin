@@ -153,6 +153,7 @@
                                 <p id="tripDate"></p>
                                 <p id="tripComment"></p>
                                 <p id = "tripUsers"></p>
+                                <input id = imgUrl type = hidden>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default cancel-btn" data-dismiss="modal">Lukk</button>
@@ -180,6 +181,9 @@
                                     <p><span class="form">Dato:</span>
                                         <input class = "tripDateHolder" type="text" id="tripFromDateEdit" placeholder="Fra">
                                         <input class = "tripDateHolder" type="text" id="tripToDateEdit" placeholder="Til"></p>
+
+                                    <p><span class="form">Bildelink:</span>
+                                        <input type="text" id="imgUrlEdit"></p>
 
                                     <p><span class="form">Kommentar:</span>
                                         <textarea id="commentTripEdit" rows="5" cols="30" placeholder="Have you ever had a dream that, that, um, that you had, uh, that you had to, you could, you do, you wit, you wa, you could do so, you do you could, you want, you wanted him to do you so much you could do anything?"></textarea>
@@ -274,7 +278,7 @@
                                         <option value="other">Annet</option>
                                     </select></p>
                                 <p><span class="form">Kommentar:</span>
-                                    <textarea id="commentPointEdit"  cols="30"></textarea>
+                                    <textarea id="commentPointEdit" rows ="10"  cols="30"></textarea>
                             </div>
                         </form>
                         <!-- End form -->

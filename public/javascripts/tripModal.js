@@ -20,6 +20,11 @@ function openTripEditWindow() {
         $("#tripToDate").html()
     );
 
+    $("#imgUrlEdit").val(
+        $("#imgUrl").val()
+    );
+
+
 
 }
 
@@ -28,6 +33,8 @@ function editTrip() {
     var comment = $("#commentTripEdit").val();
     var fromdate = $("#tripFromDateEdit").val();
     var todate = $("#tripToDateEdit").val();
+    var imglink = $("#imgUrlEdit").val();
+
 
     if(name != "") {
         $(function () {
@@ -39,11 +46,11 @@ function editTrip() {
         });
 
 //        console.log("Name: " + name + "\nKategori: " + category + "\nKommentar: " + comment + "\nDato: " + date + "\naddress: " + address);
-        editTripToDatabase(name, comment, fromdate, todate);
+        editTripToDatabase(name, comment, fromdate, todate, imglink);
     }
 }
 
-function editTripToDatabase(name, comment, fromdate, todate) {
+function editTripToDatabase(name, comment, fromdate, todate, imglink) {
 
     var tripid = getTripFromURL();
 
@@ -54,7 +61,8 @@ function editTripToDatabase(name, comment, fromdate, todate) {
             name: name,
             comment: comment,
             fromdate: fromdate,
-            todate: todate
+            todate: todate,
+            imglink:imglink
         },
 
         success: function () {

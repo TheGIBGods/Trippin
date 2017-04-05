@@ -13,7 +13,11 @@ function savePoint(){
 
 
     var pat = /^https?:\/\//i;
-    if (!pat.test(website))
+
+    if(website === "Ingen funnet" || website.length === 0){
+        website = null;
+    }
+    else  if (!pat.test(website))
     {
         website = "//" + website;
         console.log(website);
@@ -50,7 +54,11 @@ function editPoint(){
     console.log(website);
 
     var pat = /^https?:\/\//i;
-    if (!pat.test(website))
+
+    if(website === "Ingen funnet" || website.length === 0){
+        website = null;
+    }
+    else if (!pat.test(website))
     {
         website = "//" + website;
         console.log(website);

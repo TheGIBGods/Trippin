@@ -79,7 +79,7 @@ var getPoints = function () {
 function  websiteHTML(website) {
 
     if(website == undefined){
-        return "<span id = 'pointWebsite'> Ingen funnet </span>"
+        return "<span id = 'pointWebsite'>Ingen funnet</span>"
     }
     else{
         console.log("Komt Hit");
