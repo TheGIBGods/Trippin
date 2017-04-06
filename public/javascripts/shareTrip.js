@@ -16,7 +16,7 @@ function shareTrip(){
             try {
                 //console.log(userDB)
                 //console.log(" in shareTrip: username, trips: " + userDB[0].username + ",  " + userDB[0].trips)
-                shareWithUser(userDB[0].username, getTripFromURL());
+                //shareWithUser(userDB[0].username, getTripFromURL());
                 console.log("username");
                 $("#tripUsers").html($("#tripUsers").html() + ", " + shareUser);
                 //console.log("users from trip: "+ getTripByID())
@@ -72,6 +72,8 @@ function addUsernameToTrip(trip, username){
             return;
         }
     }
+
+    shareWithUser(username, tripID);
 
     $.ajax({
         url: '/trips/' + tripID + '/' + username, //collects the users call from app
