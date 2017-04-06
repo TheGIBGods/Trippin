@@ -142,7 +142,7 @@
 
             <!-- Buttons in sidebar -->
             <div class = "row buttons">
-                <button id="img_helper" data-toggle="modal" data-target="#aboutTrip"><b> Turinfo </b></button>
+                <button id="img_helper" data-toggle="modal" data-target="#aboutTrip" class ="sidebarButton"><b> Turinfo </b></button>
                 <div class="modal fade" id="aboutTrip" role="dialog">
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -296,7 +296,7 @@
 
 
             <div class = "row buttons">
-                <button data-toggle="modal" data-target="#modalShare" id="trip"><b>Del tur</b></button>
+                <button data-toggle="modal" data-target="#modalShare" id="trip"class ="sidebarButton"><b>Del tur</b></button>
 
                 <!-- Modal for share trip-->
                 <div class="modal fade" id="modalShare" role="dialog">
@@ -326,7 +326,11 @@
 
                 </div>
             </div>
-            
+
+            <div class = "row buttons">
+                <button onclick="goToTimeline()" id="time" class ="sidebarButton"><b>Se tidslinje</b></button>
+
+            </div>
             <!-- End buttons in sidebar -->
         </div>
         <!-- End sidebar -->

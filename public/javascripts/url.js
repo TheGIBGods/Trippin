@@ -34,3 +34,7 @@ function backToTrip(){
 function tripUrl(tripId){
     window.location = "/views/mapPage.html?" + getUserFromURL() + "?" + tripId;
 }
+
+function goToTimeline() {
+    window.location = "/views/timelinePage.html?" + getUserFromURL() + "?" + getTripFromURL();
+}
