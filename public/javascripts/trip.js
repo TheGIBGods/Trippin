@@ -53,6 +53,10 @@ function getTrips() {
                 console.log("TripID from splitted from url: "+tripID)
                 getTripByID(tripID, "display");
                 //getTripByID(tripID, data.responseJSON.message);
+            }else if(url.includes("timelinePage")){
+                var tripID = getTripFromURL(url);
+                console.log("TripID from splitted from url: "+tripID)
+                getTripByID(tripID, "timeline")
             }
             //console.log("in GetTrips, trips: ");
             //console.log(data.responseJSON.message);
@@ -185,20 +189,6 @@ function createTrip(){
     };
 }
 
-/*function addTripToUser(userID, tripID) {
-    //console.log('in addTripToUser in trip.js');
-    //userID = "58aafadcd1a1f22baaa7c51b";
-    //tripID ="58aadb3ef36d28790bcde9c5";
-    $.post("addTripToUser",
-        {
-            userID: userID,
-            tripID: tripID
-        })
-        .done( function(data,status){
-            console.log("Data loaded: " + data + "\nStatus: " + status);
-        });
-    console.log("In saveToDatabase");
-}*/
 
 function handleTripElementClick(tripid){
     console.log('Handling click on Trip');
@@ -232,6 +222,9 @@ function getTripByID(tripId, callMethod, userName) {
                     displayInfo(tripDB.responseJSON.message[0]);
                 }else if(callMethod == "add"){
                     addUsernameToTrip(tripDB.responseJSON.message[0], userName);
+                }else if(callMethod == "timeline"){
+                    console.log("Calling getPoints-method");
+                    getPoints("timeline",tripDB.responseJSON.message[0] )
                 }
             } catch(ex){
                 console.log("something went wrong getting trip")

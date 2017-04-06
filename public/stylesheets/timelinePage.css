@@ -1,0 +1,402 @@
+*{
+    font-family: Raleway, Arial;
+}
+
+.canBeClicked:hover{
+    cursor: pointer;
+}
+a{
+    color: black;
+    text-decoration: none;
+}
+
+
+body {
+    background: #ffb366; /* fallback for old browsers */
+    background: -webkit-linear-gradient(right, #ffb366, #ffbf80);
+    background: -moz-linear-gradient(right, #ffb366, #ffbf80);
+    background: -o-linear-gradient(right, #ffb366, #ffbf80);
+    background: linear-gradient(to left, #ffb366, #ffbf80);
+    font-family: Raleway, Arial;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/*Header:*/
+
+html, body{
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+.modal-header{
+    background-color: #ffcc99;
+    border-bottom: 20px;
+}
+
+h4{
+    font-weight: bold;
+}
+
+#noUnder{
+    text-decoration: none;
+}
+
+html, body{
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+.modal-header{
+    background-color: #ffcc99;
+    border-bottom: 20px;
+}
+
+h4{
+    font-weight: bold;
+}
+
+#noUnder{
+    text-decoration: none;
+}
+
+a:hover{
+    color: #252525;
+}
+
+#namePointEdit, #namePoint, #datepickerEdit, #datepicker, #addressPointEdit, #addressPoint, #commentPointEdit, #commentPoint, #websitePointEdit, #websitePoint, #shareName, #nameTripEdit,#commentTripEdit,#commentTrip, #imgUrl, #imgUrlEdit{
+    width: 66%;
+    vertical-align: top;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+
+}
+
+t
+
+#commentPointEdit, #commentPoint, #commentTripEdit, #commentTrip{
+    height: 33vh;
+}
+#shareForm{
+    padding-top: 10px;
+}
+
+.popupHeader{
+    width: 100%;
+
+}
+
+.popupName{
+    text-align: center  ;
+    margin: 10px;
+    font-weight: bold;
+}
+
+.myline{
+    margin-bottom: 10px;
+    margin-top: 10px;
+    width: 100%
+}
+
+.dateBox{
+    width: 50%;
+    float: left;
+    margin-bottom: 10px;
+
+}
+
+.addedByBox{
+    width: 50%;
+    float: right;
+    margin-bottom: 10px;
+}
+
+.deleteButton{
+    float:right;
+    background-color: #f2f2f2;
+    width: 40%;
+    box-shadow: none;
+}
+
+.editButton{
+    float: left;
+    background-color: #f2f2f2;
+    width: 40%;
+    box-shadow: none;
+}
+
+.submit-btn{
+    float: right;
+    background-color: #f2f2f2;
+    width: 30%;
+}
+
+.cancel-btn{
+    float: left;
+    background-color: #f2f2f2;
+    width: 30%;
+    margin: 0;
+}
+
+.popup-list-left{
+    text-align: right;
+    vertical-align: top;
+}
+
+.deleteButton:hover, .editButton:hover, .submit-btn:hover, .cancel-btn:hover{
+    box-shadow: none;
+}
+
+
+#mapid {
+    height: 100%;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+    Z-index: 0;
+}
+
+#logo_img{
+    height: 50px;
+}
+
+.break-text{
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+
+#header{
+    background-color: #ff9966;
+    margin: 0px;
+    padding:10px;
+    width: 100%;
+    height: 10%;
+    min-height: 77px;
+}
+
+.container{
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+#user, #trips, #aboutPage {
+    text-align: center;
+    border: 2px dashed #f69c55;
+}
+
+#tripName{
+    word-wrap:break-word ;
+}
+
+span {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+}
+
+#content{
+    margin: 0px;
+    height: 90%;
+}
+
+#sidebar{
+    background-color: #ffbf80;
+    height: 100%;
+}
+
+
+.user-content, .trips-content {
+    display: none;
+    position: absolute;
+    background-color: #ffbf80;
+    max-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+}
+
+
+#user:hover .user-content, #trips:hover .trips-content {
+    display: block;
+}
+
+p, li{
+    text-align: left;
+}
+
+#info_img{
+    height: 20px;
+    vertical-align: bottom;
+    margin-top: 27px;
+}
+
+
+
+#trip_heading{
+    text-align: center;
+    height:10%;
+}
+
+#img_helper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: bottom;
+}
+
+
+#aboutPopup{
+    text-align: left;
+}
+button{
+    background-color: #ff9966;
+    border: solid #ff6600 0px;
+    text-align: center;
+    cursor: pointer;
+    /*border-radius: 5px;*/
+    float: left;
+    width: 80%;
+    margin: 5px 10px;
+    padding: 20px 6px;
+}
+
+button:hover{
+    /*box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);*/
+    background-color: #ff8447;
+}
+
+.saveButton{
+    width: 40%;
+    margin-left: 30%;
+    margin-right: 30%;
+    background-color: #ffbf80;
+
+}
+.refreshUpdateText{
+    font-style: italic;
+    text-align: center;
+    color:#b3b3b3;
+}
+
+
+#sidebar_content{
+    height: 70%;
+}
+
+.canBeClicked:hover{
+    cursor: pointer;
+}
+
+.categories{
+    padding: 0px 10px;
+}
+
+#popComment{
+    max-height: 250px;
+    width: 320px;
+    white-space: pre-wrap;
+    overflow-y: auto;
+}
+
+#realTripComment{
+    white-space: pre-wrap;
+    overflow-y: auto;
+    max-height: 50vh;
+}
+
+ul{
+    display: none;
+}
+
+#sidebar_nav{
+    height: 90%;
+    width: 100%;
+    float:left;
+}
+.sidebar-trip-name{
+    width:100%;
+}
+
+#myTrips{
+    height: auto;
+    overflow-y: auto;
+    width: 250px;
+}
+
+.scrollbar{
+    overflow-y:auto;
+}
+
+
+.form{
+    width: 20%;
+    text-align: right;
+    padding-right: 10px;
+    vertical-align: top;
+}
+
+
+.popup{
+    padding: 10px;
+}
+
+.search-input {
+    font-family: Courier
+}
+
+.search-input,
+.leaflet-control-search {
+    max-width: 400px;
+}
+
+.pointClick{
+    color: #5b5b5b;
+}
+
+.tripDateHolder{
+    width: 32.75%;
+    vertical-align: top;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+
+/*Table css*/
+
+table{
+    border: 1px solid black;
+    border-collapse: collapse;
+    width: 100%;
+    background-color: #ffcc99;
+}
+tr, td{
+    border: 1px solid black;
+}
+td{
+    min-width: 100px;
+    max-width: 100px;
+}
+
+.rowInfo{
+    max-width: 70px;
+}
+
+tr{
+    min-height: 100px;
+}
+
+
+
+

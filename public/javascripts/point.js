@@ -4,21 +4,37 @@
 
 var points;
 
-//console.log("In point.js")
+console.log("In point.js")
 $(document).ready(function(){
-    window.onload = function(){
-        $.ajax({
-            url: '/points/trip/' + getTripFromURL(), //collects the users call from app
-            type: "get",
-            complete: function(data){
-                console.log("retrived all points");
+    //window.onload = function(){
+        var url = getUrl();
+        if(url.includes("mapPage")){
+            getPoints("pointList");
+        }/*else if(url.includes("timelinePage")){
+            console.log("Getting points for timeline")
+            getPoints("timeline");
+        }*/
+
+    //};
+});
+
+function getPoints(callMethod, tripObject) {
+    $.ajax({
+        url: '/points/trip/' + getTripFromURL(), //collects the users call from app
+        type: "get",
+        complete: function(data){
+            console.log("retrived all points");
+            if(callMethod == "pointList"){
                 //call the createUserList function
                 createPointList(data.responseJSON);
                 //points = data.responseJSON.message;
+            }else if(callMethod == "timeline"){
+                createTimeline(data.responseJSON, tripObject)
             }
-        })
-    };
-});
+
+        }
+    });
+}
 
 
 //function called before
@@ -70,10 +86,12 @@ function createPointList(points){
     //hvordan hente username for alle brukere?
 };
 
+/*
 var getPoints = function () {
     console.log('In getPoints() function' + points);
     return points;
 };
+*/
 
 
 function  websiteHTML(website) {
