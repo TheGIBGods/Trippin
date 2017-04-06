@@ -376,26 +376,43 @@ ul{
 /*Table css*/
 
 table{
-    border: 1px solid black;
+    border: 1px solid #b52323;
     border-collapse: collapse;
-    width: 100%;
-    background-color: #ffcc99;
+    /*width: 100%;*/
+    background-color: #ffdfbe;
+    margin: 20px 8px 10px 30px;
+
+    table-layout: fixed;
 }
 tr, td{
-    border: 1px solid black;
+    border: 1px dotted #cc7101;
 }
 td{
-    min-width: 100px;
-    max-width: 100px;
+    width: 150px;
+    height: 100px;
 }
 
 .rowInfo{
-    max-width: 70px;
+    width: 80px;
+    background-color: #ffddb4;
+}
+
+#todo{
+    height: 200px;
+}
+
+.showTable{
+
+}
+
+.hideTable{
+    display: none;
 }
 
 tr{
     min-height: 100px;
 }
+
 
 
 

@@ -7,7 +7,7 @@
 function createTimeline(pointsAll, trip) {
     //console.log("Creating timeline with points: ");
     //console.log(pointsAll);
-    var points = pointsAll.filter( p => (checkDate(p.date) == 1));
+    var points = pointsAll.filter(p => (checkDate(p.date) == 1));
     //console.log(points);
 
     var fromdate = trip.fromdate;
@@ -16,64 +16,71 @@ function createTimeline(pointsAll, trip) {
     var numDays = countDays(fromdate,todate);
     console.log("numDays; " + numDays);
 
+    var numTables = 1;
+    var counter = 7;
+    if (numDays > 7){
+        document.getElementById("timeTable2").className = "showTable";
+        numTables = 2;
+    }
+    if(numDays > 14){
+        document.getElementById("timeTable3").className = "showTable";
+        numTables =3;
+    }
+
     document.getElementById("timeHead").innerHTML = "Tidslinje for " + trip.name;
     var theday = fromdate;
 
+    for (j=1; j<numTables+1; j++){
+    console.log("j is: " + j);
+        for( i=0; i< counter;i++){
+            //console.log("creating elements for points in ")
+            //console.log(points);
+            var d = document.createElement("td");
+            d.setAttribute("id", "day-" + j+"-" + i);
+            d.innerHTML = theday;
 
-    for(i=0; i< numDays;i++){
-        //console.log("creating elements for points in ")
-        //console.log(points);
+            var h = document.createElement("td");
+            h.setAttribute("id", "hot-" + j+"-" + i);
 
+            var r = document.createElement("td");
+            r.setAttribute("id", "res-" + j+"-" + i);
 
-        var d = document.createElement("td");
-        d.setAttribute("id", "day" + i);
-        d.innerHTML = theday;
+            var t = document.createElement("td");
+            t.setAttribute("id", "todo-" + j+"-" + i);
 
-
-        var h = document.createElement("td");
-        h.setAttribute("id", "hot" + i);
-
-
-        var r = document.createElement("td");
-        r.setAttribute("id", "res" + i);
-
-
-        var t = document.createElement("td");
-        t.setAttribute("id", "todo" + i);
-
-
-        for(x in points){
-            //console.log(points[x].date)
-            if(points[x].date == theday){
-                //console.log(points[x].category)
-                switch(points[x].category){
-                    case "hotel":
-                        h.innerHTML = points[x].name;
-                        break
-                    case "restaurant":
-                        r.innerHTML = points[x].name;
-                        break
-                    case "activity":
-                    case "transportation":
-                    case "attraction":
-                    case "shopping":
-                    case "other":
-                        t.innerHTML = points[x].name
-                        break
+            for(x in points){
+                //console.log(points[x].date)
+                if(points[x].date == theday){
+                    //console.log(points[x].category)
+                    switch(points[x].category){
+                        case "hotel":
+                            h.innerHTML = points[x].name;
+                            break;
+                        case "restaurant":
+                            r.innerHTML = points[x].name;
+                            break;
+                        case "activity":
+                        case "transportation":
+                        case "attraction":
+                        case "shopping":
+                        case "other":
+                            t.innerHTML = points[x].name;
+                            break
+                    }
                 }
             }
+
+            $("#days"+j).append(d);
+            $("#hotels"+j).append(h);
+            $("#restaurants"+j).append(r);
+            $("#todo"+j).append(t);
+
+            theday = incrementDay(theday);
         }
-
-
-
-        $("#days").append(d);
-        $("#hotels").append(h);
-        $("#restaurants").append(r);
-        $("#todo").append(t);
-
-        theday = incrementDay(theday);
-
+        counter = numDays -7*j;
+        console.log("counter is: " + counter);
     }
+
 
 
 
@@ -88,7 +95,7 @@ function createTimeline(pointsAll, trip) {
 
 
 
-}
+};;
 
 function countDays(fromdate, todate) {
     var from = getDateFromString(fromdate);
