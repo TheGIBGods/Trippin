@@ -4,6 +4,7 @@
 
 function shareTrip(){
     var shareUser = $('#shareName').val();
+    console.log("shareUser: " + shareUser);
 
     $.ajax({
         url: '/users/' + shareUser, //collects the users call from app
@@ -14,8 +15,8 @@ function shareTrip(){
             //console.log("checking if user exists");
             try {
                 //console.log(userDB)
-                //console.log(userDB[0].username + " " + userDB[0].trips)
-                shareWithUser(userDB[0].userName, getTripFromURL());
+                //console.log(" in shareTrip: username, trips: " + userDB[0].username + ",  " + userDB[0].trips)
+                shareWithUser(userDB[0].username, getTripFromURL());
                 console.log("username");
                 $("#tripUsers").html($("#tripUsers").html() + ", " + shareUser);
                 //console.log("users from trip: "+ getTripByID())
@@ -27,7 +28,7 @@ function shareTrip(){
                 });
             } catch(ex){
                 // TODO: display that this user does not exist
-                alert("This user does not exist")
+                alert("This user "+ shareUser + ",does not exist")
                 console.log("this user does not exist, share trip")
             }
         }
@@ -36,20 +37,24 @@ function shareTrip(){
 
 function shareWithUser(username, tripName){
     console.log("trying to share trip, shareWithUser");
+    console.log("username:" + username);
+    console.log("tripID: " + tripName);
     $.ajax({
          url: '/users/' + username + '/'+ tripName, //collects the users call from app
          type: 'put',
-         /*complete: function(data){
+         complete: function(data){
              var userDB = data;
              console.log("shared trip")
              try{
                  console.log("trying to share username");
+                 console.log(userDB)
                  //addUsernameToTrip(shareUser.username);
              } catch(ex){
                 console.log("something went wrong while sharing")
              }
-         }*/
-    });
+         }
+    })
+
 };
 
 

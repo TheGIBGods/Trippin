@@ -54,6 +54,8 @@ function getTrips() {
                 getTripByID(tripID, "display");
                 //getTripByID(tripID, data.responseJSON.message);
             }
+            //console.log("in GetTrips, trips: ");
+            //console.log(data.responseJSON.message);
             makeTripList(data.responseJSON.message);
 
         }
@@ -133,7 +135,7 @@ function makeTripList(trips) {
             x.setAttribute("tripID", trips[i]._id)
             x.addEventListener('click', function () {
                 handleTripElementClick((event.target.getAttribute("tripID")));
-            })
+            });
             $(".trips-content").append(x);
         }
     }
@@ -187,7 +189,6 @@ function createTrip(){
     //console.log('in addTripToUser in trip.js');
     //userID = "58aafadcd1a1f22baaa7c51b";
     //tripID ="58aadb3ef36d28790bcde9c5";
-    //TODO: use put to update object in db
     $.post("addTripToUser",
         {
             userID: userID,
