@@ -380,7 +380,7 @@ table{
     border-collapse: collapse;
     /*width: 100%;*/
     background-color: #ffdfbe;
-    margin: 20px 8px 10px 30px;
+    margin: 20px 8px 10px 6%;
 
     table-layout: fixed;
 }
@@ -397,9 +397,7 @@ td{
     background-color: #ffddb4;
 }
 
-#todo{
-    height: 200px;
-}
+
 
 .showTable{
 
@@ -412,6 +410,24 @@ td{
 tr{
     min-height: 100px;
 }
+#todo1,#todo2,#todo3 {
+    height: auto;
+}
+
+.hoteldiv, .restaurantdiv, .tododiv{
+    width: 90%;
+    height: auto;
+    padding: 2px;
+    border: 1px dotted #ff9966;
+    margin: 5%;
+    border-radius: 5%;
+}
+
+.gotPoints{
+    text-align: center;
+
+}
+
 
 
 

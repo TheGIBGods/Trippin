@@ -41,12 +41,22 @@ function createTimeline(pointsAll, trip) {
 
             var h = document.createElement("td");
             h.setAttribute("id", "hot-" + j+"-" + i);
+            h.setAttribute("class", "gotPoints")
 
             var r = document.createElement("td");
             r.setAttribute("id", "res-" + j+"-" + i);
+            r.setAttribute("class", "gotPoints")
 
             var t = document.createElement("td");
             t.setAttribute("id", "todo-" + j+"-" + i);
+            r.setAttribute("class", "gotPoints")
+
+            $("#days"+j).append(d);
+            $("#hotels"+j).append(h);
+            $("#restaurants"+j).append(r);
+            $("#todo"+j).append(t);
+
+
 
             for(x in points){
                 //console.log(points[x].date)
@@ -54,26 +64,32 @@ function createTimeline(pointsAll, trip) {
                     //console.log(points[x].category)
                     switch(points[x].category){
                         case "hotel":
-                            h.innerHTML = points[x].name;
+                            var hot = document.createElement("div");
+                            hot.className = "hoteldiv";
+                            hot.innerHTML = points[x].name;
+                            $("#hot-" + j+"-" + i).append(hot);
                             break;
                         case "restaurant":
-                            r.innerHTML = points[x].name;
+                            var res = document.createElement("div");
+                            res.className = "restaurantdiv";
+                            res.innerHTML = points[x].name;
+                            $("#res-" + j+"-" + i).append(res);
                             break;
                         case "activity":
                         case "transportation":
                         case "attraction":
                         case "shopping":
                         case "other":
-                            t.innerHTML = points[x].name;
+                            var tod = document.createElement("div");
+                            tod.className = "tododiv";
+                            tod.innerHTML = points[x].name;
+                            $("#todo-" + j+"-" + i).append(tod);
                             break
                     }
                 }
             }
 
-            $("#days"+j).append(d);
-            $("#hotels"+j).append(h);
-            $("#restaurants"+j).append(r);
-            $("#todo"+j).append(t);
+
 
             theday = incrementDay(theday);
         }
