@@ -385,17 +385,13 @@ table{
     table-layout: fixed;
 }
 tr, td{
-    border: 1px dotted #cc7101;
+    /*border: 1px  #cc7101*/;
 }
 td{
     width: 150px;
-    height: 100px;
+    /*height: 100px;*/
 }
 
-.rowInfo{
-    width: 80px;
-    background-color: #ffddb4;
-}
 
 
 
@@ -408,11 +404,36 @@ td{
 }
 
 tr{
-    min-height: 100px;
+    height: 100px;
 }
 #todo1,#todo2,#todo3 {
     height: auto;
 }
+
+#days1, #days2, #days3{
+    background-color:#ffa666;
+    height: 50px;
+    font-weight: bold;
+}
+
+#hotels1, #hotels2, #hotels3{
+    height: 50px;
+}
+
+#restaurants1, #restaurants2, #restaurants3{
+    height: 100px;
+}
+
+.rowInfo{
+    width: 80px;
+    /*background-color: #ffd1a1;*/
+    border-right: 1px dotted #cc7101;;
+}
+
+.topRow{
+    background-color:#ffa666;
+}
+
 
 .hoteldiv, .restaurantdiv, .tododiv{
     width: 90%;
@@ -421,6 +442,7 @@ tr{
     border: 1px dotted #ff9966;
     margin: 5%;
     border-radius: 5%;
+    background-color: #ffb366;
 }
 
 .gotPoints{
@@ -428,6 +450,9 @@ tr{
 
 }
 
+tr:nth-child(even) {
+    background-color: #ffd099;
+}
 
 
 
