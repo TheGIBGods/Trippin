@@ -178,9 +178,9 @@ function createTrip(){
                 todate: todate
             }).done(function(res){
                 console.log("in on done");
+                var trip = res.message;
                 var tripID = res.message._id;
-                shareWithUser(getUserFromURL(), tripID);
-                addUsernameToTrip(getUserFromURL(), tripID);
+                addUsernameToTrip(trip, getUserFromURL());
                 console.log(tripID);
                 tripUrl(tripID);
 
