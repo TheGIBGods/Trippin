@@ -245,7 +245,6 @@ function makeTripTable(tripsall) {
     var trips = new Array;
 
     for (i =0; i< tripsall.length; i++){
-        console.log(tripsall[i].users)
         for(j in tripsall[i].users){
             if(tripsall[i].users[j].userName == username){
                 trips.push(tripsall[i]);
@@ -278,7 +277,6 @@ function makeTripTable(tripsall) {
             //console.log("count: " + count);
         }
 
-        console.log("i er: " + i);
         if(i == trips.length){
             var x = document.getElementById("tableElement" + i);
             x.setAttribute("class", "tripTableElem");
