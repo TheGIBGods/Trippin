@@ -18,7 +18,6 @@ function shareTrip(){
                 //console.log(" in shareTrip: username, trips: " + userDB[0].username + ",  " + userDB[0].trips)
                 //shareWithUser(userDB[0].username, getTripFromURL());
                 console.log("username");
-                $("#tripUsers").html($("#tripUsers").html() + ", " + shareUser);
                 //console.log("users from trip: "+ getTripByID())
                 //addUsernameToTrip(userDB[0].username, getTripFromURL());
                 getTripByID(getTripFromURL(), "add",userDB[0].username); //add means that addUserNameToTrip should be called
@@ -54,6 +53,8 @@ function shareWithUser(username, tripName){
              }
          }
     })
+    $("#tripUsers").html($("#tripUsers").html() + ", " + username);
+
 
 };
 
