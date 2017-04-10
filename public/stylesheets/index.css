@@ -24,7 +24,7 @@ a:hover{
     color: #252525;
 }
 
-#namePointEdit, #namePoint, #datepickerEdit, #datepicker, #addressPointEdit, #addressPoint, #commentPointEdit, #commentPoint, #websitePointEdit, #websitePoint, #shareName, #nameTripEdit,#commentTripEdit,#commentTrip, #imgUrl, #imgUrlEdit{
+#namePointEdit, #namePoint, #addressPointEdit, #addressPoint, #commentPointEdit, #commentPoint, #websitePointEdit, #websitePoint, #shareName, #nameTripEdit,#commentTripEdit,#commentTrip, #imgUrl, #imgUrlEdit{
     width: 66%;
     vertical-align: top;
     overflow-wrap: break-word;
@@ -373,6 +373,7 @@ a{
 .sidebarButton{
     padding: 10px 6px;
 }
+
 
 
 

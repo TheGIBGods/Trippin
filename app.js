@@ -230,6 +230,7 @@ router.route('/points/:id')
             points.name = req.body.name;
             points.category = req.body.category;
             points.date = req.body.date;
+            points.date2 = req.body.date2;
             points.address = req.body.address;
             points.comment = req.body.comment;
             points.website = req.body.website;

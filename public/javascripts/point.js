@@ -96,18 +96,18 @@ var getPoints = function () {
 
 function  websiteHTML(website) {
 
-    if(website == undefined){
-        return "<span id = 'pointWebsite'>Ingen funnet</span>"
+    if(website == undefined || website == "Ingen funnet"){
+        return "<span id = 'pointWebsite'></span>"
+
     }
     else{
-        console.log("Komt Hit");
-       return "<a href = " + website + " id='pointWebsite' target='_blank'>" + website + "</a>"
+       return "<b > Nettside: </b>" +  "<a href = " + website + " id='pointWebsite' target='_blank'>" + website + "</a><br><br>"
     }
 
 }
 
 function markerWebsite(website) {
-    if(website == undefined) {
+    if(website == undefined || website == "") {
         return ""
     }
     else {

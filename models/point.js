@@ -17,6 +17,7 @@ var PointSchema = new Schema({
     },
     comment: String,
     date: String,
+    date2: String,
     address: String,
     website: String,
     created_by: String,//{type: Schema.Types.ObjectId, ref: 'User'}, //"ForeignKey" to a user-document

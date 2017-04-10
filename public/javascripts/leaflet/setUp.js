@@ -67,7 +67,7 @@ function initGoogleSearch() {
                 "<span class = 'popupHeader'><h5 class = 'popupName' id = pointName>" + place.name  + "</h5>"  +
                 " <hr class = 'myline'> </span>" +
                 "<b > Adresse: </b>" + "<span  id='pointAddress'>" + place.formatted_address + "</span>" + "<br><br>" +
-                "<b > Nettside: </b>" + websiteHTML(place.website) + "<br><br>" +
+                 websiteHTML(place.website) +
                 '<button onclick ="openSaveWindow();"  type = "button" class = "btn saveButton"> Lagre punkt!</button>'
                 );
 
@@ -130,8 +130,7 @@ var setPointsOnMap = function (points) {
 
             "<span class = 'popupHeader'><h5 class = 'popupName' id = popName>" + points[p].name  + "</h5>"  +
             " <hr class = 'myline'> </span>" +
-            "<span class='dateBox'><b>" + "Dato: " + "</b><span id='popDate'>" + points[p].date + "</span></span> " +
-            "<span class = addedByBox><b>" + "Lagt til av: "+ "</b><span id = 'popCreatedBy'>" + points[p].created_by + "</span></span>" +
+           getDateAndAddedByHTML(points[p].date, points[p].date2, points[p].created_by) +
             "<hr class = 'myline'><b class = popup-list-left>" + "Adresse: " + "</b><span id='popAddress'>" + points[p].address + "</span></span><br><br>   " +
             markerWebsite(points[p].website) +
             "<b class = popup-list-left>" + "Kommentar: " + "</b></span><span id='popComment' class = 'scrollbar'>" + points[p].comment + "</span><br><br>" +
@@ -237,3 +236,20 @@ var setMapView = function (x, y) {
 
 };
 
+function getDateAndAddedByHTML(fromdate, todate, addedBy){
+
+    if(todate === undefined || todate === ""){
+       return "<span class='dateBox'><b>" + "Dato: " + "</b><span id='popDate'>" + fromdate + "</span></span> " +
+        "<span class = addedByBox><b>" + "Lagt til av: "+ "</b><span id = 'popCreatedBy'>" + addedBy + "</span></span>"
+
+    }
+    else if(todate != undefined){
+      return  "<span class='dateBox2'><b>" + "Dato: " + "</b><span id='popDate'>" + fromdate + "</span>" +
+        " - " + "<span id='popDate'>" + todate + "</span></span> " +
+        "<span class = addedByBox2><b>" + "Lagt til av: "+ "</b><span id = 'popCreatedBy'>" + addedBy + "</span></span>"
+    }
+
+    else{
+        return "HER HAR DET SKJEDD EN FEIL"
+    }
+}

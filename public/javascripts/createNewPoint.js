@@ -8,6 +8,7 @@ function savePoint(){
     var comment = $('#commentPoint').val();
     var category = $('#curtain').val();
     var date = $('#datepicker').val();
+    var date2 = $('#datepicker2').val();
     var address = $('#pointAddress').html();
     var website = $('#websitePoint').val();
 
@@ -38,7 +39,7 @@ function savePoint(){
         });
 
 //        console.log("Name: " + name + "\nKategori: " + category + "\nKommentar: " + comment + "\nDato: " + date + "\naddress: " + address);
-        saveToDatabase(name, category, comment, date, address, website);
+        saveToDatabase(name, category, comment, date, date2, address, website);
         //setPointsOnMap(newPoint);
     }
 };
@@ -49,6 +50,7 @@ function editPoint(){
     var comment = $('#commentPointEdit').val();
     var category = $('#curtainEdit').val();
     var date = $('#datepickerEdit').val();
+    var date2 = $('#datepickerEdit2').val();
     var address = $('#addressPointEdit').val();
     var website = $('#websitePointEdit').val();
     console.log(website);
@@ -65,6 +67,10 @@ function editPoint(){
         //do stuff
     }
 
+    if (date2 == ""){
+        date2 = undefined;
+    }
+
 
 
 
@@ -79,12 +85,12 @@ function editPoint(){
         });
 
 //        console.log("Name: " + name + "\nKategori: " + category + "\nKommentar: " + comment + "\nDato: " + date + "\naddress: " + address);
-        editToDatabase(name, category, comment, date, address, website);
+        editToDatabase(name, category, comment, date, date2, address, website);
         //setPointsOnMap(newPoint);
     }
 }
 
-function editToDatabase(name, category, comment, date, address, website) {
+function editToDatabase(name, category, comment, date, date2, address, website) {
     var pointid = document.getElementById('pointID').value;
     var x = lat;
     var y = lng;
@@ -98,6 +104,7 @@ function editToDatabase(name, category, comment, date, address, website) {
             category: category,
             comment: comment,
             date: date,
+            date2: date2,
             address: address,
             website: website
         },
@@ -121,7 +128,7 @@ function editToDatabase(name, category, comment, date, address, website) {
 
     });
 }
-function saveToDatabase(name, category, comment, date, address, website){
+function saveToDatabase(name, category, comment, date, date2,  address, website){
 
     var x = lat;
     var y = lng;
@@ -133,7 +140,7 @@ function saveToDatabase(name, category, comment, date, address, website){
             category: category,
             comment: comment,
             date: date,
-
+            date2: date2,
             address: address,
             website: website,
             created_by: getUserFromURL(),

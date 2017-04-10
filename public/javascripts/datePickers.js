@@ -16,7 +16,20 @@ function setDatePickers(fromdate, todate) {
             firstDay: 1,
             format: "DD/MM/YYYY"
         });
+
+        $("#datepicker2").pikaday({
+            defaultDate: moment(fromdate, "DD/MM/YYYY").toDate(),
+            firstDay: 1,
+            format: "DD/MM/YYYY"
+        });
+
         $("#datepickerEdit").pikaday({
+            defaultDate:moment(fromdate, "DD/MM/YYYY").toDate(),
+            firstDay: 1,
+            format: "DD/MM/YYYY"
+        });
+
+        $("#datepickerEdit2").pikaday({
             defaultDate:moment(fromdate, "DD/MM/YYYY").toDate(),
             firstDay: 1,
             format: "DD/MM/YYYY"
@@ -46,6 +59,12 @@ function setDatePickers(fromdate, todate) {
             format: "DD/MM/YYYY"
         });
 
+        $("#datepickerEdit2").pikaday({
+            defaultDate: new Date(),
+            firstDay: 1,
+            format: "DD/MM/YYYY"
+        });
+
         $("#tripFromDateEdit").pikaday({
             defaultDate: new Date(),
             firstDay: 1,
@@ -60,6 +79,12 @@ function setDatePickers(fromdate, todate) {
 
 
         $("#datepicker").pikaday({
+            setdefaultDate: new Date(),
+            firstDay: 1,
+            format: "DD/MM/YYYY"
+        });
+
+        $("#datepicker2").pikaday({
             setdefaultDate: new Date(),
             firstDay: 1,
             format: "DD/MM/YYYY"
