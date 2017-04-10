@@ -439,10 +439,10 @@ tr{
     width: 90%;
     height: auto;
     padding: 2px;
-    border: 1px dotted #ff9966;
+    border: 1px #ff9966;
     margin: 5%;
     border-radius: 5%;
-    background-color: #ffb366;
+    background-color: rgba(255, 166, 102, 0.41);;
 }
 
 .gotPoints{
@@ -451,7 +451,7 @@ tr{
 }
 
 tr:nth-child(even) {
-    background-color: #ffd099;
+    background-color: rgba(255, 181, 106, 0.34);
 }
 
 
