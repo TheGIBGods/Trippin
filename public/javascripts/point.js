@@ -29,6 +29,7 @@ function getPoints(callMethod, tripObject) {
                 createPointList(data.responseJSON);
                 //points = data.responseJSON.message;
             }else if(callMethod == "timeline"){
+                console.log("creating timeline")
                 createTimeline(data.responseJSON, tripObject)
             }
 

@@ -2,39 +2,89 @@
  * Created by Guro on 06.04.2017.
  */
 
-
-
 function createTimeline(pointsAll, trip) {
-    //console.log("Creating timeline with points: ");
-    //console.log(pointsAll);
     var points = pointsAll.filter(p => (checkDate(p.date) == 1));
-    //console.log(points);
 
     var fromdate = trip.fromdate;
     var todate = trip.todate;
 
-    var numDays = countDays(fromdate,todate);
-    console.log("numDays; " + numDays);
+    var numDays = countDays(fromdate,todate) +1;
 
-    var numTables = 1;
+    var numTables = Math.ceil(numDays/7);
+
+
+    //Creating the tables for the trip
+    for (i=1; i < numTables ; i++) {
+        var number = i + 1;
+        var table = document.createElement("table");
+        table.setAttribute("id", "timeTable" + number);
+        var tbody = document.createElement("tbody");
+        tbody.setAttribute("id", "tableBody" + number);
+        table.append(tbody);
+
+        var days = document.createElement("tr");
+        days.setAttribute("id", "days" + number);
+        days.setAttribute("class", "topRow");
+        tbody.append(days);
+        var dayInfo = document.createElement("td");
+        dayInfo.innerHTML = "Dag"
+        dayInfo.setAttribute("class", "rowInfo");
+        days.append(dayInfo);
+
+        var hotels = document.createElement("tr");
+        hotels.setAttribute("id", "hotels" + number);
+        hotels.setAttribute("class", "hotels");
+        tbody.append(hotels);
+        var hotelInfo = document.createElement("td");
+        hotelInfo.innerHTML = "Hotell"
+        hotelInfo.setAttribute("class", "rowInfo");
+        hotels.append(hotelInfo);
+
+        var restaurants = document.createElement("tr");
+        restaurants.setAttribute("id", "restaurants" + number);
+        restaurants.setAttribute("class", "restaurants");
+        tbody.append(restaurants);
+        var resturatnsInfo = document.createElement("td");
+        resturatnsInfo.innerHTML = "Spise"
+        resturatnsInfo.setAttribute("class", "rowInfo");
+        restaurants.append(resturatnsInfo);
+
+        var todo = document.createElement("tr");
+        todo.setAttribute("id", "todo" + number);
+        todo.setAttribute("class", "todo");
+        tbody.append(todo);
+        var todoInfo = document.createElement("td");
+        todoInfo.innerHTML = "Gjøre"
+        todoInfo.setAttribute("class", "rowInfo");
+        todo.append(todoInfo);
+
+        $("#timeTable" + i).after(table);
+
+    }
+
     var counter = 7;
-    if (numDays > 7){
-        document.getElementById("timeTable2").className = "showTable";
-        numTables = 2;
-    }
-    if(numDays > 14){
-        document.getElementById("timeTable3").className = "showTable";
-        numTables =3;
-    }
 
-    document.getElementById("timeHead").innerHTML = "Tidslinje for " + trip.name;
+    //Creating header for the timeline, with link to mapPage.
+    document.getElementById("timeHead").innerHTML = "Tidslinje for ";// + trip.name;
+    var a = document.createElement("a");
+    a.innerHTML = trip.name;
+    a.className = "canBeClicked";
+    a.addEventListener("click", function () {
+        window.location = "/views/mapPage.html?" + getUserFromURL() + "?" + trip._id;
+    });
+    $("#timeHead").append(a);
+
+    //
     var theday = fromdate;
+    var last;
+    if(numDays < 7){
+        last = numDays;
+    }else{
+        last = 7;
+    }
 
-    for (j=1; j<numTables+1; j++){
-    console.log("j is: " + j);
-        for( i=0; i< counter;i++){
-            //console.log("creating elements for points in ")
-            //console.log(points);
+    for (j=1; j<numTables+1; j++){ //For each table (each "row" of 7) add points
+        for( i=0; i< last;i++){ //For the given table, the for-loop goes through every day
             var d = document.createElement("td");
             d.setAttribute("id", "day-" + j+"-" + i);
             d.innerHTML = theday;
@@ -57,11 +107,8 @@ function createTimeline(pointsAll, trip) {
             $("#todo"+j).append(t);
 
 
-
             for(x in points){
-                //console.log(points[x].date)
-                if(points[x].date == theday){
-                    //console.log(points[x].category)
+                if (includesDay(points[x].date,points[x].date2, theday)){//(points[x].date == theday){
                     switch(points[x].category){
                         case "hotel":
                             var hot = document.createElement("div");
@@ -93,35 +140,58 @@ function createTimeline(pointsAll, trip) {
 
             theday = incrementDay(theday);
         }
+
         counter = numDays -7*j;
-        console.log("counter is: " + counter);
+        if(counter<7){
+            last = counter;
+        }
+    }
+
+}
+
+
+
+function includesDay(from, to, day) {
+    try{
+        if (!checkDate(to)){
+            if(from == day){
+                return true;
+            }else {
+                return false;
+            }
+        }
+    } catch(err){
+        if(from == day){
+            return true;
+        }else {
+            return false;
+        }
     }
 
 
 
+    var a = countDays(from, to);
+    var b = from;
+    for(u =0; u < a+1; u++){
+        if(b == day){
+            return true;
+        }
+        b = incrementDay(b);
+    }
+    return false;
+}
 
-
-    /*var d = document.createElement("tr");
-    d.setAttribute("id", "days");
-    document.getElementById("tableBody").appendChild(d);
-
-    var h = document.createElement("tr");
-    d.setAttribute("id", "hotels");
-    document.getElementById("days").after(h);*/
-
-
-
-};;
 
 function countDays(fromdate, todate) {
-    var from = getDateFromString(fromdate);
-    var to = getDateFromString(todate);
-
-    var timeDiff = Math.abs(from.getTime() - to.getTime());
-    var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
-    //console.log("Day between: " + diffDays);
-    //console.log(from.getFullYear());
-    return diffDays;
+    //var from = getDateFromString(fromdate);
+    //var to = getDateFromString(todate);
+    var date = fromdate;
+    var count = 0;
+    while(date != todate){
+        count++;
+        date = incrementDay(date);
+    }
+    return(count);
 }
 
 function getDateFromString(s) {
@@ -206,3 +276,5 @@ function isLeapYear(year) {
         return false;
     }
 }
+
+
