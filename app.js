@@ -11,7 +11,7 @@ var trips = require('./models/trip');
 var points = require('./models/point');
 var mongoose = require('mongoose');
 var moment = require('moment');
->>>>>>> dev
+
 
 var app = express();
 
