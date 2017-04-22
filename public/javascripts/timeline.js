@@ -74,8 +74,8 @@ function createTimeline(pointsAll, trip) {
     });
     $("#timeHead").append(a);
 
-    //
-    var theday = fromdate;
+    //Adding the points
+    var theday = fromdate.replace(/ /g,'')
     var last;
     if(numDays < 7){
         last = numDays;
@@ -84,7 +84,7 @@ function createTimeline(pointsAll, trip) {
     }
 
     for (j=1; j<numTables+1; j++){ //For each table (each "row" of 7) add points
-        for( i=0; i< last;i++){ //For the given table, the for-loop goes through every day
+        for( i=0; i< last;i++){ //For the given table, the for-loop goes through all 7 days
             var d = document.createElement("td");
             d.setAttribute("id", "day-" + j+"-" + i);
             d.innerHTML = theday;
@@ -108,6 +108,8 @@ function createTimeline(pointsAll, trip) {
 
 
             for(x in points){
+                //console.log(points[x]);
+                console.log(theday);
                 if (includesDay(points[x].date,points[x].date2, theday)){//(points[x].date == theday){
                     switch(points[x].category){
                         case "hotel":
@@ -155,15 +157,19 @@ function includesDay(from, to, day) {
     try{
         if (!checkDate(to)){
             if(from == day){
+                console.log("is included")
                 return true;
             }else {
+                console.log("false1, from: " + from + ", day: " + day+".");
                 return false;
             }
         }
     } catch(err){
         if(from == day){
+            console.log("is included");
             return true;
         }else {
+            console.log("false2");
             return false;
         }
     }
@@ -174,10 +180,12 @@ function includesDay(from, to, day) {
     var b = from;
     for(u =0; u < a+1; u++){
         if(b == day){
+            console.log("is included")
             return true;
         }
         b = incrementDay(b);
     }
+    console.log("false3");
     return false;
 }
 
