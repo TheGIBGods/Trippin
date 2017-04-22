@@ -1,8 +1,8 @@
 {
-  "name": "prosjektet",
+  "name": "tripppin",
   "version": "0.0.0",
   "private": true,
-  "main":"web.js",
+  "main": "web.js",
   "scripts": {
     "start": "node ./bin/www"
   },
@@ -11,13 +11,16 @@
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.0",
     "ejs": "^2.5.5",
-    "express": "~4.14.1",
+    "express": "^4.14.1",
     "leaflet": "^1.0.3",
+    "moment": "^2.17.1",
+    "mongodb": "^2.2.24",
+    "mongoose": "^4.8.4",
     "morgan": "~1.7.0",
     "node-sass-middleware": "0.9.8",
-    "serve-favicon": "~2.3.2"
+    "pikaday": "^1.5.1"
   },
-    "engines": {
+  "engines": {
     "node": "6.9.5"
   }
 }

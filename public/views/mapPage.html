@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Trippin - Kart </title>
+    <link rel="shortcut icon" href="http://www.iconj.com/ico/p/r/prqt9qshot.ico" type="image/x-icon" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAGGAJlEFnuZU1VFwi8Iv-jfRk5du9a2P4&libraries=places"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="/stylesheets/index.css">
+
+
+    <script src = /../node_modules/moment/moment.js></script>
+    <script src="/javascripts/pikaday.js"></script>
+    <script src ="/javascripts/plugins/pikaday.jquery.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="/stylesheets/pikaday.css">
+
+
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Navbar -->
+    <div class = "row" id="header">
+        <div class = "col-lg-1 text-center" id="logo">
+            <img src="/images/trippin-logo.png" id="logo_img">
+        </div>
+        <div class = "col-lg-8 text-center break-text"></div>
+        <div class = "col-lg-1 text-center" id="aboutPage">
+            <span><h4 class="canBeClicked"><a data-toggle="modal" data-target="#aboutModal"  id="noUnder"><b>Om</b></a></h4></span>
+
+            <!-- About us modal -->
+            <div class="modal fade" id="aboutModal" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title"><b>Trippin</b></h4>
+                        </div>
+                        <div class="popup" id="aboutPopup">
+                            <h4> Hva er Trippin?</h4>
+                            <p>
+                                Trippin er et reiseplanleggingsverktøy som har som hovedfunksjon å vise brukeren hvor ulike reisemål man måtte ønske å besøke ligger i forhold til hverandre.
+                                De fleste “anbefalte reisemål”-guider gir ikke noen oversikt over dette.. Det er mulig å dele turer med andre brukere slik at man kan planlegge en reise sammen. blabla..
+                            </p>
+                            <h4> Hvordan bruke Trippin?</h4>
+                            <p>
+                                For å kunne bruke Trippin må du først opprette deg en bruker, og logge inn. Ved inlogging vil du bli tatt til din side der du kan se alle
+                                turene du har tilgang til, det vil si de turene du er med å planlegge. For å opprette en ny tur, benytt "Opprett ny tur". Når du oppretter en ny tur, eller klikker deg inn på en eksisterende,
+                                tas du til en side med et kart som viser alle punktene tilknyttet den valgte turen. blabla...
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default cancel-btn" data-dismiss="modal">Lukk</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End modal -->
+
+        </div>
+        <div class = "col-lg-1 text-center canBeClicked" id="trips">
+            <span><h4><b id="myTripsBut" class="canBeClicked">Mine turer</b></h4></span>
+            <div class="trips-content scrollbar break-text" id="myTrips">
+
+            </div>
+        </div>
+        <div class = "col-lg-1 text-center" id="user">
+            <span><h4 id="userName"></h4></span>
+            <div class="user-content canBeClicked">
+                <div>
+                    <a onclick="backToTrip()">Min turer</a>
+                </div>
+                <div>
+                    <a onclick="logOut()" href="/views/index.html">Logg ut</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End navbar -->
+
+    <div class = "row" id="content">
+
+        <!-- Sidebar -->
+        <div class = "col-lg-2 text-center" id="sidebar">
+            <div class = "row" id="sidebar_content">
+                <div class = "row" id="trip_heading">
+
+                    <!-- Trip name -->
+                    <div class = "col-lg-8 text-center sidebar-trip-name">
+                        <h2 id="tripName" class="break-text">Reisenavn</h2>
+                    </div>
+
+                    <!-- Info "button" -->
+
+
+                        <!-- End modal -->
+                    </div>
+                    <div class = "col-lg-1 text-center"></div>
+
+
+                <!-- Category navigation -->
+                <div id="sidebar_nav" class="scrollbar">
+                    <p id="activity" class="categories canBeClicked"><b>Aktiviteter</b></p>
+                    <ul id="activity_list">
+
+                    </ul>
+                    <p id="attractions" class="categories canBeClicked"><b>Attraksjoner</b></p>
+                    <ul id="attractions_list">
+
+                    </ul>
+                    <p id="hotels" class="categories canBeClicked"><b>Hoteller</b></p>
+                    <ul id="hotels_list">
+
+                    </ul>
+                    <p id="restaurants" class="categories canBeClicked"><b>Restauranter</b></p>
+                    <ul id="restaurants_list">
+
+                    </ul>
+                    <p id="shopping" class="categories canBeClicked"><b>Shopping</b></p>
+                    <ul id="shopping_list">
+
+                    </ul>
+                    <p id="transportation" class="categories canBeClicked"><b>Transport</b></p>
+                    <ul id="transportation_list">
+
+                    </ul>
+                    <p id="other" class="categories canBeClicked"><b>Annet</b></p>
+                    <ul id="other_list">
+
+                    </ul>
+                </div>
+                <!-- End category navigation -->
+
+            </div>
+
+            <!-- Buttons in sidebar -->
+            <div class = "row buttons">
+                <button id="img_helper" data-toggle="modal" data-target="#aboutTrip" class ="sidebarButton"><b> Turinfo </b></button>
+                <div class="modal fade" id="aboutTrip" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="tripNamePop"></h4>
+                            </div>
+                            <div class="popup">
+                                <p id="tripDate"></p>
+                                <p id="tripComment"></p>
+                                <p id = "tripUsers"></p>
+                                <input id = imgUrl type = hidden>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default cancel-btn" data-dismiss="modal">Lukk</button>
+
+                                <button class ="btn btn-default submit-btn"  onclick="openTripEditWindow()" id="tripEdit">Endre</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal for edit trip info -->
+                <div class="modal fade" id="modalTripEdit" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title"><b>Endre tur</b></h4>
+                            </div>
+
+                            <!-- Form for save point -->
+                            <form  id="tripFormEdit">
+                                <div class="popup">
+                                    <p><span class="form">Navn på tur:</span>
+                                        <input type="text" id="nameTripEdit" autofocus required></p>
+
+                                    <p><span class="form">Dato:</span>
+                                        <input class = "tripDateHolder" type="text" id="tripFromDateEdit" placeholder="Fra">
+                                        <input class = "tripDateHolder" type="text" id="tripToDateEdit" placeholder="Til"></p>
+
+                                    <p><span class="form">Bildelink:</span>
+                                        <input type="text" id="imgUrlEdit"></p>
+
+                                    <p><span class="form">Kommentar:</span>
+                                        <textarea id="commentTripEdit" rows="5" cols="30"></textarea>
+
+                                </div>
+                            </form>
+                            <!-- End form -->
+
+                            <div class="modal-footer">
+                                <input type="submit" value="Lagre" id="tripinfosave_button" class="btn btn-default submit-btn"
+                                       onclick="editTrip()">
+                                <button type="button" class="btn btn-default cancel-btn" data-dismiss="modal">Avbryt</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal for save point-->
+                <div class="modal fade" id="modalPoint" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Lagre punkt</h4>
+                            </div>
+
+                            <!-- Form for save point -->
+                            <form action="/action_page.php" method="post" id="pointForm">
+                                <div class="popup">
+                                    <p><span class="form">Navn:</span>
+                                        <input type="text" id="namePoint" autofocus required></p>
+                                    <p><span class="form" >Dato:</span>
+                                        <input type ="text" class = "tripDateHolder" id="datepicker" placeholder="Fra">
+
+                                        <input type ="text" class = "tripDateHolder" id="datepicker2" placeholder="Til"></p>
+                                    <p><span class="form">Nettside:</span>
+                                        <input type="text" id="websitePoint" placeholder="www.eksempel.no"></p>
+                                    <p><span class="form">Kategori:</span>
+                                        <select id="curtain" required>
+                                            <option value="" disabled selected>Select your option</option>
+                                            <option value="activity">Aktivitet</option>
+                                            <option value="attraction">Attraksjon</option>
+                                            <option value="hotel">Hotel</option>
+                                            <option value="restaurant">Restaurant</option>
+                                            <option value="shopping">Shopping</option>
+                                            <option value="transportation">Transport</option>
+                                            <option value="other">Annet</option>
+                                        </select></p>
+
+                                    <p><span class="form">Kommentar:</span>
+                                        <textarea id="commentPoint" rows="3" cols="30"></textarea>
+                                </div>
+                            </form>
+                            <!-- End form -->
+
+                            <div class="modal-footer">
+                                <input type="submit" value="Lagre" id="save_button" class="btn btn-default submit-btn"
+                                        onclick="savePoint()" form="pointForm">
+                                <button type="button" class="btn btn-default cancel-btn" data-dismiss="modal">Avbryt</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End modal -->
+
+                </div>
+            </div>
+
+            <div class="modal fade" id="modalPointEdit" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Endre punkt</h4>
+                        </div>
+
+                        <!-- Form for save point -->
+                        <form action="/action_page.php" method="post" id="pointEdit">
+                            <div class="popup">
+                                <p><span class="form">Navn:</span>
+                                    <input type="text" id="namePointEdit" ></p>
+                                <p><span class="form">Dato:</span>
+                                    <input type ="text" class = "tripDateHolder" id="datepickerEdit" placeholder="Fra">
+                                    <input type ="text" class = "tripDateHolder" id="datepickerEdit2" placeholder="Til">
+
+                                </p>
+                                <p><span class="form">Adresse:</span>
+                                    <input type ="text" id="addressPointEdit"></p>
+                                <p><span class="form">Nettside:</span>
+                                    <input type="text" id="websitePointEdit" ></p>
+
+                                <p><span class="form">Kategori:</span>
+                                    <select id="curtainEdit" required>
+                                        <option value="activity">Aktivitet</option>
+                                        <option value="attraction">Attraksjon</option>
+                                        <option value="hotel">Hotel</option>
+                                        <option value="restaurant">Restaurant</option>
+                                        <option value="shopping">Shopping</option>
+                                        <option value="transportation">Transport</option>
+                                        <option value="other">Annet</option>
+                                    </select></p>
+                                <p><span class="form">Kommentar:</span>
+                                    <textarea id="commentPointEdit" rows ="10"  cols="30"></textarea>
+                            </div>
+                        </form>
+                        <!-- End form -->
+
+                        <div class="modal-footer">
+                            <input type="submit" value="Lagre" id="edit_button" class="btn btn-default submit-btn"
+                                   onclick="editPoint()" >
+                            <button type="button" class="btn btn-default cancel-btn" data-dismiss="modal">Avbryt</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- End modal -->
+
+            </div>
+
+
+            <div class = "row buttons">
+                <button data-toggle="modal" data-target="#modalShare" id="trip"class ="sidebarButton"><b>Del tur</b></button>
+
+                <!-- Modal for share trip-->
+                <div class="modal fade" id="modalShare" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Del tur med en annen bruker</h4>
+                            </div>
+
+                            <!-- Form for save point -->
+                            <form action="/action_page.php" method="post" id="shareForm">
+                                <div class="popup">
+                                    <p><span class="form">Brukernavn:</span>
+                                        <input type="text" id="shareName" autofocus required></p>
+                                </div>
+                            </form>
+                            <!-- End form -->
+
+                            <div class="modal-footer">
+                                <input type="Del tur" value="Del tur" id="save_button2" class="btn btn-default submit-btn"
+                                       form="pointForm" onclick="shareTrip()">
+                                <button type="button" class="btn btn-default cancel-btn" data-dismiss="modal">Avbryt</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End modal -->
+
+                </div>
+            </div>
+
+            <div class = "row buttons">
+                <button onclick="goToTimeline()" id="time" class ="sidebarButton"><b>Tidslinje</b></button>
+
+            </div>
+            <!-- End buttons in sidebar -->
+        </div>
+        <!-- End sidebar -->
+
+        <!-- Leaflet map -->
+        <div class = "col-lg-10 text-center" id="map">
+<!--
+            <iframe src="/maps/api.html"></iframe>
+-->
+            <div id="mapid"></div>
+        </div>
+    </div>
+</div>
+
+<script src = "/javascripts/url.js"></script>
+<script src = "/javascripts/loginPage/logIn.js"></script>
+<script src = "/javascripts/shareTrip.js"></script>
+<script src = "/javascripts/leaflet/setUp.js"></script>
+<script src = "/javascripts/user.js"></script>
+<script src = "/javascripts/trip.js"></script>
+<script src = "/javascripts/sidebar.js"></script>
+<script src = "/javascripts/point.js"></script>
+<script src = "/javascripts/createNewPoint.js"></script>
+<script src = "/javascripts/addPointsToMap.js"></script>
+<script src = "/javascripts/sidebar_points.js"></script>
+<script src = "/javascripts/url.js"></script>
+<script src = "/javascripts/tripModal.js"></script>
+<script src = "/javascripts/datePickers.js"></script>
+
+</body>
+</html>

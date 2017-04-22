@@ -1,3 +1,31 @@
+*{
+    font-family: Raleway, Arial;
+}
+
+.canBeClicked:hover{
+    cursor: pointer;
+    text-decoration: none;
+}
+
+a{
+    color: black;
+    text-decoration: none;
+}
+
+
+body {
+    background: #ffb366; /* fallback for old browsers */
+    background: -webkit-linear-gradient(right, #ffb366, #ffbf80);
+    background: -moz-linear-gradient(right, #ffb366, #ffbf80);
+    background: -o-linear-gradient(right, #ffb366, #ffbf80);
+    background: linear-gradient(to left, #ffb366, #ffbf80);
+    font-family: Raleway, Arial;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/*Header:*/
+
 html, body{
     height: 100%;
     margin: 0px;
@@ -8,8 +36,22 @@ html, body{
     border-bottom: 20px;
 }
 
-*{
-    font-family: Raleway, Arial;
+h4{
+    font-weight: bold;
+}
+
+#noUnder{
+    text-decoration: none;
+}
+
+html, body{
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+.modal-header{
+    background-color: #ffcc99;
+    border-bottom: 20px;
 }
 
 h4{
@@ -24,7 +66,7 @@ a:hover{
     color: #252525;
 }
 
-#namePointEdit, #namePoint, #addressPointEdit, #addressPoint, #commentPointEdit, #commentPoint, #websitePointEdit, #websitePoint, #shareName, #nameTripEdit,#commentTripEdit,#commentTrip, #imgUrl, #imgUrlEdit{
+#namePointEdit, #namePoint, #datepickerEdit, #datepicker, #addressPointEdit, #addressPoint, #commentPointEdit, #commentPoint, #websitePointEdit, #websitePoint, #shareName, #nameTripEdit,#commentTripEdit,#commentTrip, #imgUrl, #imgUrlEdit{
     width: 66%;
     vertical-align: top;
     overflow-wrap: break-word;
@@ -174,16 +216,6 @@ span {
     height: 100%;
 }
 
-#map{
-    padding: 0px;
-    height: 100%;
-}
-
-
-iframe{
-    width: 100%;
-    height: 100%;
-}
 
 .user-content, .trips-content {
     display: none;
@@ -193,11 +225,6 @@ iframe{
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     padding: 12px 16px;
     z-index: 1;
-}
-
-.tripClick:hover{
-
-    text-decoration: underline;
 }
 
 
@@ -228,23 +255,6 @@ p, li{
     vertical-align: bottom;
 }
 
-#searchBox{
-    width: 300px;
-}
-
-.leaflet-popup{
-}
-
-.leaflet-popup-content{
-    display:inline-block;
-    min-width: 300px;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
-}
 
 #aboutPopup{
     text-align: left;
@@ -305,7 +315,6 @@ button:hover{
     max-height: 50vh;
 }
 
-
 ul{
     display: none;
 }
@@ -337,10 +346,6 @@ ul{
     vertical-align: top;
 }
 
-a{
-    color: black;
-    text-decoration: none;
-}
 
 .popup{
     padding: 10px;
@@ -370,10 +375,87 @@ a{
     hyphens: auto;
 }
 
-.sidebarButton{
-    padding: 10px 6px;
+/*Table css*/
+
+table{
+    border: 1px solid #b52323;
+    border-collapse: collapse;
+    /*width: 100%;*/
+    background-color: #ffdfbe;
+    margin: 20px 8px 10px 6%;
+
+    table-layout: fixed;
+}
+tr, td{
+    /*border: 1px  #cc7101*/;
+}
+td{
+    width: 150px;
+    /*height: 100px;*/
 }
 
+
+
+
+.showTable{
+
+}
+
+.hideTable{
+    display: none;
+}
+
+tr{
+    height: 100px;
+}
+.todo{
+    height: 50px;
+    /*height: auto;*/
+}
+
+.topRow{
+    background-color:#ffa666;
+    height: 50px;
+    font-weight: bold;
+}
+
+.hotels{
+    height: 50px;
+}
+
+.restaurants{
+    height: 50px;
+}
+
+.rowInfo{
+    width: 80px;
+    /*background-color: #ffd1a1;*/
+    border-right: 1px dotted #cc7101;;
+}
+
+.topRow{
+    background-color:#ffa666;
+}
+
+
+.hoteldiv, .restaurantdiv, .tododiv{
+    width: 90%;
+    height: auto;
+    padding: 2px;
+    border: 1px #ff9966;
+    margin: 5%;
+    border-radius: 5%;
+    background-color: rgba(255, 166, 102, 0.41);;
+}
+
+.gotPoints{
+    text-align: center;
+
+}
+
+tr:nth-child(even) {
+    background-color: rgba(255, 181, 106, 0.34);
+}
 
 
 

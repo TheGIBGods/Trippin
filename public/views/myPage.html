@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Mine Turer</title>
+    <link rel="shortcut icon" href="http://www.iconj.com/ico/p/r/prqt9qshot.ico" type="image/x-icon" />    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAGGAJlEFnuZU1VFwi8Iv-jfRk5du9a2P4&libraries=places"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../stylesheets/myPage.css">
+
+    <script src = /../node_modules/moment/moment.js></script>
+    <script src="/javascripts/pikaday.js"></script>
+    <script src ="/javascripts/plugins/pikaday.jquery.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="/stylesheets/pikaday.css">
+
+
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Navbar -->
+    <div class = "row" id="header">
+        <div class = "col-lg-1 text-center" id="logo">
+            <img src="/images/trippin-logo.png" id="logo_img">
+        </div>
+        <div class = "col-lg-8 text-center"></div>
+        <div class = "col-lg-1 text-center" id="aboutPage">
+            <span><h4 class="canBeClicked"><a data-toggle="modal" data-target="#aboutModal" id="noUnder"><b>Om</b></a></h4></span>
+
+            <!-- About us modal -->
+            <div class="modal fade" id="aboutModal" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title"><b>Trippin</b></h4>
+                        </div>
+                        <div class="popup" id="aboutPopup">
+                            <h4> Hva er Trippin?</h4>
+                            <p>
+                                Trippin er et reiseplanleggingsverktøy som har som hovedfunksjon å vise brukeren hvor ulike reisemål man måtte ønske å besøke ligger i forhold til hverandre.
+                                De fleste “anbefalte reisemål”-guider gir ikke noen oversikt over dette.. Det er mulig å dele turer med andre brukere slik at man kan planlegge en reise sammen. blabla..
+                            </p>
+                            <h4> Hvordan bruke Trippin?</h4>
+                            <p>
+                                For å kunne bruke Trippin må du først opprette deg en bruker, og logge inn. Ved inlogging vil du bli tatt til din side der du kan se alle
+                                turene du har tilgang til, det vil si de turene du er med å planlegge. For å opprette en ny tur, benytt "Opprett ny tur". Når du oppretter en ny tur, eller klikker deg inn på en eksisterende,
+                                tas du til en side med et kart som viser alle punktene tilknyttet den valgte turen. blabla...
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Lukk</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End modal -->
+
+        </div>
+        <div class = "col-lg-1 text-center canBeClicked" id="trips">
+            <span><h4><b id="myTripsBut" class="canBeClicked">Mine turer</b></h4></span>
+            <div class="trips-content scrollbar break-text" id="myTrips">
+
+            </div>
+        </div>
+        <div class = "col-lg-1 text-center" id="user">
+            <span><h4 id="userName" class="canBeClicked"></h4></span>
+            <div class="user-content canBeClicked">
+                <div>
+                    <a onclick="backToTrip()">Min turer</a>
+                </div>
+                <div>
+                    <a onclick="logOut()" href="/views/index.html">Logg ut</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End navbar -->
+
+    <!-- Start TripDiv -->
+    <div class = "row" id="content">
+        <div class = "col-lg-1 text-center"></div>
+        <div class = "col-lg-10 text-center">
+                <table id="myTable">
+                    <tbody id="tableBody">
+                    <thead><th colespan="5" id="tripHead">Mine Turer</th></thead>
+                    <tr id = "tableRow0">
+                        <td id="tableElement0" class="tripTableElem">  </td>
+                        <td id="tableElement1" class="tripTableElem">  </td>
+                        <td id="tableElement2" class="tripTableElem">  </td>
+                        <td id="tableElement3" class="tripTableElem">  </td>
+                        <td id="tableElement4" class="tripTableElem">  </td>
+                    </tr>
+                    </tbody>
+
+
+                    <div class="modal fade" id="modalTrip" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title"><b>Ny tur</b></h4>
+                                </div>
+
+                                <!-- Form for save point -->
+                                <form action="/action_page.php" id="tripForm">
+                                    <div class="popup">
+                                        <p><span class="form">Navn på tur:</span>
+                                            <input type="text" id="nameTrip" placeholder="Klassetur til Voss? Weekend i New York?" autofocus required></p>
+                                        <p><span class="form">Dato:</span>
+
+                                            <input class = "tripDateHolder" type="text" id="fromDate" placeholder="Fra">
+
+                                            <input class ="tripDateHolder" type="text" id="toDate" placeholder="Til">
+                                        </p>
+                                        <p><span class="form">Bildelink:</span>
+                                            <input type="text" id="imgUrl"></p>
+                                        <p><span class="form">Kommentar:</span>
+                                            <textarea id="commentTrip" rows="5" cols="30"></textarea>
+                                    </div>
+                                </form>
+                                <!-- End form -->
+
+                                <div class="modal-footer">
+                                    <input type="submit" value="Opprett" id="save_button" class="btn btn-default submit-btn"
+                                           onclick="createTrip()">
+                                    <button type="button" class="btn btn-default cancel-btn" data-dismiss="modal">Avbryt</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </table>
+        </div>
+        <div class = "col-lg-1 text-center"></div>
+    </div>
+
+
+</div>
+<script src = "/javascripts/url.js"></script>
+<script src = "/javascripts/shareTrip.js"></script>
+<script src = "/javascripts/loginPage/logIn.js"></script>
+<script src = "/javascripts/user.js"></script>
+<script src = "/javascripts/trip.js"></script>
+<script src = "/javascripts/datePickers.js"></script>
+
+</body>
+</html>
