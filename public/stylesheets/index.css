@@ -151,7 +151,7 @@ t
 
 #user, #trips, #aboutPage {
     text-align: center;
-    border: 2px dashed #f69c55;
+    border: 2px #f69c55;
 }
 
 #tripName{

@@ -1,6 +1,7 @@
 /**
  * Created by Synne on 28.02.2017.
  */
+var tripDate = true;
 
 $(document).ready(
     $.ajax({
@@ -88,12 +89,14 @@ function displayInfo(trip) {
     if (fromdate != null) {
         if (fromdate.length === 0 || fromdate == "Ikke angitt") {
             fromdate = null;
+            tripDate = false;
         }
     }
 
     if(todate != null) {
         if (todate.length === 0 || todate == "Ikke angitt") {
             todate = null;
+            tripDate = false;
         }
     }
 
