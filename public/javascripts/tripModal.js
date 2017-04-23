@@ -24,8 +24,6 @@ function openTripEditWindow() {
         $("#imgUrl").val()
     );
 
-
-
 }
 
 function editTrip() {
@@ -79,14 +77,23 @@ function editTripToDatabase(name, comment, fromdate, todate, imglink) {
     });
 }
 
-/* function deleteTrip() {
-    var tripid = getTripFromURL();
-    $.ajax({
-        url: '../trips/' + tripid,
-        type: "delete",
-        success: function(){
-        }
+function deleteTrip() {
+    if(confirm("Er du sikker på at du har lyst til å slette denne turen?\nTuren vil fortsatt være tilgjengelig for andre" +
+            " brukere den er delt med.")) {
+        var tripid = getTripFromURL();
+        var user = getUserFromURL();
+        $.ajax({
+            url: '../users/delete/' + user + '/' + tripid,
+            type: 'put'
+        });
 
-    })
+        $.ajax({
+            url: '../trips/delete/' + tripid + '/' + user,
+            type: 'put'
+        });
+
+        console.log("trip deleted");
+
+        backToTrip();
+    }
 }
-    */
