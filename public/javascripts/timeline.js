@@ -65,9 +65,9 @@ function createTimeline(pointsAll, trip) {
     var counter = 7;
 
     //Creating header for the timeline, with link to mapPage.
-    document.getElementById("timeHead").innerHTML = "Tidslinje for ";// + trip.name;
+    document.getElementById("timeHead").innerHTML = ""//"Tidslinje for ";// + trip.name;
     var a = document.createElement("a");
-    a.innerHTML = trip.name;
+    a.innerHTML = "Tidslinje for " + trip.name;
     a.className = "canBeClicked";
     a.addEventListener("click", function () {
         window.location = "/views/mapPage.html?" + getUserFromURL() + "?" + trip._id;
