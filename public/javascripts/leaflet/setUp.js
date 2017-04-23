@@ -15,7 +15,7 @@ function initLeaflet(){
 
     //http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x} alternative map
 
-    L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+    L.tileLayer('https://api.mapbox.com/styles/v1/gurogb/cj1up1foy004i2rnzoac5qmhk/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZ3Vyb2diIiwiYSI6ImNpeWxjM20yZTAwM3gyd2pyMjNkcGhmbG0ifQ.py-0lvMqieNiRogr_wIn4A', {
         maxZoom: 18,
         minZoom: 2,
         attribution: 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012',
