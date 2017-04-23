@@ -239,6 +239,10 @@ p, li{
 .leaflet-popup{
 }
 
+#tripEdit{
+    float: none;
+}
+
 .leaflet-popup-content{
     display:inline-block;
     min-width: 300px;
