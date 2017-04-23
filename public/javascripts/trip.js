@@ -124,8 +124,12 @@ function displayInfo(trip) {
     else{
         $("#tripDate").empty();
     }
-    document.getElementById("tripUsers").innerHTML = "<b>" + "Brukere som har tilgang: "+ "</b>" + addedUsers;4
+    document.getElementById("tripUsers").innerHTML = "<b>" + "Brukere som har tilgang: "+ "</b>" + addedUsers;
     setDatePickers(trip.fromdate, trip.todate);
+
+    if(fromdate ==null || todate == null){
+        tripDate = false;
+    }
 
     //innerHTML sets the content of the element
     //hvordan hente username for alle brukere?
@@ -326,6 +330,12 @@ function makeTripTable(tripsall) {
 };
 
 
-
+function clickedTimelineButton() {
+    if(tripDate == true){
+        goToTimeline()
+    }else{
+        alert("Det er ikke satt til- og fradato på denne turen. For å se tidslinje, gjør dette først.")
+    }
+}
 
 
