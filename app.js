@@ -12,7 +12,6 @@ var points = require('./models/point');
 var mongoose = require('mongoose');
 var moment = require('moment');
 
-
 var app = express();
 
 //Connecting to the database using mongoose
