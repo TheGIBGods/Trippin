@@ -230,7 +230,10 @@ p, li{
 }
 
 #searchBox{
-    width: 300px;
+    width: 400px;
+    box-shadow: rgb(136,136,136) 3px 3px 5px;
+    border: 1px solid rgb(6,6,6);
+    background-color: rgb(255,255,255);
 }
 
 .leaflet-popup{
