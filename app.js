@@ -78,6 +78,17 @@ router.route('/users/:name/:tripID')
         });
     });
 
+router.route('/users/delete/:name/:tripID')
+    .put( function(req, res){
+        users.update({username: req.params.name}, {$pull: {'trips': {'tripName' : req.params.tripID}}}, function(err, data){
+            if(err){
+                console.log("couldn't remove trip from user");
+                res.send(err);
+            }
+            console.log("removed trip");
+        })
+    });
+
 
 //controllers for trips
 //all trips
@@ -162,6 +173,20 @@ router.route('/trips/:tripID/:userName')
                 res.send(err);
             }
         });
+    });
+
+router.route('/trips/delete/:tripID/:userName')
+    .put( function(req, res){
+        console.log("user: " + req.params.userName);
+        console.log("trip: " + req.params.tripID);
+        console.log("trying to delete user from trip")
+        trips.update({_id: req.params.tripID}, {$pull: {'users': {'userName' : req.params.userName}}}, function(err, data){
+            if(err){
+                console.log("couldn't remove user from trip");
+                res.send(err);
+            }
+            console.log("removed user");
+        })
     });
 
 //controllers for point
