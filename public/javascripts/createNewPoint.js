@@ -12,7 +12,6 @@ function savePoint(){
     var address = $('#pointAddress').html();
     var website = $('#websitePoint').val();
 
-
     var pat = /^https?:\/\//i;
 
     if(website === "Ingen funnet" || website.length === 0){
@@ -25,18 +24,13 @@ function savePoint(){
         //do stuff
     }
 
-
-
-
     //resets all the fields in the form
     if(name != "" && category != null) {
         $(function () {
             $('#modalPoint').modal('toggle');
         });
 
-        $('#pointForm').each(function () {
-            this.reset();
-        });
+        resetForm('#pointForm');
 
 //        console.log("Name: " + name + "\nKategori: " + category + "\nKommentar: " + comment + "\nDato: " + date + "\naddress: " + address);
         saveToDatabase(name, category, comment, date, date2, address, website);
@@ -71,18 +65,13 @@ function editPoint(){
         date2 = undefined;
     }
 
-
-
-
     //resets all the fields in the form
     if(name != "" && category != null) {
         $(function () {
             $('#modalPointEdit').modal('toggle');
         });
 
-        $('#pointForm').each(function () {
-            this.reset();
-        });
+        resetForm('#pointForm');
 
 //        console.log("Name: " + name + "\nKategori: " + category + "\nKommentar: " + comment + "\nDato: " + date + "\naddress: " + address);
         editToDatabase(name, category, comment, date, date2, address, website);
@@ -156,14 +145,9 @@ function saveToDatabase(name, category, comment, date, date2,  address, website)
             setPointsOnMap(pointArray);
             createPointList(pointArray);
             markersOnMap[markersOnMap.length -1 ].openPopup();
-
-
            });
 
 }
-
-
-
 
 function deleteOpenPoint() {
     var pointid = document.getElementById('pointID').value;
@@ -179,7 +163,10 @@ function deleteOpenPoint() {
     })
 }
 
-
-
+function resetForm(form){
+    $(form).each(function () {
+        this.reset();
+    });
+}
 
 

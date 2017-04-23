@@ -41,9 +41,11 @@ function editTrip() {
             $('#modalTripEdit').modal('toggle');
         });
 
-        $('#tripFormEdit').each(function () {
+        resetForm('#tripFormEdit');
+
+        /*$('#tripFormEdit').each(function () {
             this.reset();
-        });
+        });*/
 
 //        console.log("Name: " + name + "\nKategori: " + category + "\nKommentar: " + comment + "\nDato: " + date + "\naddress: " + address);
         editTripToDatabase(name, comment, fromdate, todate, imglink);

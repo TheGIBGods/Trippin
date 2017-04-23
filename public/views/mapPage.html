@@ -30,7 +30,7 @@
     <!-- Navbar -->
     <div class = "row" id="header">
         <div class = "col-lg-1 text-center" id="logo">
-            <img src="/images/trippin-logo.png" id="logo_img">
+            <a onclick="backToTrip()"><img src="/images/trippin-logo.png" id="logo_img" class="canBeClicked"></a>
         </div>
         <div class = "col-lg-8 text-center break-text"></div>
         <div class = "col-lg-1 text-center" id="aboutPage">
@@ -257,7 +257,8 @@
                             <div class="modal-footer">
                                 <input type="submit" value="Lagre" id="save_button" class="btn btn-default submit-btn"
                                         onclick="savePoint()" form="pointForm">
-                                <button type="button" class="btn btn-default cancel-btn" data-dismiss="modal">Avbryt</button>
+                                <button type="button" class="btn btn-default cancel-btn" data-dismiss="modal"
+                                        onclick="resetForm('#pointForm')">Avbryt</button>
                             </div>
                         </div>
                     </div>
@@ -339,7 +340,8 @@
                             <div class="modal-footer">
                                 <input type="Del tur" value="Del tur" id="save_button2" class="btn btn-default submit-btn"
                                        form="pointForm" onclick="shareTrip()">
-                                <button type="button" class="btn btn-default cancel-btn" data-dismiss="modal">Avbryt</button>
+                                <button type="button" class="btn btn-default cancel-btn" data-dismiss="modal"
+                                    onclick="resetForm('#shareForm')">Avbryt</button>
                             </div>
                         </div>
                     </div>
