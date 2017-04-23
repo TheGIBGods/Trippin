@@ -20,23 +20,23 @@ function checkPassword(){
         complete: function (data) {
             //when all the objects are retrieved, do this
             var userDB = data.responseJSON.message;
-            console.log("checking password");
+            //console.log("checking password");
             try {
                 console.log(userDB)
                 console.log(userDB[0].username + " " + userDB[0].password)
 
                 if (user == userDB[0].username && password == userDB[0].password) {
-                    console.log("correct")
+                    //console.log("correct")
                     getMyPageURL(user);
                 }
                 else{
                     //TODO: do this in a better way
-                    alert("Wrong password")
+                    alert("Feil passord.\nInnloggingen skiller mellom store og små bokstaver")
                 }
             } catch(ex){
                 // TODO: display that this user does not exist
-                alert("Wrong username")
-                console.log("this user does not exist, login")
+                alert("Feil brukernavn.\n Innloggingen skiller mellom store og små bokstaver")
+                //console.log("this user does not exist, login")
             }
         }
     });
