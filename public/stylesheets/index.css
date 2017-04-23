@@ -219,7 +219,7 @@ p, li{
 
 #trip_heading{
     text-align: center;
-    height:10%;
+    height:15%;
 }
 
 #img_helper {
@@ -281,7 +281,7 @@ button:hover{
 
 
 #sidebar_content{
-    height: 70%;
+    height: 65%;
 }
 
 .canBeClicked:hover{
