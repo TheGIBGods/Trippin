@@ -41,7 +41,7 @@ function initGoogleSearch() {
     (new GoogleSearch).addTo(mymap);
 
     var input = document.getElementById("searchBox");
-    input.placeholder = 'Hvor skal du?';
+    input.placeholder = 'Søk etter dine reisemål';
     var searchBox = new google.maps.places.SearchBox(input);
 
     var group = L.featureGroup();
