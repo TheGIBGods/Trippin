@@ -63,11 +63,11 @@ function createPointList(points){
         switch (points[i].category) {
             case "hotel":
                 $("#hotels_list").append(x);
-                categories[4].push(points[i]);
+                categories[2].push(points[i]);
                 break
             case "restaurant":
                 $("#restaurants_list").append(x);
-                categories[3].push(points[i]);
+                categories[4].push(points[i]);
                 break
             case "activity":
                 $("#activity_list").append(x);
@@ -83,7 +83,7 @@ function createPointList(points){
                 break
             case "shopping":
                 $("#shopping_list").append(x);
-                categories[2].push(points[i]);
+                categories[3].push(points[i]);
                 break
             case "other":
                 $("#other_list").append(x);
