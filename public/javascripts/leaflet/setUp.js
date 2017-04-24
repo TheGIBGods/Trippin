@@ -93,7 +93,7 @@ function initGoogleSearch() {
         complete: function(data){
             console.log("in setup leaflet");
             console.log(data);
-            setPointsOnMap(data.responseJSON);
+            setPointsOnMap(data.responseJSON, true);
         }
     });
 
@@ -106,9 +106,11 @@ function initGoogleSearch() {
     console.log('In getMap() function');
     return map;
 };*/
-var firstIteration = true;
+
 var markersOnMap = new Array();
-var setPointsOnMap = function (points) {
+var setPointsOnMap = function (points, fit) {
+
+    markersMade = new Array();
 
     for(p in points) {
         var x = points[p].x_koord;
@@ -142,6 +144,7 @@ var setPointsOnMap = function (points) {
         );
 
         markersOnMap.push(marker);
+        markersMade.push(marker);
     }
 
 
@@ -151,21 +154,13 @@ var setPointsOnMap = function (points) {
     if (markersOnMap.length == 0){
         mymap.setView([38.82259, -2.8125], 0);
     }
-    else if(firstIteration){
-        var group = L.featureGroup((markersOnMap));
-        mymap.fitBounds(group.getBounds());
+    else if(fit) {
+        var markergroup = L.featureGroup((markersMade));
+        mymap.fitBounds(markergroup.getBounds());
         if (mymap.getZoom() > 15) {
             mymap.setZoom(15);
-        }
-        firstIteration = false;
+       }
     }
-
-    else{
-        setMapView(markersOnMap[markersOnMap.length - 1].getLatLng().lat, markersOnMap[markersOnMap.length - 1].getLatLng().lng);
-
-    }
-
-
 };
 
 /*var openMarker;

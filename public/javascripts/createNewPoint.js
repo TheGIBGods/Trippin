@@ -111,7 +111,7 @@ function editToDatabase(name, category, comment, date, date2, address, website) 
         currentMarker.remove();
         $('#' + pointid).remove();
 
-        setPointsOnMap(pointArray);
+        setPointsOnMap(pointArray, true);
         createPointList(pointArray);
         markersOnMap[markersOnMap.length - 1].openPopup();
 
@@ -142,7 +142,7 @@ function saveToDatabase(name, category, comment, date, date2,  address, website)
             //callback function
             var pointArray = new Array();
             pointArray.push(data);
-            setPointsOnMap(pointArray);
+            setPointsOnMap(pointArray, true);
             createPointList(pointArray);
             markersOnMap[markersOnMap.length -1 ].openPopup();
            });
