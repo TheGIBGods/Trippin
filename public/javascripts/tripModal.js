@@ -78,7 +78,7 @@ function editTripToDatabase(name, comment, fromdate, todate, imglink) {
 }
 
 function deleteTrip() {
-    if(confirm("Er du sikker på at du har lyst til å slette denne turen?\nTuren vil fortsatt være tilgjengelig for andre" +
+    if(confirm("Er du sikker på at du ikke lenger vil ha tilgang til denne turen?\nTuren vil fortsatt være tilgjengelig for andre" +
             " brukere den er delt med.")) {
         var tripid = getTripFromURL();
         var user = getUserFromURL();
