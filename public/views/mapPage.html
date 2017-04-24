@@ -359,7 +359,46 @@
 
             </div>
 
-            <p class="canBeClicked" onclick="clearMap()">click</p>
+            <div class = "row buttons">
+                <button data-toggle="modal" data-target="#modalFilter" id="filter"class ="sidebarButton"><b>Filtrer punkter
+                </b></button>
+
+                <!-- Modal for share trip-->
+                <div class="modal fade" id="modalFilter" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Vis de valgte kattgoriene på kartet</h4>
+                            </div>
+
+                            <!-- Form for save point -->
+                            <form action="/action_page.php" method="post" id="filterForm">
+                                <div class="popup">
+                                    <input type="checkbox" name="vehicle" value="activity">Aktiviteter<br>
+                                    <input type="checkbox" name="vehicle" value="attraction">Attraksjoner<br>
+                                    <input type="checkbox" name="vehicle" value="hotel">Overnatting<br>
+                                    <input type="checkbox" name="vehicle" value="restaurant">Spisested<br>
+                                    <input type="checkbox" name="vehicle" value="shopping">Shopping<br>
+                                    <input type="checkbox" name="vehicle" value="transportation">Transport<br>
+                                    <input type="checkbox" name="vehicle" value="other">Annet<br>
+                                    <input type="checkbox" name="vehicle" value="all">Vis alle
+                                </div>
+                            </form>
+                            <!-- End form -->
+
+                            <div class="modal-footer">
+                                <input type="Lagre" value="Lagre" id="" class="btn btn-default submit-btn"
+                                       form="filterForm" onclick="filterMarkers()">
+                                <button type="button" class="btn btn-default cancel-btn" data-dismiss="modal"
+                                        onclick="resetForm('#filterForm')">Avbryt</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End modal -->
+
+                </div>
+            </div>
+
             <!-- End buttons in sidebar -->
         </div>
         <!-- End sidebar -->
@@ -388,6 +427,7 @@
 <script src = "/javascripts/url.js"></script>
 <script src = "/javascripts/tripModal.js"></script>
 <script src = "/javascripts/datePickers.js"></script>
+<script src = "/javascripts/filter.js"></script>
 
 </body>
 </html>
