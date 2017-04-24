@@ -319,7 +319,7 @@ ul{
 }
 
 #sidebar_nav{
-    height: 90%;
+    height: 70%;
     width: 100%;
     float:left;
 }
@@ -380,6 +380,7 @@ a{
 
 .sidebarButton{
     padding: 10px 6px;
+    height: 5%;
 }
 
 
