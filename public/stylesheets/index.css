@@ -298,6 +298,7 @@ button:hover{
 
 .categories{
     padding: 0px 10px;
+    font-weight: bold;
 }
 
 #popComment{
@@ -387,6 +388,19 @@ a{
     text-align: left;
 }
 
+
+.makeShowLess{
+    /*display: none;*/
+    color: rgba(77, 77, 77, 0.48);
+}
+
+.hideThis{
+    display: none !important;
+}
+
+.showList{
+
+}
 
 
 
