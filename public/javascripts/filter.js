@@ -22,12 +22,12 @@ function filterMarkers(){
             checkedMarkers.push(categories[2][i]);
         }    }
     if(document.getElementById("restaurantCB").checked){
-        for (i = 0; categories[3].length > i; i++){
-            checkedMarkers.push(categories[3][i]);
-        }    }
-    if(document.getElementById("shoppingCB").checked){
         for (i = 0; categories[4].length > i; i++){
             checkedMarkers.push(categories[4][i]);
+        }    }
+    if(document.getElementById("shoppingCB").checked){
+        for (i = 0; categories[3].length > i; i++){
+            checkedMarkers.push(categories[3][i]);
         }    }
     if(document.getElementById("transportationCB").checked){
         for (i = 0; categories[5].length > i; i++){
