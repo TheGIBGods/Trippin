@@ -27,7 +27,7 @@ function shareTrip(){
                 });
             } catch(ex){
                 // TODO: display that this user does not exist
-                alert("This user "+ shareUser + ",does not exist")
+                alert("Det finnes ikke noen bruker med brukernavn "+ shareUser)
                 console.log("this user does not exist, share trip")
             }
         }

@@ -16,7 +16,7 @@ function validateUser(){
     }
     else{
         //TODO: display passwords doesn't match
-        alert("The passwords does not match")
+        alert("Passordene er ikke like")
     }
 };
 
@@ -31,7 +31,7 @@ function newUserName(userName, password){
             try{
                 //TODO: display, there is already a user with this username
                 var existingUser = data.responseJSON.message[0].userName
-                alert("There is already a user with this username")
+                alert("Det finnes allerede en bruker med dette brukernavnet")
             } catch(ex){
                 saveUser(userName, password);
                 getMyPageURL(userName);
