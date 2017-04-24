@@ -4,6 +4,7 @@
 
 function filterMarkers(){
     clearMap();
+    firstIteration = true;
 
     if(document.getElementById("activityCB").checked){
         setPointsOnMap(categories[0]);
