@@ -265,4 +265,6 @@ a{
     width: 250px;
 }
 
-
+.col-lg-9 a{
+    color: #5288b6;
+}

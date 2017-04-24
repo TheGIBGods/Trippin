@@ -455,6 +455,10 @@ tr:nth-child(even) {
     background-color: rgba(255, 181, 106, 0.34);
 }
 
+.col-lg-9 a{
+    color: #5288b6;
+}
+
 
 
 
