@@ -253,3 +253,11 @@ function getDateAndAddedByHTML(fromdate, todate, addedBy){
         return "HER HAR DET SKJEDD EN FEIL"
     }
 }
+
+function clearMap(){
+    console.log("trying to clear")
+    //mymap.removeLayer(markersOnMap);
+    for(var i = 0; i < markersOnMap.length; i++) {
+        mymap.removeLayer(markersOnMap[i]);
+    }
+}
