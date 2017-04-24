@@ -3,6 +3,10 @@
  */
 
 var points;
+var categories = new Array(7);
+for (var i = 0; i < 7; i++) {
+    categories[i] = new Array();
+}
 
 console.log("In point.js")
 $(document).ready(function(){
@@ -59,24 +63,31 @@ function createPointList(points){
         switch (points[i].category) {
             case "hotel":
                 $("#hotels_list").append(x);
+                categories[4].push(points[i]);
                 break
             case "restaurant":
                 $("#restaurants_list").append(x);
+                categories[3].push(points[i]);
                 break
             case "activity":
                 $("#activity_list").append(x);
+                categories[0].push(points[i]);
                 break
             case "transportation":
                 $("#transportation_list").append(x);
+                categories[5].push(points[i]);
                 break
             case "attraction":
                 $("#attractions_list").append(x);
+                categories[1].push(points[i]);
                 break
             case "shopping":
                 $("#shopping_list").append(x);
+                categories[2].push(points[i]);
                 break
             case "other":
                 $("#other_list").append(x);
+                categories[6].push(points[i]);
                 break
         }
 
@@ -85,6 +96,8 @@ function createPointList(points){
     //document.getElementById("attraction1").innerHTML = points[0].name;
     //innerHTML sets the content of the element
     //hvordan hente username for alle brukere?
+    console.log(categories);
+
 };
 
 /*
