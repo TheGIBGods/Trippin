@@ -378,10 +378,10 @@
                                         <div class = "col-lg-3 text-center">
                                         </div>
                                         <div class = "col-lg-3 text-center filtercol">
-                                            <input type="checkbox" id="activityCB" value="activity">Aktiviteter
+                                            <input type="checkbox" id="activityCB" value="activity" class="group1">Aktiviteter
                                         </div>
                                         <div class = "col-lg-4 text-center filtercol">
-                                            <input type="checkbox" id="attractionCB" value="attraction">Attraksjoner
+                                            <input type="checkbox" id="attractionCB" value="attraction" class="group1">Attraksjoner
                                         </div>
                                         <div class = "col-lg-2 text-center">
                                         </div>
@@ -390,10 +390,10 @@
                                         <div class = "col-lg-3 text-center">
                                         </div>
                                         <div class = "col-lg-3 text-center filtercol">
-                                            <input type="checkbox" id="hotelCB" value="hotel">Overnatting
+                                            <input type="checkbox" id="hotelCB" value="hotel" class="group1">Overnatting
                                         </div>
                                         <div class = "col-lg-4 text-center filtercol">
-                                            <input type="checkbox" id="shoppingCB" value="shopping">Shopping
+                                            <input type="checkbox" id="shoppingCB" value="shopping" class="group1">Shopping
                                         </div>
                                         <div class = "col-lg-2 text-center">
                                         </div>
@@ -402,10 +402,10 @@
                                         <div class = "col-lg-3 text-center">
                                         </div>
                                         <div class = "col-lg-3 text-center filtercol">
-                                            <input type="checkbox" id="restaurantCB" value="restaurant">Spisested
+                                            <input type="checkbox" id="restaurantCB" value="restaurant" class="group1">Spisested
                                         </div>
                                         <div class = "col-lg-4 text-center filtercol">
-                                            <input type="checkbox" id="transportationCB" value="transportation">Transport
+                                            <input type="checkbox" id="transportationCB" value="transportation" class="group1">Transport
                                         </div>
                                         <div class = "col-lg-2 text-center">
                                         </div>
@@ -414,7 +414,7 @@
                                         <div class = "col-lg-3 text-center">
                                         </div>
                                         <div class = "col-lg-3 text-center filtercol">
-                                            <input type="checkbox" id="otherCB" value="other">Annet
+                                            <input type="checkbox" id="otherCB" value="other" class="group1">Annet
                                         </div>
                                         <div class = "col-lg-4 text-center filtercol">
                                             <input type="checkbox" id="allCB" value="all">Vis alle
@@ -469,6 +469,21 @@
 <script src = "/javascripts/tripModal.js"></script>
 <script src = "/javascripts/datePickers.js"></script>
 <script src = "/javascripts/filter.js"></script>
+
+<script>
+$(function() {
+    enable_cb();
+    $("#allCB").click(enable_cb);
+});
+
+function enable_cb() {
+    if (this.checked) {
+        $("input.group1").attr("disabled", true);
+    } else {
+        $("input.group1").removeAttr("disabled");
+    }
+}
+</script>
 
 </body>
 </html>
