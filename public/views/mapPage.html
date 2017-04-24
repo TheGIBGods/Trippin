@@ -53,6 +53,7 @@
 
                             </p>
                             <h4> Hvordan bruke Trippin?</h4>
+                            <p data-toggle="modal" data-target="#videoModal" data-dismiss="modal" class="canBeClicked">Klikk <b>her</b> for å se brukerveiledning på video</p>
                             <p>
                                 For å kunne bruke Trippin må du først lage deg en bruker, og logge inn. Ved innlogging vil du bli tatt til din side der du kan se alle turene du har tilgang til, det vil si de turene du er med å planlegge.
                             </p>
@@ -73,12 +74,45 @@
                             </p>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default cancel-btn" data-dismiss="modal">Lukk</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Lukk</button>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- End modal -->
+
+            <div class="modal fade" id="videoModal" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title"><b>Brukerveiledning - videoer</b></h4>
+                        </div>
+                        <div class="popup"><div class = "row filterrow">
+                            <div class = "col-lg-2 text-center">
+                            </div>
+                            <div class = "col-lg-9" style="text-align: left">
+                                <p>Klikk på en av linkene under for å se brukerveiledning på video:</p>
+                                <a style="color: #64a6d7;" href="https://drive.google.com/file/d/0B0qKgLXGaTOrVW00ZHAxRFU4TEU/view?usp=sharing" target="_blank">Registrer bruker</a><br>
+                                <a style="color: #64a6d7;" href="https://drive.google.com/file/d/0B0qKgLXGaTOrRnZDcnExNmdkbXM/view?usp=sharing" target="_blank">Logg inn</a><br>
+                                <a style="color: #64a6d7;" href="https://drive.google.com/file/d/0B0qKgLXGaTOraWd0WURxUUk4QW8/view?usp=sharing" target="_blank">Opprett tur</a><br>
+                                <a style="color: #64a6d7;" href="https://drive.google.com/file/d/0B0qKgLXGaTOrNzE3SC1wY1V6cUE/view?usp=sharing" target="_blank">Endre tur</a><br>
+                                <a style="color: #64a6d7;" href="https://drive.google.com/file/d/0B0qKgLXGaTOrbS1UZlJZb09rRms/view?usp=sharing" target="_blank">Del tur</a><br>
+                                <a style="color: #64a6d7;" href="https://drive.google.com/file/d/0B0qKgLXGaTOrSk1fM01CcUU1VlE/view?usp=sharing" target="_blank">Slett tur</a><br>
+                                <a style="color: #64a6d7;" href="https://drive.google.com/file/d/0B0qKgLXGaTOrX3lpS1ZEUUlxZUE/view?usp=sharing" target="_blank">Legg til nytt punkt</a><br>
+                                <a style="color: #64a6d7;" href="https://drive.google.com/file/d/0B0qKgLXGaTOrRUVJVGtqMmNjVnc/view?usp=sharing" target="_blank">Endre punkt</a><br>
+                                <a style="color: #64a6d7;" href="https://drive.google.com/file/d/0B0qKgLXGaTOrTU5PQm5USHNudFU/view?usp=sharing" target="_blank">Slett punkt</a><br>
+                                <a style="color: #64a6d7;" href="https://drive.google.com/file/d/0B0qKgLXGaTOrVVJ4Y2dPdmQxV1U/view?usp=sharing" target="_blank">Filtrer hvilke punkter som vises</a><br>
+                                <a style="color: #64a6d7;" href="https://drive.google.com/file/d/0B0qKgLXGaTOrcmpHNWtLVjdldUk/view?usp=sharing" target="_blank">Naviger mellom ulike turer</a><br>
+                                <a style="color: #64a6d7;" href="https://drive.google.com/file/d/0B0qKgLXGaTOrRDBBbEV2Ni14N3c/view?usp=sharing" target="_blank">Vis tidslinje</a><br>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal" data-target="#aboutModal">Lukk</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </div>
         <div class = "col-lg-1 text-center canBeClicked" id="trips">
