@@ -92,8 +92,36 @@ function deleteTrip() {
             type: 'put'
         });
 
-        console.log("trip deleted");
+        deleteFromDB();
 
         backToTrip();
+    }
+}
+
+function deleteFromDB(){
+    if(document.getElementById("access").innerHTML.includes(",") == false){
+        console.log("deleting for real");
+        for (var i = 0; i < categories.length; i++){
+            for (var j = 0; j < categories[i].length; j++){
+                console.log(categories[i][j]._id);
+                $.ajax({
+                    url: '../points/' + categories[i][j]._id, //collects the users call from app
+                    type: 'delete',
+                    success: function(){
+                        console.log("point deleted");
+                    }
+                });
+            }
+        }
+
+        console.log(getTripFromURL());
+        $.ajax({
+            url: '../trips/' + getTripFromURL(), //collects the users call from app
+            type: 'delete',
+            success: function(){
+                console.log("trip deleted");
+            }
+        });
+
     }
 }

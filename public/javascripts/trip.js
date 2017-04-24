@@ -124,7 +124,8 @@ function displayInfo(trip) {
     else{
         $("#tripDate").empty();
     }
-    document.getElementById("tripUsers").innerHTML = "<b>" + "Brukere som har tilgang: "+ "</b>" + addedUsers;
+    document.getElementById("tripUsers").innerHTML = "<b>" + "Brukere som har tilgang: "+ "</b>" + "<span id='access'>"
+        + addedUsers + "</span>";
     setDatePickers(trip.fromdate, trip.todate);
 
     if(fromdate ==null || todate == null){

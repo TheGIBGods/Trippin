@@ -140,6 +140,19 @@ router.route('/trips/:id')
         });
     })
 
+    .delete(function (req,res) {
+        console.log("in trip delete");
+        trips.remove({
+            _id: req.params.id
+        }, function (err, trip) {
+            if(err)
+                res.send(err);
+            else console.log("works");
+
+            res.json({message:'Successfully deleted'});
+        });
+    })
+
     .put(function (req,res) {
         trips.findById(req.params.id, function(err, trips){
             if(err)
